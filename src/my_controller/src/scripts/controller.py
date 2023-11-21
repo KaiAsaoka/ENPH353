@@ -28,18 +28,61 @@ class robot_controller:
 
   # Functions
   def __init__(self):
+
+    self.times = 0
+    self.timens = 0
+    self.t0s = 0
     
-    self.clock_sub = rospy.Subscriber("/clock",Clock)
+    self.clock_sub = rospy.Subscriber("/clock",Clock,self.clock_callback)
     self.bridge = CvBridge()
     self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
-    self.image_sub = rospy.Subscriber("/R1/pi_camera/image_raw",Image,self.callback)
-    #self.tracker_pub = rospy.Publisher("/score_tracker")
+    self.image_sub = rospy.Subscriber("/R1/pi_camera/image_raw",Image,self.image_callback)
+    self.tracker_pub = rospy.Publisher("/score_tracker",String,queue_size=1)
 
-  def callback(self,data):
-    move = Twist()
-    move.linear.x = 0.5
-    move.angular.z = 0.5    
-    self.move_pub.publish(move)
+    startComp(self)
+
+
+  
+  def clock_callback(self,data):
+    
+    if(self.times == 0):
+       self.t0s = data.clock.secs
+       t0ns = data.clock.nsecs
+
+    self.times = data.clock.secs
+    self.timens = data.clock.nsecs
+
+  def image_callback(self,data):
+    place = 0
+  
+def startComp(self):
+  while(self.times - self.t0s < 3):
+     continue
+  
+  self.tracker_pub.publish(str('Team16,joebot,0,NA'))
+  print("START")
+
+  while(self.times - self.t0s < 5):
+     continue
+  
+  move = Twist()
+  move.linear.x = 0.5  
+  self.move_pub.publish(move)
+  print("MOVE")
+
+  while(self.times - self.t0s < 7):
+     continue
+  
+  stopComp(self)
+  move.linear.x = 0.0
+  self.move_pub.publish(move)
+  
+  
+  
+def stopComp(self):
+  self.tracker_pub.publish(str('Team16,joebot,-1,NA')) 
+  print("STOP")
+    
 
 def main(args):
     rospy.init_node('controller', anonymous=True)
