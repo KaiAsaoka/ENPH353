@@ -116,6 +116,13 @@
 /home/fizzer/ros_ws/build/2023_competition/adeept_awr_ros_driver/CMakeFiles/adeept_awr_ros_driver_gennodejs.dir
 /home/fizzer/ros_ws/build/2023_competition/adeept_awr_ros_driver/CMakeFiles/test.dir
 /home/fizzer/ros_ws/build/2023_competition/adeept_awr_ros_driver/CMakeFiles/adeept_awr_ros_driver_genpy.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/install/strip.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/install/local.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/install.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/list_install_components.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/rebuild_cache.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/edit_cache.dir
+/home/fizzer/ros_ws/build/my_controller/CMakeFiles/test.dir
 /home/fizzer/ros_ws/build/2023_competition/adeept_awr/adeept_awr_gazebo/CMakeFiles/install/strip.dir
 /home/fizzer/ros_ws/build/2023_competition/adeept_awr/adeept_awr_gazebo/CMakeFiles/install/local.dir
 /home/fizzer/ros_ws/build/2023_competition/adeept_awr/adeept_awr_gazebo/CMakeFiles/list_install_components.dir

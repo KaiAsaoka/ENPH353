@@ -1,2 +1,2 @@
-$ cd ~/ros_ws
-$ catkin_make
+cd ~/ros_ws
+catkin_make

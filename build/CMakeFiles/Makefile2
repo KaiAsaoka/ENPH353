@@ -60,6 +60,7 @@ all: 2023_competition/enph353/enph353/all
 all: 2023_competition/enph353/enph353_npcs/all
 all: 2023_competition/enph353/enph353_utils/all
 all: 2023_competition/adeept_awr_ros_driver/all
+all: my_controller/all
 all: 2023_competition/adeept_awr/adeept_awr_gazebo/all
 all: 2023_competition/enph353/enph353_gazebo/all
 
@@ -73,6 +74,7 @@ preinstall: 2023_competition/enph353/enph353/preinstall
 preinstall: 2023_competition/enph353/enph353_npcs/preinstall
 preinstall: 2023_competition/enph353/enph353_utils/preinstall
 preinstall: 2023_competition/adeept_awr_ros_driver/preinstall
+preinstall: my_controller/preinstall
 preinstall: 2023_competition/adeept_awr/adeept_awr_gazebo/preinstall
 preinstall: 2023_competition/enph353/enph353_gazebo/preinstall
 
@@ -91,6 +93,7 @@ clean: 2023_competition/enph353/enph353/clean
 clean: 2023_competition/enph353/enph353_npcs/clean
 clean: 2023_competition/enph353/enph353_utils/clean
 clean: 2023_competition/adeept_awr_ros_driver/clean
+clean: my_controller/clean
 clean: 2023_competition/adeept_awr/adeept_awr_gazebo/clean
 clean: 2023_competition/enph353/enph353_gazebo/clean
 
@@ -397,6 +400,24 @@ gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest_main.dir/clean
 gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest.dir/clean
 
 .PHONY : gtest/googletest/clean
+
+#=============================================================================
+# Directory level rules for directory my_controller
+
+# Recursive "all" directory target.
+my_controller/all:
+
+.PHONY : my_controller/all
+
+# Recursive "preinstall" directory target.
+my_controller/preinstall:
+
+.PHONY : my_controller/preinstall
+
+# Recursive "clean" directory target.
+my_controller/clean:
+
+.PHONY : my_controller/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/doxygen.dir
