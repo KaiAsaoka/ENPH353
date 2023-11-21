@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://full_town</uri>
+      <static>true</static>
+    </include>
+    <include>
+      <uri>model://tunnel</uri>
+      <pose>-3.2 -2.3 0.29 0 -0.46 0</pose>
+    	<static>true</static>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <scene>
+    	<sky>
+    		<time>12</time>
+    	</sky>
+      <shadows>0</shadows>
+    </scene>
+
+    <include>
+      <uri>model://water_block</uri>
+      <name>water_block</name>
+      <pose>-1.56 1.64 -0.15 0 0 0</pose>
+      <static>true</static>
+    </include>
+
+    <!-- WALLS START -->
+    <include>
+    	<uri>model://wall</uri>
+    	<name>north_wall</name>
+    	<pose>6 0 0.25 0 0 1.57</pose>
+    	<static>true</static>
+    </include>
+    <include>
+    	<uri>model://wall</uri>
+    	<name>south_wall</name>
+    	<pose>-6 0 0.25 0 0 1.57</pose>
+    	<static>true</static>
+    </include>
+    <include>
+    	<uri>model://wall_side</uri>
+    	<name>east_wall</name>
+    	<pose>0 -2.75 0.25 0 0 0</pose>
+    	<static>true</static>
+    </include>
+    <include>
+    	<uri>model://wall_side</uri>
+    	<name>west_wall</name>
+    	<pose>0 2.75 0.25 0 0 0</pose>
+    	<static>true</static>
+    </include>
+    <!-- WALLS END -->
+
+    <!-- PARKED CARS START -->
+    <include>
+      <uri>model://car0</uri>
+      <static>true</static>
+      <pose>5.81 1.64 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://car1</uri>
+      <static>true</static>
+      <pose>5.16 -1.35 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://car2</uri>
+      <static>true</static>
+      <pose>4.00 -1.67 0.04 0 0 -1.57</pose>
+    </include>
+    <include>
+      <uri>model://car3</uri>
+      <static>true</static>
+      <pose>0.83 -0.54 0.04 0 0 3.14</pose>
+    </include>
+    <include>
+      <uri>model://car4</uri>
+      <static>true</static>
+      <pose>0.83 1.50 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://car5</uri>
+      <static>true</static>
+      <pose>-3.41 1.71 0.04 0 0 -1.57</pose>
+    </include>
+    <include>
+      <uri>model://car6</uri>
+      <static>true</static>
+      <pose>-3.80 -2.01 0.04 0 0 1.57</pose>
+    </include>
+    <include>
+      <uri>model://car7</uri>
+      <static>true</static>
+      <pose>-0.9 -1.2 1.86 0 0 1.57</pose>
+    </include>
+    <include>
+      <uri>model://car_muscle</uri>
+      <static>true</static>
+      <pose>-4.14 -2.56 0 0 0 1.57</pose>
+    </include>
+    <!-- PARKED CARS END-->
+    
+    <!-- TREES START-->
+    <include>
+      <uri>model://tree_misc</uri>
+      <static>true</static>
+      <pose> 2.5 -1.5 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_01</name>
+      <static>true</static>
+      <pose> 2.8 0.4 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_02</name>
+      <static>true</static>
+      <pose> 3 1 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_03</name>
+      <static>true</static>
+      <pose> 3 2 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_04</name>
+      <static>true</static>
+      <pose> 2.8 2.5 0 0 0 0</pose>
+    </include>
+       <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_05</name>
+      <static>true</static>
+      <pose> 1 1 0 0 0 0</pose>
+    </include>
+   <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_06</name>
+      <static>true</static>
+      <pose> 2 1 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_07</name>
+      <static>true</static>
+      <pose> 2 1.8 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_08</name>
+      <static>true</static>
+      <pose> 1 1.8 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_09</name>
+      <static>true</static>
+      <pose> 0.2 0.8 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_10</name>
+      <static>true</static>
+      <pose> 0 2 0 0 0 0</pose>
+    </include>
+        <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_11</name>
+      <static>true</static>
+      <pose> 0.92 -0.92 0 0 0 0</pose>
+    </include>
+        <include>
+      <uri>model://tree_oak</uri>
+      <name>tree_oak_12</name>
+      <static>true</static>
+      <pose> -0.92 -0.92 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_01</name>
+      <static>true</static>
+      <pose> 5 2.0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_02</name>
+      <static>true</static>
+      <pose> 4.2 1.4 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_03</name>
+      <static>true</static>
+      <pose> 5 0.9 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_04</name>
+      <static>true</static>
+      <pose> 5 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_05</name>
+      <static>true</static>
+      <pose> 4.1 -0.3 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_06</name>
+      <static>true</static>
+      <pose> 5 -1.8 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_07</name>
+      <static>true</static>
+      <pose> 5 -0.9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://tree_fir</uri>
+      <name>fir_tree_08</name>
+      <static>true</static>
+      <pose> 1 -1.8 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://cactus</uri>
+      <name>cactus_01</name>
+      <static>true</static>
+      <pose> -5 -0 -0.02 0 0 1.57</pose>
+    </include>
+    <!-- TREES END -->
+
+    <gui>
+      <camera name="user_camera">
+        <pose>0 0 12 0 1.57 -1.57</pose> <!-- god view -->
+      </camera>
+    </gui>
+    <!-- 
+    Change simulation speed
+      real_time_factor
+        attempted RTF simulation tries to run at (not guarateed) 
+      real_time_update_rate (default 1000)
+        increase if computer can run faster
+      max_step_size (default 0.001)
+        increasing it increases RTF but simulation accuracy is
+        degraded
+    -->
+    <!-- Increase simulation speed. Keep max_step_size=0.001 to maintain same quality -->
+    <physics type='ode'>
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>10.0</real_time_factor>
+      <real_time_update_rate>500.0</real_time_update_rate>
+    </physics> 
+
+    <!-- Add collision plugin for robots -->
+    <plugin name="B1_collision_plugin" filename="libcollision_plugin.so">
+      <pubPeriod>2</pubPeriod>
+      <pubTopic>B1_Hit</pubTopic>
+      <collisionObject1>B1</collisionObject1>
+    </plugin>
+    <plugin name="R1_collision_plugin" filename="libcollision_plugin.so">
+      <pubPeriod>2</pubPeriod>
+      <pubTopic>R1_Hit</pubTopic>
+      <collisionObject1>R1</collisionObject1>
+    </plugin>
+  </world>
+</sdf>
