@@ -1,0 +1,1 @@
+pkill -f gazebo^C

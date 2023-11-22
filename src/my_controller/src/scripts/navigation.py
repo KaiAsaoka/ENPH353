@@ -15,8 +15,7 @@ from cv_bridge import CvBridge
 from geometry_msgs.msg import Twist
 
 ##
-# @brief Callback method to process image data and convert into steering input for robot
-# @param data Image data to be processed.
+# @brief Callback method
 # @retval 
 
 def callback(data):
@@ -30,7 +29,7 @@ def callback(data):
 
 
 ##
-# @brief Listener method to retrieve data from ROS camera, and send data to callback function to be processed
+# @brief Listener method to retrieve data from ROS camera
     
 def listener():
 
