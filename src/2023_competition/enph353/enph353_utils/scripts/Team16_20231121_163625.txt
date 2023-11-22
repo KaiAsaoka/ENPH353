@@ -1,0 +1,29 @@
+16:36:07.392: Clue SIZE: 314
+16:36:07.392: Clue VICTIM: PHYSICISTS
+16:36:07.392: Clue CRIME: BITE
+16:36:07.393: Clue TIME: D DAY
+16:36:07.393: Clue PLACE: JUNGLE
+16:36:07.394: Clue MOTIVE: GLUTTONY
+16:36:07.394: Clue WEAPON: PENCIL
+16:36:07.394: Clue BANDIT: PIKACHU
+16:36:25.864: Message received: Team16,joebot,0,NA
+16:36:25.865: Timer started.
+16:36:27.898: First command velocity received.
+16:36:29.907: Message received: Team16,joebot,-1,NA
+16:36:29.908: Timer stopped: 4.004000000000001sec sim time (real time: 4sec).
+16:37:57.601: Message received: Team16,joebot,0,NA
+16:37:57.602: Timer started.
+16:38:01.619: Message received: Team16,joebot,-1,NA
+16:38:01.620: Timer stopped: 4.0sec sim time (real time: 3sec).
+16:38:46.138: Message received: Team16,joebot,0,NA
+16:38:46.138: Timer started.
+16:38:50.176: Message received: Team16,joebot,-1,NA
+16:38:50.179: Timer stopped: 4.0sec sim time (real time: 3sec).
+16:44:52.210: Message received: Team16,joebot,0,NA
+16:44:52.211: Timer started.
+16:44:56.232: Message received: Team16,joebot,-1,NA
+16:44:56.233: Timer stopped: 3.9840000000000373sec sim time (real time: 4sec).
+16:48:50.018: Message received: Team16,joebot,0,NA
+16:48:50.019: Timer started.
+16:48:54.075: Message received: Team16,joebot,-1,NA
+16:48:54.075: Timer stopped: 4.01400000000001sec sim time (real time: 3sec).
