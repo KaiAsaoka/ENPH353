@@ -1,0 +1,13 @@
+10:48:36.044: Clue SIZE: TRIPLETS
+10:48:36.044: Clue VICTIM: DINOSAURS
+10:48:36.045: Clue CRIME: ACCELERATE
+10:48:36.045: Clue TIME: DAWN
+10:48:36.045: Clue PLACE: BEACH
+10:48:36.045: Clue MOTIVE: FAME
+10:48:36.045: Clue WEAPON: ELECTRON
+10:48:36.046: Clue BANDIT: SHREK
+10:48:45.037: Message received: Team16,joebot,0,NA
+10:48:45.038: Timer started.
+10:48:47.049: First command velocity received.
+10:48:49.050: Message received: Team16,joebot,-1,NA
+10:48:49.050: Timer stopped: 4.0sec sim time (real time: 4sec).
