@@ -1,0 +1,13 @@
+17:59:28.115: Clue SIZE: TRIPLETS
+17:59:28.115: Clue VICTIM: ANTS
+17:59:28.115: Clue CRIME: ACCELERATE
+17:59:28.117: Clue TIME: NOON
+17:59:28.117: Clue PLACE: CLASS
+17:59:28.117: Clue MOTIVE: IGNORANCE
+17:59:28.118: Clue WEAPON: ROCKET
+17:59:28.118: Clue BANDIT: SHREK
+17:59:42.176: Message received: Team16,joebot,0,NA
+17:59:42.177: Timer started.
+17:59:44.206: First command velocity received.
+17:59:46.204: Message received: Team16,joebot,-1,NA
+17:59:46.204: Timer stopped: 4.004000000000001sec sim time (real time: 4sec).

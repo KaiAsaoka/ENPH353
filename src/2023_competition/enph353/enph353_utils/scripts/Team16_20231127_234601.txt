@@ -1,0 +1,52 @@
+23:45:50.725: Clue SIZE: 314
+23:45:50.726: Clue VICTIM: BED BUGS
+23:45:50.726: Clue CRIME: BITE
+23:45:50.727: Clue TIME: 2023
+23:45:50.727: Clue PLACE: BEACH
+23:45:50.728: Clue MOTIVE: SELF DEFENSE
+23:45:50.728: Clue WEAPON: PENCIL
+23:45:50.728: Clue BANDIT: THE DEVIL
+23:46:01.431: Message received: Team16,joebot,0,NA
+23:46:01.432: Timer started.
+23:46:03.439: First command velocity received.
+23:46:05.440: Message received: Team16,joebot,-1,NA
+23:46:05.456: Timer stopped: 4.013999999999999sec sim time (real time: 3sec).
+23:48:30.047: Message received: Team16,joebot,0,NA
+23:48:30.047: Timer started.
+23:48:34.051: Message received: Team16,joebot,-1,NA
+23:48:34.052: Timer stopped: 3.9939999999999998sec sim time (real time: 3sec).
+23:49:49.048: Message received: Team16,joebot,0,NA
+23:49:49.048: Timer started.
+23:49:53.050: Message received: Team16,joebot,-1,NA
+23:49:53.051: Timer stopped: 3.9899999999999807sec sim time (real time: 3sec).
+00:43:25.962: Message received: Team16,joebot,0,NA
+00:43:25.962: Timer started.
+00:43:29.952: Message received: Team16,joebot,-1,NA
+00:43:29.952: Timer stopped: 3.9859999999998763sec sim time (real time: 3sec).
+00:44:37.548: Message received: Team16,joebot,0,NA
+00:44:37.549: Timer started.
+00:44:41.570: Message received: Team16,joebot,-1,NA
+00:44:41.570: Timer stopped: 4.003999999999905sec sim time (real time: 3sec).
+00:45:12.799: Message received: Team16,joebot,0,NA
+00:45:12.799: Timer started.
+00:45:16.809: Message received: Team16,joebot,-1,NA
+00:45:16.810: Timer stopped: 4.001999999999953sec sim time (real time: 4sec).
+00:46:36.572: Message received: Team16,joebot,0,NA
+00:46:36.573: Timer started.
+00:46:40.588: Message received: Team16,joebot,-1,NA
+00:46:40.589: Timer stopped: 4.0099999999997635sec sim time (real time: 3sec).
+00:49:24.085: Message received: Team16,joebot,0,NA
+00:49:24.086: Timer started.
+00:53:27.144: Out of time: 240.38999999999987sec sim time (real time: 243sec).
+00:53:55.020: Message received: Team16,joebot,0,NA
+00:53:55.020: Timer started.
+00:53:59.016: Message received: Team16,joebot,-1,NA
+00:53:59.016: Timer stopped: 3.992000000000189sec sim time (real time: 3sec).
+00:56:52.373: Message received: Team16,joebot,0,NA
+00:56:52.374: Timer started.
+00:56:56.468: Message received: Team16,joebot,-1,NA
+00:56:56.469: Timer stopped: 3.9940000000005966sec sim time (real time: 4sec).
+01:00:01.240: Message received: Team16,joebot,0,NA
+01:00:01.241: Timer started.
+01:00:05.340: Message received: Team16,joebot,-1,NA
+01:00:05.341: Timer stopped: 4.005999999999403sec sim time (real time: 4sec).
