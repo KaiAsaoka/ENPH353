@@ -41,7 +41,7 @@ class navigation():
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
 
-        
+        blue_channel = frame[:, :, 0]
         grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
 
         kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
@@ -50,7 +50,7 @@ class navigation():
 
         good_points = []
         for m, n in matches:
-            if m.distance < 0.4 * n.distance:
+            if m.distance < 0.25 * n.distance:
                 good_points.append(m)
 
         if len(good_points) > 4:
@@ -70,8 +70,14 @@ class navigation():
             cv2.imshow("Image window", cv2.cvtColor(homography, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
+            cv2.imshow("Blue", blue_channel)
+            cv2.waitKey(1)
+
         else:
-            cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+            cv2.imshow("Image window", cv2.cvtColor(blue_channel , cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
+            cv2.imshow("Blue", blue_channel )
             cv2.waitKey(1)
 
 
