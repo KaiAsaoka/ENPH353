@@ -19,7 +19,7 @@ class navigation():
 
     def __init__(self):
         
-        rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
+        
         self.sift = cv2.SIFT_create()
 
 		## Feature matching
@@ -32,6 +32,8 @@ class navigation():
         self.kp_image, self.desc_image = self.sift.detectAndCompute(self.img, None)
         self.bridge = CvBridge()
         print("Loaded template image file: " + self.template_path)
+
+        rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
   
         
     def callback(self, data):
@@ -48,7 +50,7 @@ class navigation():
 
         good_points = []
         for m, n in matches:
-            if m.distance < 0.6 * n.distance:
+            if m.distance < 0.4 * n.distance:
                 good_points.append(m)
 
         if len(good_points) > 4:
@@ -68,12 +70,6 @@ class navigation():
             cv2.imshow("Image window", cv2.cvtColor(homography, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-        elif len(good_points) > 2:
-            matches = cv2.drawMatches(self.img, self.kp_image, frame, kp_grayframe, good_points, None, flags=0)
-
-            cv2.imshow("Image window", cv2.cvtColor(matches, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
-
         else:
             cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
@@ -91,7 +87,7 @@ def main(args):
         rospy.spin()
     except KeyboardInterrupt:
         print("Shutting down")
-    cv2.destroyAllWindows()
+    finally: cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     main(sys.argv)

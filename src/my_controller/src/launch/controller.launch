@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <launch>
-
-    <node pkg="my_controller"
+    <!--    <node pkg="my_controller"
     type="controller.py"
     name="main_controller"
     output="screen">
-    </node>
+    </node>-->
+
 
     <node pkg="my_controller"
     type="navigation.py"
