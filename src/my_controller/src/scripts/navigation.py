@@ -15,8 +15,8 @@ import sys
 # @brief Callback method
 # @retval 
 class navigation():
-    
-    
+
+
     def __init__(self):
         
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
