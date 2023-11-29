@@ -7,23 +7,16 @@
 import rospy
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
-import argparse
-from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
-from geometry_msgs.msg import Twist
-from PyQt5 import QtCore, QtGui, QtWidgets
-from python_qt_binding import loadUi
 import sys
-
 
 ##
 # @brief Callback method
 # @retval 
 class navigation():
-    
-    
+
+
     def __init__(self):
         
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
@@ -37,15 +30,17 @@ class navigation():
         self.img = cv2.imread(self.template_path, cv2.IMREAD_GRAYSCALE)
 		## Features
         self.kp_image, self.desc_image = self.sift.detectAndCompute(self.img, None)
+        self.bridge = CvBridge()
         print("Loaded template image file: " + self.template_path)
+  
         
     def callback(self, data):
 
-        bridge = CvBridge()
-        frame = bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
+        
+        frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
 
         
-        grayframe = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # trainimage
+        grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
 
         kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
 
@@ -56,7 +51,7 @@ class navigation():
             if m.distance < 0.6 * n.distance:
                 good_points.append(m)
 
-        if len(good_points) > 7:
+        if len(good_points) > 4:
             query_pts = np.float32([self.kp_image[m.queryIdx].pt for m in good_points]).reshape(-1, 1, 2)
             train_pts = np.float32([kp_grayframe[m.trainIdx].pt for m in good_points]).reshape(-1, 1, 2)
 
@@ -70,17 +65,17 @@ class navigation():
 
             homography = cv2.polylines(frame, [np.int32(dst)], True, (255, 0, 0), 3)
 
-            cv2.imshow("Image window", homography)
+            cv2.imshow("Image window", cv2.cvtColor(homography, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
         elif len(good_points) > 2:
             matches = cv2.drawMatches(self.img, self.kp_image, frame, kp_grayframe, good_points, None, flags=0)
 
-            cv2.imshow("Image window", matches)
+            cv2.imshow("Image window", cv2.cvtColor(matches, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
         else:
-            cv2.imshow("Image window", frame)
+            cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
 
