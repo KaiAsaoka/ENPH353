@@ -44,6 +44,14 @@ class navigation():
         grayframe = frame
         #grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage   
 
+        hsv_image = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+        lower_blue = np.array([90, 50, 30])
+        upper_blue = np.array([120, 255, 120])
+        blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+
+        grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
+
+        kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
 
         kp_grayframe, desc_grayframe = self.sift.detectAndCompute(frame, None)
         
@@ -68,16 +76,23 @@ class navigation():
 
             homography = cv2.polylines(grayframe, [np.int32(dst)], True, (255, 0, 0), 3)
 
+            cv2.imshow("Image window", cv2.cvtColor(homography, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
+            cv2.imshow("Binary", blue_mask)
             cv2.imshow("Image window", cv2.cvtColor(grayframe, cv2.COLOR_RGB2BGR))
             cv2.imshow("img", self.img)
             # cv2.imshow("Blue", blue_channel)
             cv2.waitKey(1)
 
         else:
+            cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
             # cv2.imshow("Image window", cv2.cvtColor(blue_channel , cv2.COLOR_RGB2BGR))
             cv2.imshow("Image window", cv2.cvtColor(grayframe, cv2.COLOR_RGB2BGR))
             cv2.imshow("img", self.img)
 
+            cv2.imshow("Binary", blue_mask)
             # cv2.imshow("Blue", blue_channel )
             cv2.waitKey(1)
 
