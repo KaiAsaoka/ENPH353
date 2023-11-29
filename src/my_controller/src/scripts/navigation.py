@@ -41,7 +41,11 @@ class navigation():
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
 
-        blue_channel = frame[:, :, 0]
+        hsv_image = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+        lower_blue = np.array([90, 50, 30])
+        upper_blue = np.array([120, 255, 120])
+        blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+
         grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
 
         kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
@@ -70,14 +74,14 @@ class navigation():
             cv2.imshow("Image window", cv2.cvtColor(homography, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            cv2.imshow("Blue", blue_channel)
+            cv2.imshow("Binary", blue_mask)
             cv2.waitKey(1)
 
         else:
-            cv2.imshow("Image window", cv2.cvtColor(blue_channel , cv2.COLOR_RGB2BGR))
+            cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            cv2.imshow("Blue", blue_channel )
+            cv2.imshow("Binary", blue_mask)
             cv2.waitKey(1)
 
 
