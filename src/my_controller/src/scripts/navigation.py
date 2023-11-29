@@ -61,9 +61,9 @@ class navigation():
         threshold_value = 100  # Adjust this threshold as needed
 
         # Find contours in the binary mask
-        contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours, _ = cv2.findContours(blue_mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         
-        c_img = cv2.drawContours(blue_mask, contours, -1, (0, 255, 0), 1)
+        c_img = cv2.drawContours(frame, contours, -1, (0, 255, 0), 1)
         cv2.imshow("contours", cv2.cvtColor(c_img, cv2.COLOR_RGB2BGR))
         
         ###
