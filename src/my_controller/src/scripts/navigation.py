@@ -41,24 +41,10 @@ class navigation():
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
 
+        blue_channel = frame[:, :, 0]  # Extract blue channel
         
-        # grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
-        
-        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV) 
-      
-        # Threshold of blue in HSV space 
-        lower_blue = np.array([60, 35, 140]) 
-        upper_blue = np.array([180, 255, 255]) 
-    
-        # preparing the mask to overlay 
-        mask = cv2.inRange(hsv, lower_blue, upper_blue) 
-        
-        # The black region in the mask has the value of 0, 
-        # so when multiplied with original image removes all non-blue regions 
-        filtered = cv2.bitwise_and(frame, frame, mask = mask) 
-    
-        grayframe = cv2.cvtColor(filtered, cv2.COLOR_RGB2GRAY)  # trainimage
-        
+        grayframe = cv2.cvtColor(blue_channel, cv2.COLOR_RGB2GRAY)  # Convert to monochrome
+
         kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
         
         matches = self.flann.knnMatch(self.desc_image, desc_grayframe, k=2)
@@ -86,7 +72,7 @@ class navigation():
             cv2.waitKey(1)
 
         else:
-            cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+            cv2.imshow("Image window", cv2.cvtColor(grayframe, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
 
