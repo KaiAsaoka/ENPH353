@@ -27,7 +27,8 @@ class navigation():
         search_params = dict()
         self.flann = cv2.FlannBasedMatcher(index_params, search_params)
         self.template_path = "/home/fizzer/ros_ws/src/2023_competition/media_src/clue_banner.png"
-        self.img = cv2.imread(self.template_path, cv2.IMREAD_GRAYSCALE)
+        self.img = cv2.imread(self.template_path, cv2.IMREAD_GRAY)
+        # self.img = self.img[:, :, 0]
 		## Features
         self.kp_image, self.desc_image = self.sift.detectAndCompute(self.img, None)
         self.bridge = CvBridge()
@@ -40,11 +41,11 @@ class navigation():
 
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
+        grayframe = frame
+        #grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage   
 
-        blue_channel = frame[:, :, 0]
-        grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
 
-        kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
+        kp_grayframe, desc_grayframe = self.sift.detectAndCompute(frame, None)
         
         matches = self.flann.knnMatch(self.desc_image, desc_grayframe, k=2)
 
@@ -65,19 +66,19 @@ class navigation():
 
             dst = cv2.perspectiveTransform(pts, matrix)
 
-            homography = cv2.polylines(frame, [np.int32(dst)], True, (255, 0, 0), 3)
+            homography = cv2.polylines(grayframe, [np.int32(dst)], True, (255, 0, 0), 3)
 
-            cv2.imshow("Image window", cv2.cvtColor(homography, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
-
-            cv2.imshow("Blue", blue_channel)
+            cv2.imshow("Image window", cv2.cvtColor(grayframe, cv2.COLOR_RGB2BGR))
+            cv2.imshow("img", self.img)
+            # cv2.imshow("Blue", blue_channel)
             cv2.waitKey(1)
 
         else:
-            cv2.imshow("Image window", cv2.cvtColor(blue_channel , cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            # cv2.imshow("Image window", cv2.cvtColor(blue_channel , cv2.COLOR_RGB2BGR))
+            cv2.imshow("Image window", cv2.cvtColor(grayframe, cv2.COLOR_RGB2BGR))
+            cv2.imshow("img", self.img)
 
-            cv2.imshow("Blue", blue_channel )
+            # cv2.imshow("Blue", blue_channel )
             cv2.waitKey(1)
 
 
