@@ -40,10 +40,25 @@ class navigation():
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
 
         
-        grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
-
+        # grayframe = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)  # trainimage
+        
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV) 
+      
+        # Threshold of blue in HSV space 
+        lower_blue = np.array([60, 35, 140]) 
+        upper_blue = np.array([180, 255, 255]) 
+    
+        # preparing the mask to overlay 
+        mask = cv2.inRange(hsv, lower_blue, upper_blue) 
+        
+        # The black region in the mask has the value of 0, 
+        # so when multiplied with original image removes all non-blue regions 
+        filtered = cv2.bitwise_and(frame, frame, mask = mask) 
+    
+        grayframe = cv2.cvtColor(filtered, cv2.COLOR_RGB2GRAY)  # trainimage
+        
         kp_grayframe, desc_grayframe = self.sift.detectAndCompute(grayframe, None)
-
+        
         matches = self.flann.knnMatch(self.desc_image, desc_grayframe, k=2)
 
         good_points = []
