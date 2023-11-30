@@ -217,7 +217,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
 
         if cxavg >= 0 and cxavg < 128:
-            move.angular.z = 1.5
+            move.angular.z = 2
             cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
         elif cxavg >= 128 and cxavg < 256:
@@ -257,7 +257,7 @@ class navigation():
             cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
         else:
-            move.angular.z = -1.5
+            move.angular.z = -2
             cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             
@@ -272,8 +272,8 @@ class navigation():
 
 
         cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
-        cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
-        cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+        #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
+        #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
 
         self.move_pub.publish(move)
         
