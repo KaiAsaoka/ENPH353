@@ -50,8 +50,8 @@ class navigation():
         # Apply blue color mask
 
         hsv_image = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
-        lower_blue = np.array([90, 50, 30])
-        upper_blue = np.array([120, 255, 120])
+        lower_blue = np.array([115, 128, 95])
+        upper_blue = np.array([120, 255, 204])
         blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
         
         # Find contours
@@ -75,7 +75,12 @@ class navigation():
         
         # Apply the perspective transform
         dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-        dstmask = cv2.warpPerspective(blue_mask, perspective_matrix, (600, 400))
+        
+        hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
+        lower_blue = np.array([115, 128, 95])
+        upper_blue = np.array([120, 255, 204])
+        dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+        
         letters, _ = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         
         upletter = []
