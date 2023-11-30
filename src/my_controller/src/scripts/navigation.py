@@ -85,8 +85,27 @@ class navigation():
         dstmask = cv2.warpPerspective(blue_mask, perspective_matrix, (600, 400))
         letters, _ = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         
+        upletter = []
+        downletter = []
+        
+        threshold_y = 200  # Adjust the threshold as needed
+        
+        for letter in letters:
+            x, y, w, h = cv2.boundingRect(letter)
+            if y < threshold_y:
+                upletter.append(letter)
+            else:
+                downletter.append(letter)
+        
+        upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+        downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+
+
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
+        
+        
+        
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
 
         cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
@@ -101,7 +120,7 @@ class navigation():
         cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
 
-        
+
 
         
     ##
