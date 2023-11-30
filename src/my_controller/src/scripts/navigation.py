@@ -56,39 +56,38 @@ class navigation():
         
         # Find contours
         contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-       
+        contour = frame.copy()
+        dst = np.ones((HEIGHT, WIDTH, 3), dtype=np.uint8) * 255
         if contours:
 
             largest_contour = max(contours, key=cv2.contourArea)
-
-        epsilon = 0.02 * cv2.arcLength(largest_contour, True)
-        approx = cv2.approxPolyDP(largest_contour, epsilon, True)
-        contour = frame.copy()
-        cv2.drawContours(contour, [approx], 0, (0, 255, 0), 2)
-
-        tl, tr, bl, br = rectangle_positions(approx)
+            epsilon = 0.02 * cv2.arcLength(largest_contour, True)
+            approx = cv2.approxPolyDP(largest_contour, epsilon, True)
             
-        pts1 = np.float32([tl,tr,bl,br])
-        pts2 = np.float32([[0,0],[WIDTH,0],[0,HEIGHT],[WIDTH,HEIGHT]])
+            cv2.drawContours(contour, [approx], 0, (0, 255, 0), 2)
 
-        perspective_matrix = cv2.getPerspectiveTransform(pts1, pts2)
+            if(len(approx) >= 4):
+                tl, tr, bl, br = rectangle_positions(approx)
+            
+                pts1 = np.float32([tl,tr,bl,br])
+                pts2 = np.float32([[0,0],[WIDTH,0],[0,HEIGHT],[WIDTH,HEIGHT]])
+
+                perspective_matrix = cv2.getPerspectiveTransform(pts1, pts2)
         
-        # Apply the perspective transform
-        dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-        
-        
-        # FILTER FOR SIGN
-        bifilter = cv2.bilateralFilter(dst, 11, 17, 17)
-        
-        hsv_image = cv2.cvtColor(bifilter, cv2.COLOR_RGB2HSV)
-        lower_blue = np.array([120, 128, 95])
-        upper_blue = np.array([120, 255, 210])
+                # Apply the perspective transform
+                dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
+            
+
+        hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
+        lower_blue = np.array([115, 128, 95])
+        upper_blue = np.array([120, 255, 204])
         dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
         
         bifilter = cv2.bilateralFilter(dst, 11, 17, 17)
         
         letters, _ = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
-        
+        min_area = 100
+        max_area = 10000
         upletter = []
         downletter = []
         
@@ -96,12 +95,12 @@ class navigation():
         
         for letter in letters:
             x, y, w, h = cv2.boundingRect(letter)
-            if y < threshold_y:
-                upletter.append(letter)
-            else:
-                downletter.append(letter)
-
-        
+            if min_area < cv2.contourArea(letter) < max_area:
+                if y < threshold_y:
+                    upletter.append(letter)
+                else:
+                    downletter.append(letter)
+            
         upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         
