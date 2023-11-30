@@ -83,29 +83,27 @@ class navigation():
         
         threshold_y = 200  # Adjust the threshold as needed
         
-        for letter in letters:
-            x, y, w, h = cv2.boundingRect(letter)
-            if y < threshold_y:
-                upletter.append(letter)
-            else:
-                downletter.append(letter)
+        #for letter in letters:
+            #x, y, w, h = cv2.boundingRect(letter)
+            #if y < threshold_y:
+            #    upletter.append(letter)
+            #else:
+            #    downletter.append(letter)
+            #print(letter)
         
-        upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
-        downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+        #upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+        #downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         
         dstup = dst.copy()
-        cv2.drawContours(dstup, upletter, 0, (0, 255, 0), 2)
+        cv2.drawContours(dstup, [letters[1]], 0, (0, 255, 0), 2)
+        print(len(letters))
         
-        print(downletter)
-        
-        dstdown = dst.copy()
-        cv2.drawContours(dstdown, downletter, 0, (0, 255, 0), 2)
         
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
         
         # Specify the path to your CSV file
-        csv_file_path = 'path/to/your/file.csv'
+        csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
 
         clue = []
         cause = []
@@ -124,15 +122,10 @@ class navigation():
                 cause_chrs.append(char for char in row[1])
                 cause.append(cause_chrs)
                 
-        
-        
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
         cv2.imshow("dst up", cv2.cvtColor(dstup, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
-        
-        cv2.imshow("dst down", cv2.cvtColor(dstdown, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
         cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
