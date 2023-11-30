@@ -94,13 +94,13 @@ class navigation():
                 upletter.append(letter)
             else:
                 downletter.append(letter)
+            print(letter)
         
         upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         
         dstup = dst.copy()
         uletterimage = cv2.drawContours(dstup, upletter, -1, (0, 255, 0), 1)
-        
         
         dstdown = dst.copy()
         dletterimage = cv2.drawContours(dstdown, downletter, -1, (0, 255, 0), 1)
@@ -128,8 +128,6 @@ class navigation():
                 cause_chrs.append(char for char in row[1])
                 cause.append(cause_chrs)
                 
-        
-        
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
