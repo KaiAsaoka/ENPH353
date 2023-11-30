@@ -59,14 +59,35 @@ class navigation():
 
          
         # Find contours in the binary mask
+        #contours, _ = cv2.findContours(blue_mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
-        min_area = 1000
-        rectangle_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
-        contour_image = frame.copy()
-        cv2.drawContours(contour_image, rectangle_contours, -1, (0, 255, 0), 2)
+        c_img = cv2.drawContours(frame, contours, -1, (0, 255, 0), 1)
+       
+        if contours:
+            # Find the largest rectangular contour
+            largest_contour = max(contours, key=cv2.contourArea)
+
+            # Get the bounding rectangle of the largest contour
+            x, y, w, h = cv2.boundingRect(largest_contour)
+
+            # Crop the image to the bounding rectangle
+            cropped_img = c_img[y:y+h, x:x+w]
+            cv2.imshow("cropped image", cv2.cvtColor(cropped_img, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)    
+
+        pts1 = np.float32([[y,x],[y,x+w],[y+h,x],[y+h,x+w]])
+        pts2 = np.float32([[0,0],[0,600],[400,0],[400,600]])
+        M = cv2.getPerspectiveTransform(pts1,pts2)
+        #perspective = frame.copy()
+        dst = cv2.warpPerspective(cropped_img,M,(600,400))
+
+
+        cv2.imshow("contours", dst)
+        cv2.waitKey(1)
+        
         ###
-        cv2.imshow("Contour",contour_image)
+        
         for m, n in matches:
             if m.distance < 0.25 * n.distance:
                 good_points.append(m)

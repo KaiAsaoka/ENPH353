@@ -1,5 +1,5 @@
-# Ignore all generated sign information
-/src/2023_competition/enph353/enph353_utils/scripts/*.txt
-/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv
-# Ignore all generated signs
-/src/2023_competition/enph353/enph353_gazebo/media/materials/textures/unlabelled/*.png
+# # Ignore all generated sign information
+# /src/2023_competition/enph353/enph353_utils/scripts/*.txt
+# /src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv
+# # Ignore all generated signs
+# /src/2023_competition/enph353/enph353_gazebo/media/materials/textures/unlabelled/*.png
