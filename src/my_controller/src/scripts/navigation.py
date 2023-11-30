@@ -90,7 +90,7 @@ class navigation():
             
         ### Create Contours to find Letters
 
-        hsv_image = cv2.cvtColor(bifilter, cv2.COLOR_RGB2HSV)
+        hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
         lower_blue = np.array([115, 128, 95])
         upper_blue = np.array([120, 255, 204])
         dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
