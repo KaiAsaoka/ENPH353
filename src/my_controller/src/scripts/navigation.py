@@ -92,8 +92,15 @@ class navigation():
         
         upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
-
-
+        
+        dstup = dst.copy()
+        cv2.drawContours(dstup, upletter, 0, (0, 255, 0), 2)
+        
+        print(downletter)
+        
+        dstdown = dst.copy()
+        cv2.drawContours(dstdown, downletter, 0, (0, 255, 0), 2)
+        
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
         
@@ -120,7 +127,14 @@ class navigation():
         
         
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
-
+        cv2.waitKey(1)
+        
+        cv2.imshow("dst up", cv2.cvtColor(dstup, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
+        
+        cv2.imshow("dst down", cv2.cvtColor(dstdown, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
+        
         cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
