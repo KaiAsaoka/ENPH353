@@ -83,21 +83,22 @@ class navigation():
         
         threshold_y = 200  # Adjust the threshold as needed
         
-        #for letter in letters:
-            #x, y, w, h = cv2.boundingRect(letter)
-            #if y < threshold_y:
-            #    upletter.append(letter)
-            #else:
-            #    downletter.append(letter)
-            #print(letter)
+        for letter in letters:
+            x, y, w, h = cv2.boundingRect(letter)
+            if y < threshold_y:
+                upletter.append(letter)
+            else:
+                downletter.append(letter)
+            print(letter)
         
-        #upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
-        #downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+        upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+        downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         
         dstup = dst.copy()
-        cv2.drawContours(dstup, [letters[1]], 0, (0, 255, 0), 2)
-        print(len(letters))
+        uletterimage = cv2.drawContours(dstup, upletter, -1, (0, 255, 0), 1)
         
+        dstdown = dst.copy()
+        dletterimage = cv2.drawContours(dstdown, downletter, -1, (0, 255, 0), 1)
         
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
@@ -125,7 +126,10 @@ class navigation():
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
-        cv2.imshow("dst up", cv2.cvtColor(dstup, cv2.COLOR_RGB2BGR))
+        cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
+        
+        cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
         cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
