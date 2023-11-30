@@ -61,10 +61,26 @@ class navigation():
         threshold_value = 100  # Adjust this threshold as needed
 
         # Find contours in the binary mask
-        contours, _ = cv2.findContours(blue_mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        #contours, _ = cv2.findContours(blue_mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
         c_img = cv2.drawContours(frame, contours, -1, (0, 255, 0), 1)
+       
+        if contours:
+            # Find the largest rectangular contour
+            largest_contour = max(contours, key=cv2.contourArea)
+
+            # Get the bounding rectangle of the largest contour
+            x, y, w, h = cv2.boundingRect(largest_contour)
+
+            # Crop the image to the bounding rectangle
+            cropped_img = c_img[y:y+h, x:x+w]
+            cv2.imshow("cropped image", cv2.cvtColor(cropped_img, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+            
+
         cv2.imshow("contours", cv2.cvtColor(c_img, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
         
         ###
         

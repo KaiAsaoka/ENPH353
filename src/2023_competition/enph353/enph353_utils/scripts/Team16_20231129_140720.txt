@@ -1,0 +1,13 @@
+14:07:10.321: Clue SIZE: DOZEN
+14:07:10.321: Clue VICTIM: PHYSICISTS
+14:07:10.321: Clue CRIME: DECELERATE
+14:07:10.324: Clue TIME: WINTER
+14:07:10.325: Clue PLACE: BASEMENT
+14:07:10.325: Clue MOTIVE: PRIDE
+14:07:10.325: Clue WEAPON: FIRE
+14:07:10.325: Clue BANDIT: TEMUJIN
+14:07:20.581: Message received: Team16,joebot,0,NA
+14:07:20.581: Timer started.
+14:07:22.635: First command velocity received.
+14:07:24.669: Message received: Team16,joebot,-1,NA
+14:07:24.670: Timer stopped: 3.9939999999999998sec sim time (real time: 4sec).

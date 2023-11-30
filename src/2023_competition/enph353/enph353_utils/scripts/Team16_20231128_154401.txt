@@ -1,0 +1,13 @@
+15:43:53.882: Clue SIZE: LEGIONS
+15:43:53.883: Clue VICTIM: CITIZENS
+15:43:53.883: Clue CRIME: HEADBUT
+15:43:53.883: Clue TIME: DAWN
+15:43:53.884: Clue PLACE: JUNGLE
+15:43:53.884: Clue MOTIVE: HATE
+15:43:53.884: Clue WEAPON: POTATO GUN
+15:43:53.884: Clue BANDIT: THANOS
+15:44:01.868: Message received: Team16,joebot,0,NA
+15:44:01.869: Timer started.
+15:44:03.869: First command velocity received.
+15:44:05.890: Message received: Team16,joebot,-1,NA
+15:44:05.892: Timer stopped: 3.9799999999999995sec sim time (real time: 3sec).

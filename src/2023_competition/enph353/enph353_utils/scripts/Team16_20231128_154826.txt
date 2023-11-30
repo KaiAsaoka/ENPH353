@@ -1,0 +1,17 @@
+15:48:13.581: Clue SIZE: 314
+15:48:13.581: Clue VICTIM: BED BUGS
+15:48:13.581: Clue CRIME: HEADBUT
+15:48:13.582: Clue TIME: JURASIC
+15:48:13.582: Clue PLACE: HOSPITAL
+15:48:13.582: Clue MOTIVE: IGNORANCE
+15:48:13.582: Clue WEAPON: POTATO GUN
+15:48:13.582: Clue BANDIT: SAURON
+15:48:15.604: First command velocity received.
+15:48:26.319: Message received: Team16,joebot,0,NA
+15:48:26.319: Timer started.
+15:48:30.504: Message received: Team16,joebot,-1,NA
+15:48:30.505: Timer stopped: 3.9939999999999998sec sim time (real time: 3sec).
+16:01:35.092: Message received: Team16,joebot,0,NA
+16:01:35.093: Timer started.
+16:01:39.193: Message received: Team16,joebot,-1,NA
+16:01:39.194: Timer stopped: 3.995999999999981sec sim time (real time: 4sec).
