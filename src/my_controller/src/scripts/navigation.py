@@ -97,6 +97,26 @@ class navigation():
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
         
+        # Specify the path to your CSV file
+        csv_file_path = 'path/to/your/file.csv'
+
+        clue = []
+        cause = []
+        # Open the CSV file and read its contents
+        with open(csv_file_path, 'r') as file:
+            # Create a CSV reader object
+            csv_reader = csv.reader(file)
+
+            # Read the data from the CSV file
+            for row in csv_reader:
+                clue_chrs = []
+                clue_chrs.append(char for char in row[0])
+                clue.append(clue_chrs)
+
+                cause_chrs = []
+                cause_chrs.append(char for char in row[1])
+                cause.append(cause_chrs)
+                
         
         
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
