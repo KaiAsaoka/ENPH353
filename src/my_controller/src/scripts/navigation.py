@@ -82,7 +82,8 @@ class navigation():
         dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
         
         letters, _ = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
-        
+        min_area = 100
+        max_area = 10000
         upletter = []
         downletter = []
         
@@ -90,12 +91,12 @@ class navigation():
         
         for letter in letters:
             x, y, w, h = cv2.boundingRect(letter)
-            if y < threshold_y:
-                upletter.append(letter)
-            else:
-                downletter.append(letter)
-            print(letter)
-        
+            if min_area < cv2.contourArea(letter) < max_area:
+                if y < threshold_y:
+                    upletter.append(letter)
+                else:
+                    downletter.append(letter)
+            
         upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         
@@ -137,11 +138,11 @@ class navigation():
         cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
-        cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+        #cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
+        #cv2.waitKey(1)
         
-        cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+        #cv2.imshow("Image window", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+        #cv2.waitKey(1)
 
         cv2.imshow("Binary", blue_mask)
         cv2.waitKey(1)
