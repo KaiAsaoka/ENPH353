@@ -56,26 +56,28 @@ class navigation():
         
         # Find contours
         contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-       
+        contour = frame.copy()
+        dst = frame.copy()
         if contours:
 
             largest_contour = max(contours, key=cv2.contourArea)
-
-        epsilon = 0.02 * cv2.arcLength(largest_contour, True)
-        approx = cv2.approxPolyDP(largest_contour, epsilon, True)
-        contour = frame.copy()
-        cv2.drawContours(contour, [approx], 0, (0, 255, 0), 2)
-
-        tl, tr, bl, br = rectangle_positions(approx)
+            epsilon = 0.02 * cv2.arcLength(largest_contour, True)
+            approx = cv2.approxPolyDP(largest_contour, epsilon, True)
             
-        pts1 = np.float32([tl,tr,bl,br])
-        pts2 = np.float32([[0,0],[WIDTH,0],[0,HEIGHT],[WIDTH,HEIGHT]])
+            cv2.drawContours(contour, [approx], 0, (0, 255, 0), 2)
 
-        perspective_matrix = cv2.getPerspectiveTransform(pts1, pts2)
+            if(len(approx) >= 4):
+                tl, tr, bl, br = rectangle_positions(approx)
+            
+                pts1 = np.float32([tl,tr,bl,br])
+                pts2 = np.float32([[0,0],[WIDTH,0],[0,HEIGHT],[WIDTH,HEIGHT]])
+
+                perspective_matrix = cv2.getPerspectiveTransform(pts1, pts2)
         
-        # Apply the perspective transform
-        dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-        
+                # Apply the perspective transform
+                dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
+            
+
         hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
         lower_blue = np.array([115, 128, 95])
         upper_blue = np.array([120, 255, 204])
