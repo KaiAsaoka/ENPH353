@@ -42,7 +42,7 @@ class navigation():
 
     def callback(self, data):
 
-        self.tapefollow(data)
+        # self.tapefollow(data)
         
         WIDTH = 600
         HEIGHT = 400
@@ -300,6 +300,9 @@ def hsvConv (gimpH, gimpS, gimpV):
     opencvS = (gimpS / 100) * 255
     opencvV = (gimpV / 100) * 255
     return np.array([opencvH, opencvS, opencvV])
+
+def is_outer_contour(hierarchy, index):
+    return hierarchy[0][index][3] == -1
 
 def rectangle_positions(approx):
     x0, y0 = approx[0][0][0], approx[0][0][1]
