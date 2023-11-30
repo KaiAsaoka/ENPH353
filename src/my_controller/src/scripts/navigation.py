@@ -78,6 +78,7 @@ class navigation():
         
                 # Apply the perspective transform
                 dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
+                dst = dst[50:350, 80:520]
             
 
         hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
@@ -87,25 +88,26 @@ class navigation():
         
         bifilter = cv2.bilateralFilter(dst, 11, 17, 17)
         
-        letters, _ = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        letters, letters_hierarchy = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         min_area = 100
-        max_area = 10000
+        max_area = 1000
+
+        letters = [contour for i, contour in enumerate(letters) if is_outer_contour(letters_hierarchy, i)]
+        letters = [contour for contour in letters if min_area < cv2.contourArea(contour) < max_area]
         upletter = []
         downletter = []
-        
         threshold_y = 200  # Adjust the threshold as needed
         
         for letter in letters:
             x, y, w, h = cv2.boundingRect(letter)
-            if min_area < cv2.contourArea(letter) < max_area:
-                if y < threshold_y:
-                    upletter.append(letter)
-                else:
-                    downletter.append(letter)
-            
+            if y < threshold_y:
+                upletter.append(letter)
+            else:
+                downletter.append(letter)
+        
         upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
-        
+
         dstup = dst.copy()
         uletterimage = cv2.drawContours(dstup, upletter, -1, (0, 255, 0), 1)
         
