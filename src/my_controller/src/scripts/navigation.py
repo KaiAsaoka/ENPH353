@@ -82,6 +82,12 @@ class navigation():
         
         # Apply the perspective transform
         dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
+        dstmask = cv2.warpPerspective(blue_mask, perspective_matrix, (600, 400))
+        letters, _ = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        
+        lettermask = dst.copy()
+        letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
+        cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
 
         cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
@@ -95,6 +101,9 @@ class navigation():
         cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
 
+        
+
+        
     ##
     # @brief Listener method to retrieve data from ROS camera
         ##NAVIGATION 
