@@ -79,14 +79,15 @@ class navigation():
                 # Apply the perspective transform
                 dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
                 dst = dst[50:350, 80:520]
-            
+                
+        bifilter = cv2.bilateralFilter(dst, 11, 17, 17) 
 
-        hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
+        hsv_image = cv2.cvtColor(bifilter, cv2.COLOR_RGB2HSV)
         lower_blue = np.array([115, 128, 95])
         upper_blue = np.array([120, 255, 204])
         dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
         
-        bifilter = cv2.bilateralFilter(dst, 11, 17, 17)
+        
         
         letters, letters_hierarchy = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         min_area = 100
