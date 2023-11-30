@@ -12,6 +12,7 @@ from cv_bridge import CvBridge
 import sys
 from geometry_msgs.msg import Twist
 import csv
+from collections import namedtuple
 
 
 ##
@@ -37,6 +38,9 @@ class navigation():
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         print("Loaded template image file: " + self.template_path)
 
+        self.words = []
+        
+
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
   
 
@@ -53,8 +57,8 @@ class navigation():
         lower_blue = np.array([115, 128, 95])
         upper_blue = np.array([120, 255, 204])
         blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
-        
-        # Find contours
+
+        ### Find contours
         contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contour = frame.copy()
         dst = np.ones((HEIGHT, WIDTH, 3), dtype=np.uint8) * 255
@@ -76,74 +80,45 @@ class navigation():
         
                 # Apply the perspective transform
                 dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-                dst = dst[50:350, 80:520]
+                BORDER_WIDTH = 80
+                BORDER_HEIGHT = 50
+                dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
+                           BORDER_WIDTH:WIDTH-BORDER_WIDTH]
             
+        ### Create Contours to find Letters
 
         hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
         lower_blue = np.array([115, 128, 95])
         upper_blue = np.array([120, 255, 204])
         dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
         
-        bifilter = cv2.bilateralFilter(dst, 11, 17, 17)
-        
         letters, letters_hierarchy = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
-        min_area = 100
-        max_area = 1000
-
-        letters = [contour for i, contour in enumerate(letters) if is_outer_contour(letters_hierarchy, i)]
-        letters = [contour for contour in letters if min_area < cv2.contourArea(contour) < max_area]
-        upletter = []
-        downletter = []
-        threshold_y = 200  # Adjust the threshold as needed
+        clue_sign, cause_sign = cleanLetterContours(letters,letters_hierarchy)
         
-        for letter in letters:
-            x, y, w, h = cv2.boundingRect(letter)
-            if y < threshold_y:
-                upletter.append(letter)
-            else:
-                downletter.append(letter)
-        
-        upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
-        downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
-
-        dstup = dst.copy()
-        uletterimage = cv2.drawContours(dstup, upletter, -1, (0, 255, 0), 1)
-        
-        dstdown = dst.copy()
-        dletterimage = cv2.drawContours(dstdown, downletter, -1, (0, 255, 0), 1)
-        
-        lettermask = dstmask.copy()
-        letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
-        
-        # Specify the path to your CSV file
+        ### Load CSV data in
         csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
+        clue_truth,cause_truth = loadCsv(csv_file_path)
 
-        clue = []
-        cause = []
-        # Open the CSV file and read its contents
-        with open(csv_file_path, 'r') as file:
-            # Create a CSV reader object
-            csv_reader = csv.reader(file)
+        #self.label(clue_sign,clue_truth,cause_sign,cause_truth)
 
-            # Read the data from the CSV file
-            for row in csv_reader:
-                clue_chrs = []
-                clue_chrs.append(char for char in row[0])
-                clue.append(clue_chrs)
 
-                cause_chrs = []
-                cause_chrs.append(char for char in row[1])
-                cause.append(cause_chrs)
-                
+        ### Showing screens
+
+        lettermask = dstmask.copy()
+        letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)    
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
 
-        cv2.imshow("thresh", cv2.cvtColor(bifilter, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
-        
+        #cv2.imshow("thresh", cv2.cvtColor(bifilter, cv2.COLOR_RGB2BGR))
+        #cv2.waitKey(1)
+
+        dstup = dst.copy()
+        uletterimage = cv2.drawContours(dstup, clue_sign, -1, (0, 255, 0), 1)
         cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
+        dstdown = dst.copy()
+        dletterimage = cv2.drawContours(dstdown, cause_sign, -1, (0, 255, 0), 1)
         cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
@@ -278,7 +253,63 @@ class navigation():
         #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
 
         self.move_pub.publish(move)
+    
+    def label(clue_sign,clue_truth,cause_sign,cause_truth,self):
         
+        if len(clue_sign) != len(clue_truth) or len(cause_sign) != len(cause_truth):
+            return
+        else: 
+            
+            clue = [clue_sign,clue_truth]
+            cause = [cause_sign,cause_truth]
+
+            self.words.append([clue,cause])
+
+def cleanLetterContours(letters,letters_hierarchy):
+    min_area = 100
+    max_area = 1000
+    letters = [contour for i, contour in enumerate(letters) if is_outer_contour(letters_hierarchy, i)]
+    letters = [contour for contour in letters if min_area < cv2.contourArea(contour) < max_area]
+    upletter = []
+    downletter = []
+    threshold_y = 200  # Adjust the threshold as needed
+    
+    for letter in letters:
+        x, y, w, h = cv2.boundingRect(letter)
+        if y < threshold_y:
+            upletter.append(letter)
+        else:
+            downletter.append(letter)
+    
+    return (upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]),
+downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]))
+
+def loadCsv(path):
+    clue_t = []
+    cause_t = []
+    # Open the CSV file and read its contents
+    with open(path, 'r') as file:
+        # Create a CSV reader object
+        csv_reader = csv.reader(file)
+        # Read the data from the CSV file
+        for row in csv_reader:
+            clue_chrs = []
+            clue_chrs.append(char for char in row[0])
+            clue_t.append(clue_chrs)
+            cause_chrs = []
+            cause_chrs.append(char for char in row[1])
+            cause_t.append(cause_chrs)
+
+    return clue_t,cause_t
+
+def assign(sign,truth):
+    rsign = []
+    rtruth = []
+    for s,t in sign,truth: 
+        rsign.append(s)
+        rtruth.append(t)
+    return [rsign,rtruth]
+
 def hsvConv (gimpH, gimpS, gimpV):
     
     opencvH = gimpH / 2
@@ -293,6 +324,9 @@ def rectangle_positions(approx):
         return approx[0],approx[3],approx[1],approx[2]
     else:
         return approx[1],approx[0],approx[2],approx[3]
+
+def is_outer_contour(hierarchy, index):
+    return hierarchy[0][index][3] == -1
 
 def main(args):
     rospy.init_node('listener', anonymous=True)
