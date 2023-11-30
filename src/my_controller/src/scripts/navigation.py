@@ -94,18 +94,17 @@ class navigation():
         downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
         
         dstup = dst.copy()
-        cv2.drawContours(dstup, upletter, 0, (0, 255, 0), 2)
+        uletterimage = cv2.drawContours(dstup, upletter, -1, (0, 255, 0), 1)
         
-        print(downletter)
         
         dstdown = dst.copy()
-        cv2.drawContours(dstdown, downletter, 0, (0, 255, 0), 2)
+        dletterimage = cv2.drawContours(dstdown, downletter, -1, (0, 255, 0), 1)
         
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)
         
         # Specify the path to your CSV file
-        csv_file_path = 'path/to/your/file.csv'
+        csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
 
         clue = []
         cause = []
@@ -129,10 +128,10 @@ class navigation():
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
-        cv2.imshow("dst up", cv2.cvtColor(dstup, cv2.COLOR_RGB2BGR))
+        cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
-        cv2.imshow("dst down", cv2.cvtColor(dstdown, cv2.COLOR_RGB2BGR))
+        cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
         
         cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
