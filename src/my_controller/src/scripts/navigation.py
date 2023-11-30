@@ -45,8 +45,8 @@ class navigation():
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
         
         hsv_image = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
-        lower_blue = np.array([90, 50, 30])
-        upper_blue = np.array([120, 255, 120])
+        lower_blue = np.array([115, 128, 95])
+        upper_blue = np.array([120, 255, 204])
         blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
          
         # Find contours in the binary mask
