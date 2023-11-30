@@ -57,7 +57,7 @@ class navigation():
         # Find contours
         contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contour = frame.copy()
-        dst = frame.copy()
+        dst = np.ones((HEIGHT, WIDTH, 3), dtype=np.uint8) * 255
         if contours:
 
             largest_contour = max(contours, key=cv2.contourArea)
