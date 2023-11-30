@@ -1,0 +1,109 @@
+{
+	"backtrace" : 4,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"include",
+			"generate_messages",
+			"add_dependencies"
+		],
+		"files" : 
+		[
+			"/home/fizzer/ros_ws/build/2023_competition/adeept_awr_ros_driver/cmake/adeept_awr_ros_driver-genmsg.cmake",
+			"/opt/ros/noetic/share/genmsg/cmake/genmsg-extras.cmake",
+			"2023_competition/adeept_awr_ros_driver/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 70,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 307,
+				"parent" : 1
+			},
+			{
+				"file" : 0,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 49,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 181,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 82,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 148,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 115,
+				"parent" : 3
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 5,
+			"id" : "adeept_awr_ros_driver_generate_messages_cpp::@1c61681fd00c40e359b2"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "adeept_awr_ros_driver_generate_messages_py::@1c61681fd00c40e359b2"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "adeept_awr_ros_driver_generate_messages_eus::@1c61681fd00c40e359b2"
+		},
+		{
+			"backtrace" : 8,
+			"id" : "adeept_awr_ros_driver_generate_messages_nodejs::@1c61681fd00c40e359b2"
+		},
+		{
+			"backtrace" : 9,
+			"id" : "adeept_awr_ros_driver_generate_messages_lisp::@1c61681fd00c40e359b2"
+		}
+	],
+	"id" : "adeept_awr_ros_driver_generate_messages::@1c61681fd00c40e359b2",
+	"name" : "adeept_awr_ros_driver_generate_messages",
+	"paths" : 
+	{
+		"build" : "2023_competition/adeept_awr_ros_driver",
+		"source" : "2023_competition/adeept_awr_ros_driver"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

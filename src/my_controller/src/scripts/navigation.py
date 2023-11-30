@@ -56,18 +56,17 @@ class navigation():
         
         
         ### Contours garbage
-        
-        # Define a threshold value for detecting grayscale change
-        threshold_value = 100  # Adjust this threshold as needed
 
+         
         # Find contours in the binary mask
-        contours, _ = cv2.findContours(blue_mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
-        c_img = cv2.drawContours(frame, contours, -1, (0, 255, 0), 1)
-        cv2.imshow("contours", cv2.cvtColor(c_img, cv2.COLOR_RGB2BGR))
-        
+        min_area = 1000
+        rectangle_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
+        contour_image = frame.copy()
+        cv2.drawContours(contour_image, rectangle_contours, -1, (0, 255, 0), 2)
         ###
-        
+        cv2.imshow("Contour",contour_image)
         for m, n in matches:
             if m.distance < 0.25 * n.distance:
                 good_points.append(m)
