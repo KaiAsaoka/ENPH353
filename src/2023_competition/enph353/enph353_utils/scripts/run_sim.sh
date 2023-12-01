@@ -24,6 +24,15 @@ while getopts 'vpgl' flag; do
   esac
 done
 
+# display the last commit log and status then wait two seconds (this is to check that
+# no changes were made to the competition package
+echo -e "\n\n################## COMPETITION PACKAGE #########################\n"
+git --no-pager log | head
+echo -e "\n************************ GIT STATUS ****************************"
+git status | head
+echo -e "\n################################################################\n"
+sleep 5s
+
 if $generate_plates = 'true'
 then
 	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"

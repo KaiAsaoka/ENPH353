@@ -1,4 +1,4 @@
-# 2023 UBC Parking competition [IN PROGRESS]
+# 2023 Fizz Detective competition [IN PROGRESS]
 
 The repository contains the following ROS packages:
 
@@ -46,7 +46,7 @@ The available options are:
 |:-------|:---------------- |
 | -v     | spawn vehicle    |
 | -p     | spawn pedestrian |
-| -g     | generate new license plates |
+| -g     | generate new plates |
 
 * Start the score tracking app
 Open a new tab in the current terminal window by pressing Ctrl+Shift+T 

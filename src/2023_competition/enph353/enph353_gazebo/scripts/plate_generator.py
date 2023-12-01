@@ -12,19 +12,19 @@ from random import randint
 from PIL import Image, ImageFont, ImageDraw
 
 entries = {'SIZE': ["TWO", "314", "DOZEN", "RAYO10", "COUNTLESS", "LEGIONS",
-                    "TRIPLETS"],
+                    "TRIPLETS", "QUINTUPLETS", "SINGLE"],
            'VICTIM': ["PARROTS", "ROBOTS", "BACTERIA", "JEDIS", "ALIENS", 
                       "CITIZENS", "PHYSICISTS", "FRODO", "DINOSAURS", "BUNNIES",
-                      "BED BUGS", "ANTS"],
+                      "BED BUGS", "ANTS", "QUOKKAS"],
            'CRIME': ["STEAL", "TRESPASS", "LIE TO", "DESTROY", "PUNCH", "BITE", 
                      "TRANSMOGRIFY", "TELEPORT", "ACCELERATE", "IRRADIATE",
                      "CURSE", "HEADBUT", "DEFRAUD", "DECELERATE", "TICKLE"],
            'TIME': ["NOON", "MIDNIGHT", "DAWN", "DUSK", "JURASIC", "TWILIGHT",
                     "D DAY", "Q DAY", "2023", "WINTER", "SUMMER", "SPRING",
-                    "AUTUMN"],
+                    "AUTUMN", "EONS"],
            'PLACE': ["HOSPITAL", "MALL", "FOREST", "MOON", "CLASS", "BEACH", 
                      "JUNGLE", "BASEMENT", "THE HOOD", "SEWERS", "CAVE",
-                     "BENU", "MARS"],
+                     "BENU", "MARS", "UNDERGROUND"],
            'MOTIVE': ["GLUTTONY", "CURIOSITY", "IGNORANCE", "FEAR", "PRIDE", 
                       "LOVE", "REVENGE", "PASSION", "BOREDOM", "THRILL", 
                       "GREED", "FAME", "ACCIDENT", "HATE", "SELF DEFENSE"],
@@ -55,6 +55,9 @@ with open(SCRIPT_PATH + "plates.csv", 'w') as plates_file:
         # pick a random criminal
         j = random.randint(0, len(entries[key])-1)
         random_value = entries[key][j]
+
+        if len(random_value) < 11:
+            random_value = random.choice(string.ascii_uppercase) + " " + random_value
 
         entry = key + "," + random_value
         print(entry)

@@ -62,6 +62,7 @@ class Window(QtWidgets.QMainWindow):
         # Register timer 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.SLOT_timer_update)
+        self.timerStarted = False
         self.elapsed_time_s = 0
 
         # Initialize other variables:
@@ -182,7 +183,7 @@ class Window(QtWidgets.QMainWindow):
         self.predictions_scores_QTW.blockSignals(False)
 
         # Check submitted prediction and location against ground truth:
-        if gndTruth == plateTxt:
+        if gndTruth.replace(" ", "") == plateTxt.replace(" ", ""):
             # award 8 points for the last 2 plates and 6 points for the rest
             points_awarded = 6
             if reportedLocation > 6:
@@ -252,15 +253,27 @@ class Window(QtWidgets.QMainWindow):
         self.elapsed_time_value_QL.setText(
             "{:03d} sec".format(self.elapsed_time_s))
         self.timer.start(1000)
+        self.timerStarted = True
         self.log_msg("Timer started.")
 
 
     def stop_timer(self):
+        '''
+        Stop the timer if it was started.
+        '''
+
+        # If timer has not started yet
+        if not self.timerStarted:
+            self.log_msg("Careful there detective the timer is not active yet.\
+                         How about you start the timer first.")
+            return
+        
         self.sim_current_time_s = rospy.get_time()
         sim_time_s = self.sim_current_time_s - self.sim_start_time_s
-        self.log_msg("Timer stopped: {}sec sim time (real time: {}sec).".
+        self.log_msg("Timer stopped: {:.2f} sec sim time (real time: {}sec).".
                 format(sim_time_s, self.elapsed_time_s))
         self.timer.stop()
+        self.timerStarted = False
 
         self.update_story_line()
 
@@ -321,10 +334,10 @@ class Window(QtWidgets.QMainWindow):
         '''
         Using OpenAi's API come up with a story for the crime.
         '''
-        URL = "https://engphys-projectlab.sites.olt.ubc.ca/files/2023/11/ENPH353Keys.txt"
+        URL = "https://phas.ubc.ca/~miti/ENPH353/ENPH353Keys.txt"
 
         response = requests.get(URL)
-        API_KEY, API_ORG = response.text.split(',')
+        API_KEY, API_ORG, _ = response.text.split(',')
 
         openai.organization = API_ORG
         openai.api_key = API_KEY
