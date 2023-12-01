@@ -13,6 +13,7 @@ import sys
 from geometry_msgs.msg import Twist
 import csv
 from collections import namedtuple
+import pickle
 
 
 
@@ -122,8 +123,20 @@ class navigation():
 
         ### Prepare dataset for export to colab
 
-        Y_dataset_orig = findFullIndex(full)
+        X_dataset_orig, Y_dataset_orig = findFullIndex(full)
         print(Y_dataset_orig[0])
+        print(X_dataset_orig[0])
+
+        Y_dataset_orig = np.array(Y_dataset_orig)
+        X_dataset_orig = np.array(X_dataset_orig)
+
+        Y_data = convert_to_one_hot(Y_dataset_orig)
+        X_data = X_dataset_orig/255
+        data_to_save = (X_data, Y_data)
+        pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+        # Save the variable to a file
+        with open(pickle_file_path, 'wb') as file:
+            pickle.dump(data_to_save, file)
             
         ### Screens
 
@@ -145,12 +158,9 @@ class navigation():
         cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
 
-        empty_image = np.zeros((100, 100, 3), dtype=np.uint8)
-        isoletter = plotcontour(cause_sign[0], empty_image)
-        test = plotcontour(cause_sign[0], frame.copy())
-        cv2.imshow("isoletter", isoletter)
-        cv2.imshow("test", test)
-        cv2.imshow("Binary", blue_mask)
+        #cv2.imshow("isoletter", isoletter)
+        #cv2.imshow("test", test)
+        #cv2.imshow("Binary", blue_mask)
         
         # cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
         # cv2.waitKey(1)
@@ -290,12 +300,17 @@ class navigation():
 def findFullIndex(full):
         chr_vec = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N"
 ,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
+        X_dataset = []
         Y_dataset = []
+        empty_image = np.zeros((100, 100, 3), dtype=np.uint8)
         for letter in full:
+            
+            isoletter = plotcontour(letter[0], empty_image)
             index = chr_vec.index(letter[1])
             Y_dataset.append(index)
+            X_dataset.append(isoletter)
             
-        return Y_dataset
+        return X_dataset, Y_dataset
 
 def convert_to_one_hot(Y):
     NUMBER_OF_LABELS = 36
