@@ -48,7 +48,7 @@ class navigation():
 
 
     
-        # self.tapefollow(data)  
+        self.tapefollow(data)  
         WIDTH = 600
         HEIGHT = 400
         
@@ -142,10 +142,10 @@ class navigation():
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
         
-        h=420
+        h=430
         
         ## Define the coordinates of the region of interest (ROI)
-        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+5  # Adjust these coordinates as needed
+        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
         ## Default Resolution x = 320, y = 240
 
         ## Crop the image to the ROI
@@ -197,17 +197,7 @@ class navigation():
         
         if moments != 0:
             cxavg = cxnet / moments
-            
-        if len(pidcontours) == 1:
-            move.linear.x = .1
-            if cxavg < 640:
-                move.angular.z = 2
-                cv2.putText(frame, str(cxavg) + " LEFT!!!", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            if cxavg > 640:
-                move.angular.z = -2
-                cv2.putText(frame, str(cxavg) + " RIGHT!!!", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            
-        else:
+        
             
             if cxavg >= 0 and cxavg < 128:
                 move.angular.z = 2
@@ -297,7 +287,7 @@ def cleanLetterContours(letters,letters_hierarchy):
             downletter.append(letter)
     
     return (upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]),
-downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]))
+                downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]))
 
 def loadCsv(path):
     clue_t = []
