@@ -322,9 +322,10 @@ def plotcontour(contour, image):
     shifted_contour = contour + [shiftX, shiftY]
 
     # Draw the shifted contour on the image
-    contourimage = cv2.drawContours(image.copy(), [shifted_contour], -1, (0, 255, 0), 1)
-
-    return contourimage
+    contourimage = cv2.drawContours(image.copy(), [shifted_contour], -1, (255, 255, 255), 1)
+    contourgrey = cv2.cvtColor(contourimage, cv2.COLOR_RGB2GRAY)
+    
+    return contourgrey
     
     
 def cleanLetterContours(letters,letters_hierarchy):
