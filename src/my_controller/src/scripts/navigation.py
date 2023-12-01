@@ -14,7 +14,8 @@ from geometry_msgs.msg import Twist
 import csv
 from collections import namedtuple
 import pickle
-
+from std_msgs.msg import Bool
+from std_msgs.msg import Int32
 
 
 
@@ -40,12 +41,31 @@ class navigation():
         self.bridge = CvBridge()
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         print("Loaded template image file: " + self.template_path)
-        rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
-  
+        rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.image_callback)
+        rospy.Subscriber("/read_sign", Int32, self.callback)
+        #rostopic pub /read_sign std_msgs/Int32 "data: 0"
 
-    def callback(self, data):
+    def callback(self,data):
 
+        # Label returns two words, (clue, cause)
+        # Each word is comprised of a guess and a truth
+        # Ex. Clue: Clue[0] -> guess in contour form
+        #           Clue[1] -> guess in chr form
+        #           Clue[1][0] -> first chr
+        #           Clue[0][0] -> first chr in contour form
+        #           len(Clue[1]) = len(Clue[0])
+        # @param clue sign: clue contour for clue word
+        # @param clue truth[SIGNID]: csv value for clue word
+        # Other params follow same idea
+        # First sign is 0
+        
+        signid = data.data
+        #self.readSign(signid, False)
+        print("callback worked")
+    
+    def image_callback(self, data):
 
+        self.image_raw = data
     
         #self.tapefollow(data)  
         WIDTH = 600
@@ -84,72 +104,19 @@ class navigation():
                 dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
                 BORDER_WIDTH = 75
                 BORDER_HEIGHT = 50
-                dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
+                self.dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
                            BORDER_WIDTH:WIDTH-BORDER_WIDTH]
             
         ### Create Contours to find Letters
 
-        hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
+        hsv_image = cv2.cvtColor(self.dst, cv2.COLOR_RGB2HSV)
         lower_blue = np.array([115, 128, 95])
         upper_blue = np.array([120, 255, 204])
-        dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
-        
-        letters, letters_hierarchy = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
-        clue_sign, cause_sign = cleanLetterContours(letters,letters_hierarchy)
+        self.dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
 
-        ### Load CSV data in
-        csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
-        clue_truth,cause_truth = loadCsv(csv_file_path)
-
-        # signs are a word, containing an array of character countours
-        # truths are a set of words, containing an array 
-        
-
-        # Label returns two words, (clue, cause)
-        # Each word is comprised of a guess and a truth
-        # Ex. Clue: Clue[0] -> guess in contour form
-        #           Clue[1] -> guess in chr form
-        #           Clue[1][0] -> first chr
-        #           Clue[0][0] -> first chr in contour form
-        #           len(Clue[1]) = len(Clue[0])
-        # @param clue sign: clue contour for clue word
-        # @param clue truth[SIGNID]: csv value for clue word
-        # Other params follow same idea
-        # First sign is 0
-
-        SIGNID = 4
-        clue1,cause1,full = createClueCause(clue_sign,clue_truth[SIGNID],cause_sign,cause_truth[SIGNID])
-        #print(full[0][1])
-
-        ### Prepare dataset for export to colab
-
-        X_dataset_orig, Y_dataset_orig = findFullIndex(full)
-        data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
-
-        pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-        with open(pickle_file_path, 'wb') as file:
-            pickle.dump(data_to_save, file)
+        self.letters, self.letters_hierarchy = cv2.findContours(self.dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        self.clue_sign, self.cause_sign = cleanLetterContours(self.letters,self.letters_hierarchy)
             
-        ### Screens
-
-        lettermask = dst.copy()
-        letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)    
-        cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
-
-        #cv2.imshow("thresh", cv2.cvtColor(bifilter, cv2.COLOR_RGB2BGR))
-        #cv2.waitKey(1)
-
-        dstup = dst.copy()
-        uletterimage = cv2.drawContours(dstup, clue_sign, -1, (0, 255, 0), 1)
-        cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
-        
-        dstdown = dst.copy()
-        dletterimage = cv2.drawContours(dstdown, cause_sign, -1, (0, 255, 0), 1)
-        cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
-
         #cv2.imshow("isoletter", isoletter)
         #cv2.imshow("test", test)
         #cv2.imshow("Binary", blue_mask)
@@ -159,6 +126,22 @@ class navigation():
         
         # cv2.imshow("frame", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
         # cv2.waitKey(1)
+
+        ### Screens
+        lettermask = self.dst.copy()
+        letterimage = cv2.drawContours(lettermask, self.letters, -1, (0, 255, 0), 1)    
+        cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
+
+        dstup = self.dst.copy()
+        uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
+        cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
+
+        dstdown = self.dst.copy()
+        dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
+        cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
 
         cv2.imshow("Binary", blue_mask)
         cv2.waitKey(1)
@@ -287,6 +270,28 @@ class navigation():
         #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
 
         self.move_pub.publish(move)
+
+    # Read sign takes a perspective transformed image and a sign to read
+    #
+    def readSign(self,signid,savepickle):
+
+
+        ### Load CSV data in
+        csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
+        clue_truth,cause_truth = loadCsv(csv_file_path)
+
+        clue1,cause1,full = createClueCause(self.clue_sign,clue_truth[signid],self.cause_sign,cause_truth[signid])
+
+        ### Prepare dataset for export to colab
+        if(len(full) != 0):
+            X_dataset_orig, Y_dataset_orig = findFullIndex(full)
+            data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
+            if(savepickle):
+                pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+                with open(pickle_file_path, 'wb') as file:
+                    pickle.dump(data_to_save, file)
+
+
 
 
 def findFullIndex(full):
@@ -433,6 +438,7 @@ def is_outer_contour(hierarchy, index):
 
 def main(args):
     rospy.init_node('listener', anonymous=True)
+    rospy.sleep(1)
     controller = navigation()
 
     try:
