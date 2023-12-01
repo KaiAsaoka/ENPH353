@@ -127,10 +127,9 @@ class navigation():
         # X_dataset_orig, Y_dataset_orig = findFullIndex(full)
         # data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
 
-        # pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-        # # Save the variable to a file
-        # with open(pickle_file_path, 'wb') as file:
-        #     pickle.dump(data_to_save, file)
+        pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+        with open(pickle_file_path, 'wb') as file:
+            pickle.dump(data_to_save, file)
             
         ### Screens
 
@@ -326,14 +325,12 @@ def convert_to_one_hot(Y):
         #           Clue[0][0] -> first chr in contour form
         #           len(Clue[1]) = len(Clue[0])
 def createClueCause(clue_sign,clue_truth,cause_sign,cause_truth):
-    
     if len(clue_sign) != len(clue_truth) or len(cause_sign) != len(cause_truth):
         #print("LENGTH NO MATCHING")
         clue = []
         cause = []
         full = []
     else: 
-        #print(clue_truth[id])
         clue = [clue_sign,clue_truth]
         cause = [cause_sign,cause_truth]
         full = []
@@ -395,9 +392,15 @@ def loadCsv(path):
         csv_reader = csv.reader(file)
         # Read the data from the CSV file
         for row in csv_reader:
-            clue_t.append(list(row[0]))
-            cause_t.append(list(row[1]))
-    return clue_t,cause_t
+            # Remove spaces within each element in the row
+            cleaned_clue_t = list(''.join(row[0].split()))
+            cleaned_cause_t = list(''.join(row[1].split()))
+            
+            clue_t.append(cleaned_clue_t)
+            cause_t.append(cleaned_cause_t)
+    return clue_t, cause_t
+
+
 
 def assign(sign,truth):
     rsign = []
