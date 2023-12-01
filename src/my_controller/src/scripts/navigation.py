@@ -13,8 +13,8 @@ import sys
 from geometry_msgs.msg import Twist
 import csv
 from collections import namedtuple
-import rospy
-from turtlesim.srv import TeleportAbsolute
+
+
 
 
 ##
@@ -144,6 +144,13 @@ class navigation():
         dletterimage = cv2.drawContours(dstdown, cause_sign, -1, (0, 255, 0), 1)
         cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
+
+        empty_image = np.zeros((100, 100, 3), dtype=np.uint8)
+        isoletter = plotcontour(cause_sign[0], empty_image)
+        test = plotcontour(cause_sign[0], frame.copy())
+        cv2.imshow("isoletter", isoletter)
+        cv2.imshow("test", test)
+        cv2.imshow("Binary", blue_mask)
         
         # cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
         # cv2.waitKey(1)
@@ -322,6 +329,25 @@ def createClueCause(clue_sign,clue_truth,cause_sign,cause_truth):
 
     return clue,cause,full
 
+def plotcontour(contour, image):
+    
+    M = cv2.moments(contour)
+    cX = int(M["m10"] / M["m00"])
+    cY = int(M["m01"] / M["m00"])
+
+    # Calculate the shifts needed to move the centroid to the center of the image
+    shiftX = image.shape[1] // 2 - cX
+    shiftY = image.shape[0] // 2 - cY
+
+    # Shift the contour by adding the shift values to the contour points
+    shifted_contour = contour + [shiftX, shiftY]
+
+    # Draw the shifted contour on the image
+    contourimage = cv2.drawContours(image.copy(), [shifted_contour], -1, (0, 255, 0), 1)
+
+    return contourimage
+    
+    
 def cleanLetterContours(letters,letters_hierarchy):
     min_area = 100
     max_area = 2000
