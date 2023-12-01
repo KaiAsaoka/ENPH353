@@ -46,7 +46,7 @@ class navigation():
 
 
     
-        self.tapefollow(data)  
+        #self.tapefollow(data)  
         WIDTH = 600
         HEIGHT = 400
         
@@ -115,11 +115,17 @@ class navigation():
         # @param clue truth[SIGNID]: csv value for clue word
         # Other params follow same idea
         # First sign is 0
+
         SIGNID = 4
         clue1,cause1,full = createClueCause(clue_sign,clue_truth[SIGNID],cause_sign,cause_truth[SIGNID])
-        # print(full[0][1])
+        #print(full[0][1])
 
-        ### Showing screens
+        ### Prepare dataset for export to colab
+
+        Y_dataset_orig = findFullIndex(full)
+        print(Y_dataset_orig[0])
+            
+        ### Screens
 
         lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)    
@@ -280,6 +286,21 @@ class navigation():
 
         self.move_pub.publish(move)
 
+
+def findFullIndex(full):
+        chr_vec = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
+        Y_dataset = []
+        for letter in full:
+            index = chr_vec.index(letter[1])
+            Y_dataset.append(index)
+            
+        return Y_dataset
+
+def convert_to_one_hot(Y):
+    NUMBER_OF_LABELS = 36
+    Y = np.eye(NUMBER_OF_LABELS)[Y.reshape(-1)]
+    return Y
         # Returns two words, (clue, cause)
         # Each word is comprised of a guess and a truth
         # Ex. Clue: Clue[0] -> guess in contour form
