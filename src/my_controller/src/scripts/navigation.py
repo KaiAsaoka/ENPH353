@@ -13,6 +13,8 @@ import sys
 from geometry_msgs.msg import Twist
 import csv
 from collections import namedtuple
+import rospy
+from turtlesim.srv import TeleportAbsolute
 
 
 ##
@@ -171,7 +173,7 @@ class navigation():
         pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
 
         cxnet = 0
-        cynet = 0
+
         moments = 0
         cxavg = 640
         ## Iterate through the contours and find the position of color change within the ROI
@@ -192,7 +194,7 @@ class navigation():
                 #print(f"Position of color change within ROI: ({cx}, {cy})")
         rate = rospy.Rate(2)
         move = Twist()
-        move.linear.x = .1
+        move.linear.x = .2
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
@@ -200,23 +202,23 @@ class navigation():
         
             
             if cxavg >= 0 and cxavg < 128:
-                move.angular.z = 2
+                move.angular.z = 3
                 cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 128 and cxavg < 256:
-                move.angular.z = 1
+                move.angular.z = 2
                 cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 256 and cxavg < 384:
-                move.angular.z = .75
+                move.angular.z = 1.5
                 cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 384 and cxavg < 512:
-                move.angular.z = .5
+                move.angular.z = 1
                 cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 512 and cxavg < 630:
-                move.angular.z = .25
+                move.angular.z = .75
                 cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                 
             elif cxavg >= 630 and cxavg < 650:
@@ -224,23 +226,23 @@ class navigation():
                 cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                 
             elif cxavg >= 650 and cxavg < 768:
-                move.angular.z = -.25
+                move.angular.z = -.75
                 cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 768 and cxavg < 896:
-                move.angular.z = -.5
+                move.angular.z = -1
                 cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 896 and cxavg < 1024:
-                move.angular.z = -.75
+                move.angular.z = -1.5
                 cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 1024 and cxavg < 1152:
-                move.angular.z = -1
+                move.angular.z = -2
                 cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             else:
-                move.angular.z = -2
+                move.angular.z = -3
                 cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
             
         center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
@@ -336,6 +338,7 @@ def rectangle_positions(approx):
 
 def is_outer_contour(hierarchy, index):
     return hierarchy[0][index][3] == -1
+
 
 def main(args):
     rospy.init_node('listener', anonymous=True)
