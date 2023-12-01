@@ -47,7 +47,8 @@ class navigation():
 
 
     
-        #self.tapefollow(data)  
+        self.tapefollow(data)
+          
         WIDTH = 600
         HEIGHT = 400
         
@@ -123,13 +124,13 @@ class navigation():
 
         ### Prepare dataset for export to colab
 
-        X_dataset_orig, Y_dataset_orig = findFullIndex(full)
-        data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
+        # X_dataset_orig, Y_dataset_orig = findFullIndex(full)
+        # data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
 
-        pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-        # Save the variable to a file
-        with open(pickle_file_path, 'wb') as file:
-            pickle.dump(data_to_save, file)
+        # pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+        # # Save the variable to a file
+        # with open(pickle_file_path, 'wb') as file:
+        #     pickle.dump(data_to_save, file)
             
         ### Screens
 
@@ -175,7 +176,7 @@ class navigation():
         h=430
         
         ## Define the coordinates of the region of interest (ROI)
-        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
+        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+5  # Adjust these coordinates as needed
         ## Default Resolution x = 320, y = 240
 
         ## Crop the image to the ROI
@@ -183,15 +184,15 @@ class navigation():
         cv2.waitKey(1)
         
         hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-        lower_white = np.array([0, 0, 250])
-        upper_white = np.array([255, 30, 255])
+        lower_white = hsvConv (0, 0, 32)
+        upper_white = hsvConv (0, 0, 34)
         white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
         ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
         sensitivity = 15
         cv2.waitKey(1)
         ## Define a threshold value for detecting grayscale change
         threshold_value = 100  # Adjust this threshold as needed
-
+        cv2.imshow("white mask", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
         ## Find contours in the binary mask
         pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
