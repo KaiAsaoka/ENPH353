@@ -83,7 +83,7 @@ class navigation():
         
                 # Apply the perspective transform
                 dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-                BORDER_WIDTH = 80
+                BORDER_WIDTH = 70
                 BORDER_HEIGHT = 50
                 dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
                            BORDER_WIDTH:WIDTH-BORDER_WIDTH]
@@ -97,7 +97,7 @@ class navigation():
         
         letters, letters_hierarchy = cv2.findContours(dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
         clue_sign, cause_sign = cleanLetterContours(letters,letters_hierarchy)
-        
+
         ### Load CSV data in
         csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
         clue_truth,cause_truth = loadCsv(csv_file_path)
@@ -107,7 +107,7 @@ class navigation():
 
         ### Showing screens
 
-        lettermask = dstmask.copy()
+        lettermask = dst.copy()
         letterimage = cv2.drawContours(lettermask, letters, -1, (0, 255, 0), 1)    
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
@@ -272,12 +272,12 @@ class navigation():
 
 def cleanLetterContours(letters,letters_hierarchy):
     min_area = 100
-    max_area = 1000
+    max_area = 2000
     letters = [contour for i, contour in enumerate(letters) if is_outer_contour(letters_hierarchy, i)]
     letters = [contour for contour in letters if min_area < cv2.contourArea(contour) < max_area]
     upletter = []
     downletter = []
-    threshold_y = 200  # Adjust the threshold as needed
+    threshold_y = 130  # Adjust the threshold as needed
     
     for letter in letters:
         x, y, w, h = cv2.boundingRect(letter)
@@ -286,8 +286,9 @@ def cleanLetterContours(letters,letters_hierarchy):
         else:
             downletter.append(letter)
     
-    return (upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]),
-                downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0]))
+    upletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+    downletter.sort(key=lambda letter: cv2.boundingRect(letter)[0])
+    return upletter,downletter
 
 def loadCsv(path):
     clue_t = []
