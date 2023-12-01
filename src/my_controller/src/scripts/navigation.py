@@ -37,10 +37,6 @@ class navigation():
         self.bridge = CvBridge()
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         print("Loaded template image file: " + self.template_path)
-
-        self.words = []
-        
-
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.callback)
   
 
@@ -83,7 +79,7 @@ class navigation():
         
                 # Apply the perspective transform
                 dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-                BORDER_WIDTH = 70
+                BORDER_WIDTH = 75
                 BORDER_HEIGHT = 50
                 dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
                            BORDER_WIDTH:WIDTH-BORDER_WIDTH]
@@ -102,8 +98,24 @@ class navigation():
         csv_file_path = '/home/fizzer/ros_ws/src/2023_competition/enph353/enph353_gazebo/scripts/plates.csv'
         clue_truth,cause_truth = loadCsv(csv_file_path)
 
-        #self.label(clue_sign,clue_truth,cause_sign,cause_truth)
+        # signs are a word, containing an array of character countours
+        # truths are a set of words, containing an array 
+        
 
+        # Label returns two words, (clue, cause)
+        # Each word is comprised of a guess and a truth
+        # Ex. Clue: Clue[0] -> guess in contour form
+        #           Clue[1] -> guess in chr form
+        #           Clue[1][0] -> first chr
+        #           Clue[0][0] -> first chr in contour form
+        #           len(Clue[1]) = len(Clue[0])
+        # @param clue sign: clue contour for clue word
+        # @param clue truth[SIGNID]: csv value for clue word
+        # Other params follow same idea
+        # First sign is 0
+        SIGNID = 4
+        clue1,cause1,full = createClueCause(clue_sign,clue_truth[SIGNID],cause_sign,cause_truth[SIGNID])
+        print(full[0][1])
 
         ### Showing screens
 
@@ -268,17 +280,34 @@ class navigation():
         #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
 
         self.move_pub.publish(move)
-    
-    def label(clue_sign,clue_truth,cause_sign,cause_truth,self):
-        
-        if len(clue_sign) != len(clue_truth) or len(cause_sign) != len(cause_truth):
-            return
-        else: 
-            
-            clue = [clue_sign,clue_truth]
-            cause = [cause_sign,cause_truth]
 
-            self.words.append([clue,cause])
+        # Returns two words, (clue, cause)
+        # Each word is comprised of a guess and a truth
+        # Ex. Clue: Clue[0] -> guess in contour form
+        #           Clue[1] -> guess in chr form
+        #           Clue[1][0] -> first chr
+        #           Clue[0][0] -> first chr in contour form
+        #           len(Clue[1]) = len(Clue[0])
+def createClueCause(clue_sign,clue_truth,cause_sign,cause_truth):
+    
+    if len(clue_sign) != len(clue_truth) or len(cause_sign) != len(cause_truth):
+        #print("LENGTH NO MATCHING")
+        clue = []
+        cause = []
+        full = []
+    else: 
+        #print(clue_truth[id])
+        clue = [clue_sign,clue_truth]
+        cause = [cause_sign,cause_truth]
+        full = []
+        for letter, truth_letter in zip(clue_sign,clue_truth):
+            pair = [letter, truth_letter]
+            full.append(pair)
+        for letter, truth_letter in zip(cause_sign,cause_truth):
+            pair = [letter, truth_letter]
+            full.append(pair)
+
+    return clue,cause,full
 
 def cleanLetterContours(letters,letters_hierarchy):
     min_area = 100
@@ -309,13 +338,8 @@ def loadCsv(path):
         csv_reader = csv.reader(file)
         # Read the data from the CSV file
         for row in csv_reader:
-            clue_chrs = []
-            clue_chrs.append(char for char in row[0])
-            clue_t.append(clue_chrs)
-            cause_chrs = []
-            cause_chrs.append(char for char in row[1])
-            cause_t.append(cause_chrs)
-
+            clue_t.append(list(row[0]))
+            cause_t.append(list(row[1]))
     return clue_t,cause_t
 
 def assign(sign,truth):
