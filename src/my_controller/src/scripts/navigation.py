@@ -124,15 +124,8 @@ class navigation():
         ### Prepare dataset for export to colab
 
         X_dataset_orig, Y_dataset_orig = findFullIndex(full)
-        print(Y_dataset_orig[0])
-        print(X_dataset_orig[0])
+        data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
 
-        Y_dataset_orig = np.array(Y_dataset_orig)
-        X_dataset_orig = np.array(X_dataset_orig)
-
-        Y_data = convert_to_one_hot(Y_dataset_orig)
-        X_data = X_dataset_orig/255
-        data_to_save = (X_data, Y_data)
         pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
         # Save the variable to a file
         with open(pickle_file_path, 'wb') as file:
@@ -311,6 +304,14 @@ def findFullIndex(full):
             X_dataset.append(isoletter)
             
         return X_dataset, Y_dataset
+
+def transform_X_Y(X,Y):
+    Y_dataset_orig = np.array(Y)
+    X_dataset_orig = np.array(X)
+    Y_data = convert_to_one_hot(Y_dataset_orig)
+    X_data = X_dataset_orig/255
+
+    return X_data, Y_data
 
 def convert_to_one_hot(Y):
     NUMBER_OF_LABELS = 36
