@@ -14,7 +14,6 @@ from geometry_msgs.msg import Twist
 import csv
 from collections import namedtuple
 import rospy
-from turtlesim.srv import TeleportAbsolute
 
 
 ##
