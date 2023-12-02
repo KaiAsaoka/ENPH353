@@ -60,16 +60,25 @@ class navigation():
         # Other params follow same idea
         # First sign is 0
         
+        
         signid = data.data
-        full = self.readSign(signid, False)
-        print(full[0][1])
-        print("callback worked")
+        ## FOR THE FIRST SIGN, TAKE IT AT SIGNID = 0
+        if(signid == -1):
+            full = self.readSign(0, False)
+            self.createPickle(full)
+        else:
+            full = self.readSign(signid, False)
+            self.appendPickle(full)
+
+        
+        #print(full[0][1])
+        #print("callback worked")
     
     def image_callback(self, data):
         
-        print("imgcallback")
-        self.image_raw = data
-        self.tapefollow(data) 
+        #print("imgcallback")
+        #self.image_raw = data
+        #self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -136,15 +145,15 @@ class navigation():
         cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
 
-        dstup = self.dst.copy()
-        uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
-        cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+        #dstup = self.dst.copy()
+        #uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
+        #cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
+        #cv2.waitKey(1)
 
-        dstdown = self.dst.copy()
-        dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
-        cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+        #dstdown = self.dst.copy()
+        #dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
+        #cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
+        #cv2.waitKey(1)
 
         cv2.imshow("Binary", blue_mask)
         cv2.waitKey(1)
@@ -415,16 +424,45 @@ class navigation():
 
         clue1,cause1,full = createClueCause(self.clue_sign,clue_truth[signid],self.cause_sign,cause_truth[signid])
 
+
+        return full
+    def createPickle(self,full):
+        print(type(full))
         ### Prepare dataset for export to colab
         if(len(full) != 0):
             X_dataset_orig, Y_dataset_orig = findFullIndex(full)
             data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
-            if(savepickle):
-                pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-                with open(pickle_file_path, 'wb') as file:
-                    pickle.dump(data_to_save, file)
+            
+            pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+            with open(pickle_file_path, 'wb') as file:
+                pickle.dump(data_to_save, file)
+        else:
+            print("full is null, try again")
+
+    def appendPickle(self,full):
+        ### Prepare dataset for export to colab
+        if(len(full) != 0):
+            X_dataset_orig, Y_dataset_orig = findFullIndex(full)
+            data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
+            pickle_file_path =  '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+            try:
+                with open(pickle_file_path, 'rb') as file:
+                    existing_data = pickle.load(file)
+
+            except (FileNotFoundError, EOFError):
+                # If the file doesn't exist or is empty, create an empty list
+                existing_data = []
+
+            new_to_save = [np.concatenate((existing_data[0],data_to_save[0]))
+                           ,np.concatenate((existing_data[1],data_to_save[1]))]
+            
+            
+
+            with open(pickle_file_path, 'wb') as file:
+                    pickle.dump(new_to_save, file)       
+        else:
+            print("full is null, try again")
         
-        return full
 
 
 
