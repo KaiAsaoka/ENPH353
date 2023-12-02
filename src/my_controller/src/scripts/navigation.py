@@ -61,7 +61,8 @@ class navigation():
         # First sign is 0
         
         signid = data.data
-        #self.readSign(signid, False)
+        full = self.readSign(signid, False)
+        print(full[0][1])
         print("callback worked")
     
     def image_callback(self, data):
@@ -422,6 +423,8 @@ class navigation():
                 pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
                 with open(pickle_file_path, 'wb') as file:
                     pickle.dump(data_to_save, file)
+        
+        return full
 
 
 
