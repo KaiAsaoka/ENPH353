@@ -33,6 +33,7 @@ class navigation():
 		## Feature matching
         index_params = dict(algorithm=0, trees=5)
         search_params = dict()
+        self.capture = False
         self.flann = cv2.FlannBasedMatcher(index_params, search_params)
         self.template_path = "/home/fizzer/ros_ws/src/2023_competition/media_src/clue_banner.png"
         self.img = cv2.imread(self.template_path, cv2.IMREAD_GRAYSCALE)
@@ -67,7 +68,7 @@ class navigation():
     
     def image_callback(self, data):
         
-        print("imgcallback")
+
         self.image_raw = data
         self.tapefollow(data) 
          
@@ -87,64 +88,84 @@ class navigation():
         contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contour = frame.copy()
         dst = np.ones((HEIGHT, WIDTH, 3), dtype=np.uint8) * 255
+        
+
+        
         if contours:
 
             largest_contour = max(contours, key=cv2.contourArea)
-            epsilon = 0.02 * cv2.arcLength(largest_contour, True)
-            approx = cv2.approxPolyDP(largest_contour, epsilon, True)
             
-            cv2.drawContours(contour, [approx], 0, (0, 255, 0), 2)
-
-            if(len(approx) >= 4):
-                tl, tr, bl, br = rectangle_positions(approx)
+            signtresh = 19000  # minimum size of sign vector
             
-                pts1 = np.float32([tl,tr,bl,br])
-                pts2 = np.float32([[0,0],[WIDTH,0],[0,HEIGHT],[WIDTH,HEIGHT]])
+            if (cv2.contourArea(largest_contour)) > signtresh:
+                
+                if self.capture == False:
+                    
+                    self.capture = True
+                    
+                    epsilon = 0.02 * cv2.arcLength(largest_contour, True)
+                    approx = cv2.approxPolyDP(largest_contour, epsilon, True)
+                    
+                    cv2.drawContours(contour, [approx], 0, (0, 255, 0), 2)
 
-                perspective_matrix = cv2.getPerspectiveTransform(pts1, pts2)
-        
-                # Apply the perspective transform
-                dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-                BORDER_WIDTH = 75
-                BORDER_HEIGHT = 50
-                self.dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
-                           BORDER_WIDTH:WIDTH-BORDER_WIDTH]
-            
-        ### Create Contours to find Letters
+                    if(len(approx) >= 4):
+                        tl, tr, bl, br = rectangle_positions(approx)
+                    
+                        pts1 = np.float32([tl,tr,bl,br])
+                        pts2 = np.float32([[0,0],[WIDTH,0],[0,HEIGHT],[WIDTH,HEIGHT]])
 
-        hsv_image = cv2.cvtColor(self.dst, cv2.COLOR_RGB2HSV)
-        lower_blue = np.array([115, 128, 95])
-        upper_blue = np.array([120, 255, 204])
-        self.dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+                        perspective_matrix = cv2.getPerspectiveTransform(pts1, pts2)
+                
+                        # Apply the perspective transform
+                        dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
+                        BORDER_WIDTH = 75
+                        BORDER_HEIGHT = 50
+                        self.dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
+                                BORDER_WIDTH:WIDTH-BORDER_WIDTH]
+                
+                    ### Create Contours to find Letters
 
-        self.letters, self.letters_hierarchy = cv2.findContours(self.dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
-        self.clue_sign, self.cause_sign = cleanLetterContours(self.letters,self.letters_hierarchy)
-            
-        #cv2.imshow("isoletter", isoletter)
-        #cv2.imshow("test", test)
-        #cv2.imshow("Binary", blue_mask)
-        
-        # cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
-        # cv2.waitKey(1)
-        
-        # cv2.imshow("frame", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-        # cv2.waitKey(1)
+                    hsv_image = cv2.cvtColor(self.dst, cv2.COLOR_RGB2HSV)
+                    lower_blue = np.array([115, 128, 95])
+                    upper_blue = np.array([120, 255, 204])
+                    self.dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
 
-        ### Screens
-        lettermask = self.dst.copy()
-        letterimage = cv2.drawContours(lettermask, self.letters, -1, (0, 255, 0), 1)    
-        cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+                    self.letters, self.letters_hierarchy = cv2.findContours(self.dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+                    self.clue_sign, self.cause_sign = cleanLetterContours(self.letters,self.letters_hierarchy)
+                        
+                    #cv2.imshow("isoletter", isoletter)
+                    #cv2.imshow("test", test)
+                    #cv2.imshow("Binary", blue_mask)
+                    
+                    # cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
+                    # cv2.waitKey(1)
+                    
+                    # cv2.imshow("frame", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+                    # cv2.waitKey(1)
+                    
+                    ### Screens
+                    lettermask = self.dst.copy()
+                    letterimage = cv2.drawContours(lettermask, self.letters, -1, (0, 255, 0), 1)    
+                    cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
+                    cv2.waitKey(1)
 
-        dstup = self.dst.copy()
-        uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
-        cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+                    dstup = self.dst.copy()
+                    uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
+                    cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
+                    cv2.waitKey(1)
 
-        dstdown = self.dst.copy()
-        dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
-        cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+                    dstdown = self.dst.copy()
+                    dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
+                    cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
+                    cv2.waitKey(1)
+                    
+            elif (cv2.contourArea(largest_contour)) > 9000 and self.capture == True: # lower sign treshold value for reset
+                self.capture = True
+                
+            else: # reset capture state
+                self.capture = False
+
+
 
         cv2.imshow("Binary", blue_mask)
         cv2.waitKey(1)
@@ -297,7 +318,7 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
                         
-            min_area = 100
+            min_area = 50
             max_area = 100000
             
             pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
