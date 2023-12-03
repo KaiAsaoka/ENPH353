@@ -60,7 +60,8 @@ class navigation():
 
     def predict_callback(self,data):
 
-        prediction = []
+        clue_prediction = []
+        cause_prediction = []
 
         for letter in self.clue_sign:
 
@@ -71,9 +72,9 @@ class navigation():
 
             prediction_onehot = self.model.predict(img_aug)[0]
             index = np.where(prediction_onehot == 1)[0][0]
-            prediction.append(self.chr_vec[index])
+            clue_prediction.append(self.chr_vec[index])
 
-        prediction.append(", ")
+        space = self.isSpace()
 
         for letter in self.cause_sign:
 
@@ -84,9 +85,17 @@ class navigation():
 
             prediction_onehot = self.model.predict(img_aug)[0]
             index = np.where(prediction_onehot == 1)[0][0]
-            prediction.append(self.chr_vec[index])
+            cause_prediction.append(self.chr_vec[index])
 
-        print(prediction)
+        if(space > 0):
+            cause_prediction.insert(space+1, ' ')
+
+        cause_prediction.insert(1, ' ')
+
+
+        cause = ''.join(cause_prediction)
+
+        print(cause)
         
     def callback(self,data):
 
@@ -111,7 +120,7 @@ class navigation():
         
 
         self.image_raw = data
-        self.tapefollow(data) 
+        #self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -251,17 +260,12 @@ class navigation():
             
             pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
 
-
-
-
             ## Iterate through the contours and find the position of color change within the ROI
             
             if len(pidcontours) == 0:
                 self.grassy = True
                 print("grass time!!")
-                
-            
-            
+                    
             for contour in pidcontours:
                 
                 
@@ -495,7 +499,6 @@ class navigation():
 
         clue1,cause1,full = createClueCause(self.clue_sign,clue_truth[signid],self.cause_sign,cause_truth[signid])
 
-
         return full
     
     def createPickle(self,full):
@@ -628,13 +631,28 @@ class navigation():
             else:
                 return False
 
-                
+
+    def isSpace(self):
+        THRESHOLD = 30
+        index = 0
+        # Calculate the distance between consecutive contours
+        sorted_contours = sorted(self.cause_sign, key=lambda contour: np.min(contour[:, 0]))
+        for i in range(len(sorted_contours) - 1):
+            current_contour = sorted_contours[i].reshape(-1, 2)
+            next_contour = sorted_contours[i + 1].reshape(-1,2)
+            current_max_x = np.max(current_contour[:,0])
+            next_min_x = np.min(next_contour[:, 0])
             
-        
+            print(current_max_x)
+            print(next_min_x)
+            print("done")
+            if (next_min_x - current_max_x) > THRESHOLD:
+                
+                index = i  # Large space detected
 
+        return index
 
-
-
+    
 def findFullIndex(full):
         chr_vec = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N"
 ,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
