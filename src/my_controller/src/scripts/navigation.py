@@ -95,13 +95,13 @@ class navigation():
 
             largest_contour = max(contours, key=cv2.contourArea)
             
-            signtresh = 19000  # minimum size of sign vector
+            signtresh = 0  # minimum size of sign vector
             
             if (cv2.contourArea(largest_contour)) > signtresh:
                 
                 if self.capture == False:
                     
-                    self.capture = True
+                    #self.capture = True
                     
                     epsilon = 0.02 * cv2.arcLength(largest_contour, True)
                     approx = cv2.approxPolyDP(largest_contour, epsilon, True)
@@ -118,14 +118,14 @@ class navigation():
                 
                         # Apply the perspective transform
                         dst = cv2.warpPerspective(frame, perspective_matrix, (600, 400))
-                        BORDER_WIDTH = 75
+                        BORDER_WIDTH = 50
                         BORDER_HEIGHT = 50
-                        self.dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
-                                BORDER_WIDTH:WIDTH-BORDER_WIDTH]
+                        #dst = dst[BORDER_HEIGHT:HEIGHT-BORDER_HEIGHT,
+                        #        BORDER_WIDTH:WIDTH-BORDER_WIDTH]
                 
                     ### Create Contours to find Letters
 
-                    hsv_image = cv2.cvtColor(self.dst, cv2.COLOR_RGB2HSV)
+                    hsv_image = cv2.cvtColor(dst, cv2.COLOR_RGB2HSV)
                     lower_blue = np.array([115, 128, 95])
                     upper_blue = np.array([120, 255, 204])
                     self.dstmask = cv2.inRange(hsv_image, lower_blue, upper_blue)
@@ -144,31 +144,25 @@ class navigation():
                     # cv2.waitKey(1)
                     
                     ### Screens
-                    lettermask = self.dst.copy()
+                    lettermask = dst.copy()
                     letterimage = cv2.drawContours(lettermask, self.letters, -1, (0, 255, 0), 1)    
                     cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
                     cv2.waitKey(1)
 
-                    dstup = self.dst.copy()
+                    dstup = dst.copy()
                     uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
                     cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
                     cv2.waitKey(1)
-
-                    dstdown = self.dst.copy()
+            
+                    dstdown = dst.copy()
                     dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
                     cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
                     cv2.waitKey(1)
-                    
-            elif (cv2.contourArea(largest_contour)) > 9000 and self.capture == True: # lower sign treshold value for reset
-                self.capture = True
-                
-            else: # reset capture state
-                self.capture = False
 
 
 
-        cv2.imshow("Binary", blue_mask)
-        cv2.waitKey(1)
+        #cv2.imshow("Binary", blue_mask)
+        #cv2.waitKey(1)
 
         cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
@@ -442,16 +436,47 @@ class navigation():
 
         clue1,cause1,full = createClueCause(self.clue_sign,clue_truth[signid],self.cause_sign,cause_truth[signid])
 
+
+        return full
+    def createPickle(self,full):
+        
         ### Prepare dataset for export to colab
         if(len(full) != 0):
             X_dataset_orig, Y_dataset_orig = findFullIndex(full)
             data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
-            if(savepickle):
-                pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-                with open(pickle_file_path, 'wb') as file:
-                    pickle.dump(data_to_save, file)
+            
+            pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+            with open(pickle_file_path, 'wb') as file:
+                pickle.dump(data_to_save, file)
+            print("Save Successful")
+        else:
+            print("full is null, try again")
+
+    def appendPickle(self,full):
+        ### Prepare dataset for export to colab
+        if(len(full) != 0):
+            X_dataset_orig, Y_dataset_orig = findFullIndex(full)
+            data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
+            pickle_file_path =  '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+            try:
+                with open(pickle_file_path, 'rb') as file:
+                    existing_data = pickle.load(file)
+
+            except (FileNotFoundError, EOFError):
+                # If the file doesn't exist or is empty, create an empty list
+                existing_data = []
+
+            new_to_save = [np.concatenate((existing_data[0],data_to_save[0]))
+                           ,np.concatenate((existing_data[1],data_to_save[1]))]
+            
+            
+
+            with open(pickle_file_path, 'wb') as file:
+                    pickle.dump(new_to_save, file) 
+            print("Save Successful")      
+        else:
+            print("full is null, try again")
         
-        return full
 
 
 
@@ -500,9 +525,10 @@ def createClueCause(clue_sign,clue_truth,cause_sign,cause_truth):
         clue = [clue_sign,clue_truth]
         cause = [cause_sign,cause_truth]
         full = []
-        for letter, truth_letter in zip(clue_sign,clue_truth):
-            pair = [letter, truth_letter]
-            full.append(pair)
+        ### COMMENT OUT CLUE IF WE DONT WANT ANY MORE CLUE NAMES
+        #for letter, truth_letter in zip(clue_sign,clue_truth):
+        #    pair = [letter, truth_letter]
+        #    full.append(pair)
         for letter, truth_letter in zip(cause_sign,cause_truth):
             pair = [letter, truth_letter]
             full.append(pair)
