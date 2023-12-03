@@ -17,7 +17,9 @@ import pickle
 from std_msgs.msg import Bool
 from std_msgs.msg import Int32
 
-
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
 ##
 # @brief Callback method
@@ -45,9 +47,47 @@ class navigation():
         print("Loaded template image file: " + self.template_path)
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.image_callback)
         rospy.Subscriber("/read_sign", Int32, self.callback)
+        rospy.Subscriber("/predict_sign", Int32, self.predict_callback)
+
         #rostopic pub /read_sign std_msgs/Int32 "data: 0"
+
+        model_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/sign_detection_weights.h5'
+        self.model = tf.keras.models.load_model(model_path)
+        self.chr_vec = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+                        ,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
+
         print("navigation init success")
 
+    def predict_callback(self,data):
+
+        prediction = []
+
+        for letter in self.clue_sign:
+
+            clue_image = np.zeros((100, 100, 3), dtype=np.uint8)
+            isoletter = plotcontour(letter,clue_image)
+
+            img_aug = np.expand_dims(isoletter, axis=0)
+
+            prediction_onehot = self.model.predict(img_aug)[0]
+            index = np.where(prediction_onehot == 1)[0][0]
+            prediction.append(self.chr_vec[index])
+
+        prediction.append(", ")
+
+        for letter in self.cause_sign:
+
+            cause_image = np.zeros((100, 100, 3), dtype=np.uint8)
+            isoletter = plotcontour(letter,cause_image)
+
+            img_aug = np.expand_dims(isoletter, axis=0)
+
+            prediction_onehot = self.model.predict(img_aug)[0]
+            index = np.where(prediction_onehot == 1)[0][0]
+            prediction.append(self.chr_vec[index])
+
+        print(prediction)
+        
     def callback(self,data):
 
         # Label returns two words, (clue, cause)
@@ -457,6 +497,7 @@ class navigation():
 
 
         return full
+    
     def createPickle(self,full):
         
         ### Prepare dataset for export to colab
