@@ -61,25 +61,16 @@ class navigation():
         # Other params follow same idea
         # First sign is 0
         
-        
         signid = data.data
-        ## FOR THE FIRST SIGN, TAKE IT AT SIGNID = 0
-        if(signid == -1):
-            full = self.readSign(0, False)
-            self.createPickle(full)
-        else:
-            full = self.readSign(signid, False)
-            self.appendPickle(full)
-
-        
-        #print(full[0][1])
-        #print("callback worked")
+        full = self.readSign(signid, False)
+        print(full[0][1])
+        print("callback worked")
     
     def image_callback(self, data):
         
-        #print("imgcallback")
-        #self.image_raw = data
-        #self.tapefollow(data) 
+
+        self.image_raw = data
+        self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -158,15 +149,23 @@ class navigation():
                     cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
                     cv2.waitKey(1)
 
-        #dstup = self.dst.copy()
-        #uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
-        #cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
-        #cv2.waitKey(1)
+                    dstup = self.dst.copy()
+                    uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
+                    cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
+                    cv2.waitKey(1)
 
-        #dstdown = self.dst.copy()
-        #dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
-        #cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
-        #cv2.waitKey(1)
+                    dstdown = self.dst.copy()
+                    dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
+                    cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
+                    cv2.waitKey(1)
+                    
+            elif (cv2.contourArea(largest_contour)) > 9000 and self.capture == True: # lower sign treshold value for reset
+                self.capture = True
+                
+            else: # reset capture state
+                self.capture = False
+
+
 
         cv2.imshow("Binary", blue_mask)
         cv2.waitKey(1)
@@ -239,55 +238,61 @@ class navigation():
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
             rate = rospy.Rate(2)
             move = Twist()
-            move.linear.x = .3
+            move.linear.x = .5
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             
             if moments != 0:
                 cxavg = cxnet / moments
             
-                
+                turn0 = 0
+                turn1 = 1
+                turn2 = 1.5
+                turn3 = 2
+                turn4 = 3
+                turn5 = 4
+    
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = 3
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = 2
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = 1.5
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = 1
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = .75
+                    move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
                 elif cxavg >= 630 and cxavg < 650:
-                    move.angular.z = 0
+                    move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
                 elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -.75
+                    move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -1
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -1.5
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -2
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -3
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 
@@ -437,45 +442,16 @@ class navigation():
 
         clue1,cause1,full = createClueCause(self.clue_sign,clue_truth[signid],self.cause_sign,cause_truth[signid])
 
-
-        return full
-    def createPickle(self,full):
-        print(type(full))
         ### Prepare dataset for export to colab
         if(len(full) != 0):
             X_dataset_orig, Y_dataset_orig = findFullIndex(full)
             data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
-            
-            pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-            with open(pickle_file_path, 'wb') as file:
-                pickle.dump(data_to_save, file)
-        else:
-            print("full is null, try again")
-
-    def appendPickle(self,full):
-        ### Prepare dataset for export to colab
-        if(len(full) != 0):
-            X_dataset_orig, Y_dataset_orig = findFullIndex(full)
-            data_to_save = transform_X_Y(X_dataset_orig,Y_dataset_orig)
-            pickle_file_path =  '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
-            try:
-                with open(pickle_file_path, 'rb') as file:
-                    existing_data = pickle.load(file)
-
-            except (FileNotFoundError, EOFError):
-                # If the file doesn't exist or is empty, create an empty list
-                existing_data = []
-
-            new_to_save = [np.concatenate((existing_data[0],data_to_save[0]))
-                           ,np.concatenate((existing_data[1],data_to_save[1]))]
-            
-            
-
-            with open(pickle_file_path, 'wb') as file:
-                    pickle.dump(new_to_save, file)       
-        else:
-            print("full is null, try again")
+            if(savepickle):
+                pickle_file_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/X_Y_data.pkl'
+                with open(pickle_file_path, 'wb') as file:
+                    pickle.dump(data_to_save, file)
         
+        return full
 
 
 
