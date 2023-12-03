@@ -41,6 +41,7 @@ class navigation():
         self.kp_image, self.desc_image = self.sift.detectAndCompute(self.img, None)
         self.bridge = CvBridge()
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
+        self.pastman = False
         print("Loaded template image file: " + self.template_path)
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.image_callback)
         rospy.Subscriber("/read_sign", Int32, self.callback)
@@ -172,8 +173,14 @@ class navigation():
         
 
         if self.grassy == False: #Road detection
+            
+            
+            
+            SPEED = 0.5
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
             
+
+
             h=430
             
             ## Define the coordinates of the region of interest (ROI)
@@ -198,14 +205,15 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
             cx = 0
-            cx = 0
-
-            pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
-
             cxnet = 0
-
             moments = 0
             cxavg = 640
+            
+            pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
+
+
+
+
             ## Iterate through the contours and find the position of color change within the ROI
             
             if len(pidcontours) == 0:
@@ -232,8 +240,17 @@ class navigation():
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
             rate = rospy.Rate(2)
             move = Twist()
-            move.linear.x = .5
+            move.linear.x = SPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
+            
+            if self.pastman == False:
+                if self.scanforred(frame) == True:
+                    move.linear.x = 0
+                    if self.scanforman(frame) == True:
+                        self.pastman = True
+                        print("self.pastman =" + str(self.pastman))
+                    
+            
             
             if moments != 0:
                 cxavg = cxnet / moments
@@ -291,6 +308,7 @@ class navigation():
 
                 
         else: # grassy area
+            GRASSSPEED = .3
             
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
             
@@ -305,8 +323,8 @@ class navigation():
             cv2.waitKey(1)
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_white = hsvConv (0, 20, 70)
-            upper_white = hsvConv (360, 25, 83)
+            lower_white = hsvConv (0, 10, 60)
+            upper_white = hsvConv (360, 30, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
             sensitivity = 15
@@ -318,23 +336,18 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
                         
-            min_area = 50
+            min_area = 1000
             max_area = 100000
             
             pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
             
             cx = 0
-            cx = 0
-
-            pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
-
             cxnet = 0
-
             moments = 0
             cxavg = 640
             
-    
-            
+            pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
+
             
             ## Iterate through the contours and find the position of color change within the ROI
             for contour in pidcontours:
@@ -352,59 +365,65 @@ class navigation():
                     moments += 1
 
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
-            rate = rospy.Rate(2)
+                    
             move = Twist()
-            move.linear.x = .1
+            move.linear.x = GRASSSPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             
             if moments != 0:
                 cxavg = cxnet / moments
             
+                turn0 = 0
+                turn1 = 0.75
+                turn2 = 1
+                turn3 = 1.2
+                turn4 = 2
+                turn5 = 3
                 
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = 3
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = 2
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = 1.5
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = 1
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = .75
+                    move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
                 elif cxavg >= 630 and cxavg < 650:
-                    move.angular.z = 0
+                    move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
                 elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -.75
+                    move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -1
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -1.5
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -2
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -3
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            
+
             
             
             
@@ -476,6 +495,100 @@ class navigation():
             print("Save Successful")      
         else:
             print("full is null, try again")
+            
+    def scanforred(self, frameorig):
+        
+            frame = frameorig.copy()
+        
+            h=500
+            ## Define the coordinates of the region of interest (ROI)
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+120  # Adjust these coordinates as needed
+
+            ## Crop the image to the ROI
+            roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
+            cv2.waitKey(1)
+            
+            hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
+            lower_red = hsvConv (0, 99, 99)
+            upper_red = hsvConv (1, 100, 100)
+            red_mask = cv2.inRange(hsv_image, lower_red, upper_red)
+            ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
+            sensitivity = 15
+            cv2.waitKey(1)
+            ## Define a threshold value for detecting grayscale change
+            threshold_value = 100  # Adjust this threshold as needed
+            cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            ## Find contours in the binary mask
+            redcont, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            
+            pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
+            
+            min_area = 5000
+            
+            if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
+                
+                return True
+            else:
+                return False
+            
+    def scanforman(self, frameorig):
+        
+            frame = frameorig.copy()
+        
+            h=350
+            ## Define the coordinates of the region of interest (ROI)
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+120  # Adjust these coordinates as needed
+
+            ## Crop the image to the ROI
+            roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
+            
+            hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
+            lower_blue = hsvConv (200, 0, 0)
+            upper_blue = hsvConv (210, 60, 60)
+            blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+            
+            cv2.imshow("pant mask", cv2.cvtColor(blue_mask, cv2.COLOR_RGB2BGR))
+            ## Find contours in the binary mask
+            bluecont, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            min_area = 100
+            max_area = 100000
+            
+            bluecont = [contour for contour in bluecont if min_area < cv2.contourArea(contour) < max_area]
+            
+            pid_img = cv2.drawContours(frame, bluecont, -1, (0, 255, 0), 1)
+            # cv2.imshow("pant cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+                       ## Iterate through the contours and find the position of color change within the ROI
+                       
+            cx = 0
+            cxnet = 0
+            moments = 0
+            cxavg = 0
+            
+            for contour in bluecont:
+
+                ## Calculate the centroid of the contour
+                M = cv2.moments(contour)
+                if M["m00"] != 0:
+                    cx = int(M["m10"] / M["m00"])
+
+                    ## Add the ROI offset to get the position within the original image
+                    cx += roi_x1
+                    
+                    cxnet += cx
+                    moments += 1
+
+                    #print(f"Position of color change within ROI: ({cx}, {cy})")  
+            
+            if moments != 0:
+                cxavg = cxnet / moments
+            
+            if cxavg > 600 and cxavg < 660:
+                return True
+            else:
+                return False
+
+                
+            
         
 
 
