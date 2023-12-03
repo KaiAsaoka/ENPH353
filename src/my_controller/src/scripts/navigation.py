@@ -101,25 +101,16 @@ class navigation():
         # Other params follow same idea
         # First sign is 0
         
-        
         signid = data.data
-        ## FOR THE FIRST SIGN, TAKE IT AT SIGNID = 0
-        if(signid == -1):
-            full = self.readSign(0, False)
-            self.createPickle(full)
-        else:
-            full = self.readSign(signid, False)
-            self.appendPickle(full)
-
-        
-        #print(full[0][1])
-        #print("callback worked")
+        full = self.readSign(signid, False)
+        print(full[0][1])
+        print("callback worked")
     
     def image_callback(self, data):
         
-        #print("imgcallback")
-        #self.image_raw = data
-        #self.tapefollow(data) 
+
+        self.image_raw = data
+        self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -281,55 +272,61 @@ class navigation():
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
             rate = rospy.Rate(2)
             move = Twist()
-            move.linear.x = .3
+            move.linear.x = .5
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             
             if moments != 0:
                 cxavg = cxnet / moments
             
-                
+                turn0 = 0
+                turn1 = 1
+                turn2 = 1.5
+                turn3 = 2
+                turn4 = 3
+                turn5 = 4
+    
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = 3
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = 2
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = 1.5
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = 1
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = .75
+                    move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
                 elif cxavg >= 630 and cxavg < 650:
-                    move.angular.z = 0
+                    move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
                 elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -.75
+                    move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -1
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -1.5
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -2
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -3
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 
