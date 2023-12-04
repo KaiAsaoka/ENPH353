@@ -120,7 +120,7 @@ class navigation():
         
 
         self.image_raw = data
-        #self.tapefollow(data) 
+        self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -223,8 +223,19 @@ class navigation():
 
         if self.grassy == False: #Road detection
             
+            self.roadFollow(data)
+            
+           
+                
+        else: # grassy area
+           
+            self.grassFollow(data)
             
             
+            
+        
+    def roadFollow(self, data):
+        
             SPEED = 0.5
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
             
@@ -233,7 +244,7 @@ class navigation():
             h=430
             
             ## Define the coordinates of the region of interest (ROI)
-            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+10  # Adjust these coordinates as needed
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0 + 200, h, 1280 - 200, h+10  # Adjust these coordinates as needed
             ## Default Resolution x = 320, y = 240
 
             ## Crop the image to the ROI
@@ -258,7 +269,7 @@ class navigation():
             moments = 0
             cxavg = 640
             
-            pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
+            pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
 
             ## Iterate through the contours and find the position of color change within the ROI
             
@@ -293,6 +304,10 @@ class navigation():
                     if self.scanforman(frame) == True:
                         self.pastman = True
                         print("self.pastman =" + str(self.pastman))
+                        
+            if self.pastman == True:
+                if self.scanfortruck(frame) == True:
+                    move.linear.x = 0
                     
             
             
@@ -349,9 +364,25 @@ class navigation():
                 else:
                     move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    
+            center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
+            #print (center_coordinates)
+            radius = 30
+            color = (0, 0, 255)  # Red color in BGR format
+            thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
+            # Process the frame here (you can add your tracking code or other operations)
+            frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-                
-        else: # grassy area
+
+
+            cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
+            #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
+            #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+
+            self.move_pub.publish(move)
+
+
+    def grassFollow(self,data):
             GRASSSPEED = .3
             
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
@@ -368,7 +399,7 @@ class navigation():
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
             lower_white = hsvConv (0, 10, 60)
-            upper_white = hsvConv (360, 30, 90)
+            upper_white = hsvConv (75, 30, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
             sensitivity = 15
@@ -390,7 +421,7 @@ class navigation():
             moments = 0
             cxavg = 640
             
-            pid_img = cv2.drawContours(frame, pidcontours, -1, (0, 255, 0), 1)
+            pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
 
             
             ## Iterate through the contours and find the position of color change within the ROI
@@ -467,26 +498,22 @@ class navigation():
                 else:
                     move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
-            
-            
-            
-            
-        center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
-        #print (center_coordinates)
-        radius = 30
-        color = (0, 0, 255)  # Red color in BGR format
-        thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
-        # Process the frame here (you can add your tracking code or other operations)
-        frame_with_circle = cv2.circle(frame.copy(), center_coordinates, radius, color, thickness)
+                    
+            center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
+            #print (center_coordinates)
+            radius = 30
+            color = (0, 0, 255)  # Red color in BGR format
+            thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
+            # Process the frame here (you can add your tracking code or other operations)
+            frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
 
 
-        cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
-        #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
-        #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+            cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
+            #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
+            #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
 
-        self.move_pub.publish(move)
+            self.move_pub.publish(move)
 
     # Read sign takes a perspective transformed image and a sign to read
     #
@@ -567,13 +594,53 @@ class navigation():
             
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
             
-            min_area = 5000
+            min_area = 4000
             
             if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
                 
                 return True
             else:
                 return False
+            
+    def scanfortruck(self, frameorig):
+        
+            frame = frameorig.copy()
+        
+            h=350
+            ## Define the coordinates of the region of interest (ROI)
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+120  # Adjust these coordinates as needed
+
+            ## Crop the image to the ROI
+            roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
+            
+            hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
+            lower_truck1 = hsvConv (0, 0, 54)
+            upper_truck1 = hsvConv (1, 1, 75)
+            
+            lower_truck2 = hsvConv (0, 0, 80)
+            upper_truck2 = hsvConv (1, 1, 90)
+            
+            truck_masklow = cv2.inRange(hsv_image, lower_truck1, upper_truck1)
+            truck_maskhigh = cv2.inRange(hsv_image, lower_truck2, upper_truck2)
+
+            truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
+                        ## Find contours in the binary mask
+            truckcont, _ = cv2.findContours(truck_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            min_area = 750
+            max_area = 100000
+            
+            truckcont = [contour for contour in truckcont if min_area < cv2.contourArea(contour) < max_area]
+            
+            pid_img = cv2.drawContours(roi_image, truckcont, -1, (0, 255, 0), 1)
+            
+            cv2.imshow("truck cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+
+            
+            if len(truckcont) != 0:
+                return True
+            else:
+                return False
+
             
     def scanforman(self, frameorig):
         
