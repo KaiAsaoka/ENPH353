@@ -29,6 +29,9 @@ class navigation():
 
     def __init__(self):
         
+        testTruck = False
+        testgrass = False
+        testYoda = False
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
@@ -45,10 +48,19 @@ class navigation():
         self.bridge = CvBridge()
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         self.pastman = False
+        self.roadSpeed = 0.5
+        self.grassSpeed = 0.3
         print("Loaded template image file: " + self.template_path)
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.image_callback)
         rospy.Subscriber("/read_sign", Int32, self.callback)
         rospy.Subscriber("/predict_sign", Int32, self.predict_callback)
+        
+        if testgrass == True:
+                self.grassy == True
+                self.pastman == True
+                self.grassSpeed = 0
+                self.roadSpeed = 0
+    
 
         #rostopic pub /read_sign std_msgs/Int32 "data: 0"
 
@@ -236,7 +248,7 @@ class navigation():
         
     def roadFollow(self, data):
         
-            SPEED = 0.5
+            SPEED = self.roadSpeed
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
             
 
@@ -383,7 +395,7 @@ class navigation():
 
 
     def grassFollow(self,data):
-            GRASSSPEED = .3
+            GRASSSPEED = self.grassSpeed
             
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
             
@@ -398,8 +410,8 @@ class navigation():
   
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_white = hsvConv (0, 9, 60)
-            upper_white = hsvConv (75, 31, 90)
+            lower_white = hsvConv (40, 10, 70)
+            upper_white = hsvConv (75, 37, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
@@ -408,7 +420,7 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
                         
-            min_area = 900
+            min_area = 1000
             max_area = 100000
             
             pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
@@ -437,7 +449,7 @@ class navigation():
                     moments += 1
 
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
-                    
+             
             move = Twist()
             move.linear.x = GRASSSPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
