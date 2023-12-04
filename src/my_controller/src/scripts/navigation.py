@@ -240,7 +240,7 @@ class navigation():
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
             
 
-
+    
             h=430
             
             ## Define the coordinates of the region of interest (ROI)
