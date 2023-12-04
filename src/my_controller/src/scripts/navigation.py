@@ -35,7 +35,7 @@ class navigation():
         
         testTruck = False
         testgrass = False
-        testYoda = False
+        testYoda = True
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
@@ -75,6 +75,14 @@ class navigation():
                 self.pastman = True
                 self.grassSpeed = 0
                 self.roadSpeed = 0
+                
+        if testYoda == True:
+                self.predictions = False
+                self.grassy = True
+                self.pastman = True
+                self.grassSpeed = 0
+                self.roadSpeed = 0
+            
     
 
         #rostopic pub /read_sign std_msgs/Int32 "data: 0"
@@ -565,14 +573,21 @@ class navigation():
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_red = hsvConv (0, 50, 35)
-            upper_red = hsvConv (1, 55, 45)
-            red_mask = cv2.inRange(hsv_image, lower_red, upper_red)
+            lower_red1 = hsvConv (0, 50, 35)
+            upper_red1 = hsvConv (11, 60, 45)
+            
+            lower_red2 = hsvConv (350, 50, 35)
+            upper_red2 = hsvConv (360, 60, 45)
+            
+            car_masklow = cv2.inRange(hsv_image, lower_red1, upper_red1)
+            car_maskhigh = cv2.inRange(hsv_image, lower_red2, upper_red2)
+
+            car_mask = cv2.bitwise_or(car_masklow, car_maskhigh)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
-            cv2.imshow("car mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            cv2.imshow("car mask", cv2.cvtColor(car_mark, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
-            pidcontours, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            pidcontours, _ = cv2.findContours(car_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
             cx = 0
             cxnet = 0
@@ -879,22 +894,30 @@ class navigation():
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_red = hsvConv (0, 50, 35)
-            upper_red = hsvConv (1, 55, 45)
-            red_mask = cv2.inRange(hsv_image, lower_red, upper_red)
+            lower_red1 = hsvConv (0, 50, 35)
+            upper_red1 = hsvConv (11, 60, 45)
+            
+            lower_red2 = hsvConv (350, 50, 35)
+            upper_red2 = hsvConv (360, 60, 45)
+            
+            car_masklow = cv2.inRange(hsv_image, lower_red1, upper_red1)
+            car_maskhigh = cv2.inRange(hsv_image, lower_red2, upper_red2)
+
+            car_mask = cv2.bitwise_or(car_masklow, car_maskhigh)
+
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
 
-            cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            cv2.imshow("red mask", cv2.cvtColor(car_mask, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
             ## Find contours in the binary mask
-            redcont, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            redcont, _ = cv2.findContours(car_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
             cv2.imshow("car cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
 
-            min_area = 10
+            min_area = 2
             
             if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
                 
