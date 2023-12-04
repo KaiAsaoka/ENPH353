@@ -54,7 +54,8 @@ class navigation():
         self.pastman = False
         self.roadSpeed = 0.5
         self.grassSpeed = 0.3
-        self.predictions = True
+        #### SET TRUE FOR REAL RUN
+        self.predictions = False
         print("Loaded template image file: " + self.template_path)
 
         self.times = 0
@@ -66,7 +67,8 @@ class navigation():
         rospy.Subscriber("/read_sign", Int32, self.callback)
         rospy.Subscriber("/predict_sign", Int32, self.predict_callback)
         
-        self.start = False
+        #### SET FALSE FOR REAL RUN
+        self.start = True
 
         if testgrass == True:
                 self.predictions = False
@@ -126,9 +128,10 @@ class navigation():
     def image_callback(self, data):
         
         if(self.start):
-                
-            self.image_raw = data
-            self.tapefollow(data) 
+            
+            #### UNCOMMENT FOR REAL RUN
+            #self.image_raw = data
+            #self.tapefollow(data) 
              
             WIDTH = 600
             HEIGHT = 400
@@ -141,7 +144,18 @@ class navigation():
             lower_blue = np.array([115, 128, 95])
             upper_blue = np.array([120, 255, 204])
             blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
-    
+
+            hsv_tunnel = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+            tunnel_lower = np.array([5, 130, 75])
+            tunnel_upper = np.array([15, 140, 190])
+            tunnel_mask = cv2.inRange(hsv_tunnel, tunnel_lower, tunnel_upper)
+
+            #tunnel_copy = hsv_tunnel.copy()
+            tunnel_contours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            tunnel = cv2.drawContours(frame.copy(), tunnel_contours, -1, (0, 255, 0), 1)
+            cv2.imshow("Tunnel", cv2.cvtColor(tunnel, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
             ### Find contours
             contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             contour = frame.copy()
@@ -159,7 +173,8 @@ class navigation():
                     
                     if self.capture == False:
                         
-                        self.capture = True
+                        #### UNCOMMENT FOR REAL RUN
+                        #self.capture = True
                         
                         epsilon = 0.02 * cv2.arcLength(largest_contour, True)
                         approx = cv2.approxPolyDP(largest_contour, epsilon, True)
@@ -240,9 +255,12 @@ class navigation():
                 
     
     
-            #cv2.imshow("Binary", blue_mask)
+            #cv2.imshow("Binary", blue_mask)    
     
             cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
+            cv2.imshow("Tunnel Image", cv2.cvtColor(tunnel_mask, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
     
 
