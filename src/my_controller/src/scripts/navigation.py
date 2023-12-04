@@ -297,7 +297,7 @@ class navigation():
             
             if len(pidcontours) == 0:
                 self.grasscount += 1
-                if self.grasscount == 5:
+                if self.grasscount == 2:
                     self.grassy = True
                     print("grass time!!")
                     
@@ -339,11 +339,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1.5
-                turn2 = 2
-                turn3 = 2.5
-                turn4 = 3
-                turn5 = 4
+                turn1 = 2
+                turn2 = 3
+                turn3 = 4
+                turn4 = 5
+                turn5 = 6
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -417,14 +417,14 @@ class navigation():
             ## Define the coordinates of the region of interest (ROI)
             roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
             ## Default Resolution x = 320, y = 240
-
+            
             ## Crop the image to the ROI
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
   
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_white = hsvConv (40, 10, 70)
-            upper_white = hsvConv (75, 37, 90)
+            lower_white = hsvConv (30, 10, 60)
+            upper_white = hsvConv (75, 30, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
@@ -471,9 +471,9 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1
-                turn2 = 1.25
-                turn3 = 1.5
+                turn1 = 0.75
+                turn2 = 1
+                turn3 = 1.2
                 turn4 = 2
                 turn5 = 3
                 
@@ -608,7 +608,7 @@ class navigation():
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
 
-            cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
             ## Find contours in the binary mask
@@ -682,7 +682,7 @@ class navigation():
             upper_blue = hsvConv (210, 60, 60)
             blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
             
-            cv2.imshow("pant mask", cv2.cvtColor(blue_mask, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("pant mask", cv2.cvtColor(blue_mask, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
             
             ## Find contours in the binary mask
@@ -719,7 +719,7 @@ class navigation():
             if moments != 0:
                 cxavg = cxnet / moments
             
-            if cxavg > 600 and cxavg < 660:
+            if cxavg > 620 and cxavg < 660:
                 return True
             else:
                 return False
