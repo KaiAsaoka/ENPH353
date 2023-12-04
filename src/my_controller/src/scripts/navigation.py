@@ -54,6 +54,7 @@ class navigation():
         self.pastman = False
         self.roadSpeed = 0.5
         self.grassSpeed = 0.3
+        self.predictions = True
         print("Loaded template image file: " + self.template_path)
 
         self.times = 0
@@ -68,8 +69,9 @@ class navigation():
         self.start = False
 
         if testgrass == True:
-                self.grassy == True
-                self.pastman == True
+                self.predictions = False
+                self.grassy = True
+                self.pastman = True
                 self.grassSpeed = 0
                 self.roadSpeed = 0
     
@@ -188,15 +190,16 @@ class navigation():
     
                         self.letters, self.letters_hierarchy = cv2.findContours(self.dstmask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
                         self.clue_sign, self.cause_sign = cleanLetterContours(self.letters,self.letters_hierarchy)
+                        
+                        if self.predictions:
+                            move = Twist()
+                            move.linear.x = 0
+                            move.linear.y = 0
+                            move.linear.z = 0
+                            self.move_pub.publish(move)
 
-                        move = Twist()
-                        move.linear.x = 0
-                        move.linear.y = 0
-                        move.linear.z = 0
-                        self.move_pub.publish(move)
-
-                        self.wait_time = self.times
-                        self.makePrediction()
+                            self.wait_time = self.times
+                            self.makePrediction()
 
                         while self.times - self.wait_time < 2:
                             continue
