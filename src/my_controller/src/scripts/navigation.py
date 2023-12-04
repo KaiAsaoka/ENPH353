@@ -110,8 +110,8 @@ class navigation():
     def image_callback(self, data):
         
 
-        #self.image_raw = data
-        #self.tapefollow(data) 
+        self.image_raw = data
+        self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -142,7 +142,7 @@ class navigation():
                 
                 if self.capture == False:
                     
-                    #self.capture = True
+                    self.capture = True
                     
                     epsilon = 0.02 * cv2.arcLength(largest_contour, True)
                     approx = cv2.approxPolyDP(largest_contour, epsilon, True)
@@ -192,12 +192,12 @@ class navigation():
 
                     dstup = dst.copy()
                     uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
-                    cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
+                    #cv2.imshow("dst up", cv2.cvtColor(uletterimage, cv2.COLOR_RGB2BGR))
                     cv2.waitKey(1)
             
                     dstdown = dst.copy()
                     dletterimage = cv2.drawContours(dstdown, self.cause_sign, -1, (0, 255, 0), 1)
-                    cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
+                    #cv2.imshow("dst down", cv2.cvtColor(dletterimage, cv2.COLOR_RGB2BGR))
                     cv2.waitKey(1)
 
 
@@ -304,11 +304,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1.5
-                turn2 = 2
-                turn3 = 2.5
-                turn4 = 3
-                turn5 = 4
+                turn1 = 2
+                turn2 = 3
+                turn3 = 4
+                turn4 = 5
+                turn5 = 6
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -398,7 +398,7 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
                         
-            min_area = 1000
+            min_area = 900
             max_area = 100000
             
             pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
@@ -573,7 +573,7 @@ class navigation():
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
 
-            cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
             ## Find contours in the binary mask
@@ -647,7 +647,7 @@ class navigation():
             upper_blue = hsvConv (210, 60, 60)
             blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
             
-            cv2.imshow("pant mask", cv2.cvtColor(blue_mask, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("pant mask", cv2.cvtColor(blue_mask, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
             
             ## Find contours in the binary mask
