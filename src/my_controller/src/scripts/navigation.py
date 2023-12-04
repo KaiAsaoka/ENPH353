@@ -35,10 +35,11 @@ class navigation():
         
         testTruck = False
         testgrass = False
-        testYoda = False
+        testYoda = True
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
+        self.car = False
         self.grasscount = 0
 		## Feature matching
         index_params = dict(algorithm=0, trees=5)
@@ -76,14 +77,24 @@ class navigation():
                 self.pastman = True
                 self.grassSpeed = 0
                 self.roadSpeed = 0
+                
+        if testYoda == True:
+                self.predictions = False
+                self.grassy = True
+                self.pastman = True
+                self.grassSpeed = 0
+                self.roadSpeed = 0
+            
     
 
         #rostopic pub /read_sign std_msgs/Int32 "data: 0"
+        if self.predictions:
+            self.start = False
 
-        model_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/sign_detection_weights.h5'
-        self.model = tf.keras.models.load_model(model_path)
-        self.chr_vec = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N"
-                        ,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
+            model_path = '/home/fizzer/ros_ws/src/my_controller/src/pickle/sign_detection_weights.h5'
+            self.model = tf.keras.models.load_model(model_path)
+            self.chr_vec = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+                            ,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
 
         print("navigation init success")
 
@@ -219,6 +230,7 @@ class navigation():
                             while self.times - self.wait_time < 2:
                                 continue
 
+
                         #cv2.imshow("isoletter", isoletter)
                         #cv2.imshow("test", test)
                         #cv2.imshow("Binary", blue_mask)
@@ -273,9 +285,13 @@ class navigation():
             
            
                 
-        else: # grassy area
+        elif self.car == False: # grassy area
            
             self.grassFollow(data)
+            
+        else:
+            
+            self.carTunnel(data)
             
             
             
@@ -550,7 +566,8 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-
+            if self.scanforcar(frame):
+                self.car = True
 
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
@@ -559,6 +576,143 @@ class navigation():
 
             self.move_pub.publish(move)
 
+
+    def carTunnel(self, data):
+        
+            SPEED = self.roadSpeed
+            
+            frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
+    
+            h=0
+            ## Define the coordinates of the region of interest (ROI)
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+720  # Adjust these coordinates as needed
+
+            ## Crop the image to the ROI
+            roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
+            
+            hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
+            lower_red1 = hsvConv (0, 50, 35)
+            upper_red1 = hsvConv (11, 60, 45)
+            
+            lower_red2 = hsvConv (350, 50, 35)
+            upper_red2 = hsvConv (360, 60, 45)
+            
+            car_masklow = cv2.inRange(hsv_image, lower_red1, upper_red1)
+            car_maskhigh = cv2.inRange(hsv_image, lower_red2, upper_red2)
+
+            car_mask = cv2.bitwise_or(car_masklow, car_maskhigh)
+            ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
+
+            cv2.imshow("car mask", cv2.cvtColor(car_mark, cv2.COLOR_RGB2BGR))
+            ## Find contours in the binary mask
+            pidcontours, _ = cv2.findContours(car_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+            cx = 0
+            cxnet = 0
+            moments = 0
+            cxavg = 640
+            
+            pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
+
+            ## Iterate through the contours and find the position of color change within the ROI
+            
+            if len(pidcontours) == 0:
+                self.grasscount += 1
+                if self.grasscount == 2:
+                    self.grassy = True
+                    print("grass time!!")
+                    
+            for contour in pidcontours:
+                
+                
+                ## Calculate the centroid of the contour
+                M = cv2.moments(contour)
+
+                if M["m00"] != 0:
+                    cx = int(M["m10"] / M["m00"])
+
+                    ## Add the ROI offset to get the position within the original image
+                    cx += roi_x1
+                    
+                    cxnet += cx
+                    moments += 1
+
+                    #print(f"Position of color change within ROI: ({cx}, {cy})")
+   
+            move = Twist()
+            move.linear.x = SPEED
+            cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
+            
+            if moments != 0:
+                cxavg = cxnet / moments
+            
+                turn0 = 0
+                turn1 = 2
+                turn2 = 3
+                turn3 = 4
+                turn4 = 5
+                turn5 = 6
+    
+                if cxavg >= 0 and cxavg < 128:
+                    move.angular.z = turn5
+                    cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 128 and cxavg < 256:
+                    move.angular.z = turn4
+                    cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 256 and cxavg < 384:
+                    move.angular.z = turn3
+                    cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 384 and cxavg < 512:
+                    move.angular.z = turn2
+                    cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 512 and cxavg < 630:
+                    move.angular.z = turn1
+                    cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    
+                elif cxavg >= 630 and cxavg < 650:
+                    move.angular.z = turn0
+                    cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    
+                elif cxavg >= 650 and cxavg < 768:
+                    move.angular.z = -turn1
+                    cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 768 and cxavg < 896:
+                    move.angular.z = -turn2
+                    cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 896 and cxavg < 1024:
+                    move.angular.z = -turn3
+                    cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                elif cxavg >= 1024 and cxavg < 1152:
+                    move.angular.z = -turn4
+                    cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+
+                else:
+                    move.angular.z = -turn5
+                    cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    
+            center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
+            #print (center_coordinates)
+            radius = 30
+            color = (0, 0, 255)  # Red color in BGR format
+            thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
+            # Process the frame here (you can add your tracking code or other operations)
+            frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
+
+
+
+            cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
+            #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
+            #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
+            self.move_pub.publish(move)
     # Read sign takes a perspective transformed image and a sign to read
     #
     def readSign(self,signid,savepickle):
@@ -745,6 +899,49 @@ class navigation():
             else:
                 return False
 
+
+    def scanforcar(self, frameorig):
+        
+            frame = frameorig.copy()
+        
+            h=0
+            ## Define the coordinates of the region of interest (ROI)
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+720  # Adjust these coordinates as needed
+
+            ## Crop the image to the ROI
+            roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
+            
+            hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
+            lower_red1 = hsvConv (0, 50, 35)
+            upper_red1 = hsvConv (11, 60, 45)
+            
+            lower_red2 = hsvConv (350, 50, 35)
+            upper_red2 = hsvConv (360, 60, 45)
+            
+            car_masklow = cv2.inRange(hsv_image, lower_red1, upper_red1)
+            car_maskhigh = cv2.inRange(hsv_image, lower_red2, upper_red2)
+
+            car_mask = cv2.bitwise_or(car_masklow, car_maskhigh)
+
+            ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
+
+
+            cv2.imshow("red mask", cv2.cvtColor(car_mask, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
+            ## Find contours in the binary mask
+            redcont, _ = cv2.findContours(car_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            
+            pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
+            cv2.imshow("car cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+
+            min_area = 2
+            
+            if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
+                
+                return True
+            else:
+                return False
 
     def isSpace(self):
         THRESHOLD = 30
