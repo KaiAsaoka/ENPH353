@@ -262,7 +262,7 @@ class navigation():
             
             if len(pidcontours) == 0:
                 self.grasscount += 1
-                if self.grasscount == 5:
+                if self.grasscount == 2:
                     self.grassy = True
                     print("grass time!!")
                     
@@ -382,14 +382,14 @@ class navigation():
             ## Define the coordinates of the region of interest (ROI)
             roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
             ## Default Resolution x = 320, y = 240
-
+            
             ## Crop the image to the ROI
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
   
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_white = hsvConv (40, 10, 70)
-            upper_white = hsvConv (75, 37, 90)
+            lower_white = hsvConv (30, 10, 60)
+            upper_white = hsvConv (75, 30, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
@@ -398,7 +398,7 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
                         
-            min_area = 900
+            min_area = 1000
             max_area = 100000
             
             pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
@@ -436,9 +436,9 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1
-                turn2 = 1.25
-                turn3 = 1.5
+                turn1 = 0.75
+                turn2 = 1
+                turn3 = 1.2
                 turn4 = 2
                 turn5 = 3
                 
@@ -684,7 +684,7 @@ class navigation():
             if moments != 0:
                 cxavg = cxnet / moments
             
-            if cxavg > 600 and cxavg < 660:
+            if cxavg > 620 and cxavg < 660:
                 return True
             else:
                 return False
