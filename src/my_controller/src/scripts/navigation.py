@@ -54,7 +54,7 @@ class navigation():
         self.pastman = False
         self.roadSpeed = 0.5
         self.grassSpeed = 0.3
-        self.predictions = True
+        self.predictions = False
         print("Loaded template image file: " + self.template_path)
 
         self.times = 0
@@ -200,9 +200,10 @@ class navigation():
 
                             self.wait_time = self.times
                             self.makePrediction()
+                            
+                            while self.times - self.wait_time < 2:
+                                continue
 
-                        while self.times - self.wait_time < 2:
-                            continue
 
                         #cv2.imshow("isoletter", isoletter)
                         #cv2.imshow("test", test)
