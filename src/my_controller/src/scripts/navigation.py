@@ -200,7 +200,7 @@ class navigation():
 
                             self.wait_time = self.times
                             self.makePrediction()
-                            
+
                             while self.times - self.wait_time < 2:
                                 continue
 
