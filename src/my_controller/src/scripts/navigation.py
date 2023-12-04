@@ -41,11 +41,13 @@ class navigation():
         self.grassy = False
         self.tunnel = False
         self.car = False
+        self.turntotun = False
         self.grasscount = 0
 		## Feature matching
         index_params = dict(algorithm=0, trees=5)
         search_params = dict()
         self.capture = False
+        self.currentTime = 0
         self.flann = cv2.FlannBasedMatcher(index_params, search_params)
         self.template_path = "/home/fizzer/ros_ws/src/2023_competition/media_src/clue_banner.png"
         self.img = cv2.imread(self.template_path, cv2.IMREAD_GRAYSCALE)
@@ -294,9 +296,15 @@ class navigation():
             
             self.carTunnel(data)
             
-        else:
+        elif self.turntotun == False:
             self.pidcar(data)
-            print("LFG")
+            self.currentTime = self.times
+        
+        else:
+            print("woop!")
+            while (self.times - self.currentTime) < 50:
+                self.tunnelClimb(data)
+            
             
             
             
@@ -730,7 +738,7 @@ class navigation():
             cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            min_area = 10
+            min_area = 20
             
             if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) > min_area:
                 print("tunnel pog!!")
@@ -866,7 +874,10 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-
+            min_area = 300
+            
+            if len(pidcontours) != 0 and cv2.contourArea(max(pidcontours, key=cv2.contourArea)) > min_area:
+                self.turntotun = True            
 
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
@@ -919,6 +930,15 @@ class navigation():
             return False
     # Read sign takes a perspective transformed image and a sign to read
     #
+    def tunnelClimb(self, data):
+     
+        move = Twist()
+        move.linear.x = 0
+        move.angular.z = 5
+        self.move_pub.publish(move)
+
+        
+        
     def readSign(self,signid,savepickle):
 
 
