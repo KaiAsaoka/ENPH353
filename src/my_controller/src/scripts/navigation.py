@@ -32,6 +32,7 @@ class navigation():
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
+        self.grasscount = 0
 		## Feature matching
         index_params = dict(algorithm=0, trees=5)
         search_params = dict()
@@ -188,10 +189,10 @@ class navigation():
                     #cv2.imshow("Binary", blue_mask)
                     
                     # cv2.imshow("Contour Crop", cv2.cvtColor(dst, cv2.COLOR_RGB2BGR))
-                    # cv2.waitKey(1)
+
                     
                     # cv2.imshow("frame", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-                    # cv2.waitKey(1)
+
                     
                     ### Screens
                     lettermask = dst.copy()
@@ -212,7 +213,6 @@ class navigation():
 
 
         #cv2.imshow("Binary", blue_mask)
-        #cv2.waitKey(1)
 
         cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
         cv2.waitKey(1)
@@ -249,17 +249,14 @@ class navigation():
 
             ## Crop the image to the ROI
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
-            cv2.waitKey(1)
+
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
             lower_white = hsvConv (0, 0, 32)
             upper_white = hsvConv (0, 0, 34)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
-            sensitivity = 15
-            cv2.waitKey(1)
-            ## Define a threshold value for detecting grayscale change
-            threshold_value = 100  # Adjust this threshold as needed
+
             cv2.imshow("white mask", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -274,8 +271,10 @@ class navigation():
             ## Iterate through the contours and find the position of color change within the ROI
             
             if len(pidcontours) == 0:
-                self.grassy = True
-                print("grass time!!")
+                self.grasscount += 1
+                if self.grasscount == 5:
+                    self.grassy = True
+                    print("grass time!!")
                     
             for contour in pidcontours:
                 
@@ -293,7 +292,7 @@ class navigation():
                     moments += 1
 
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
-            rate = rospy.Rate(2)
+   
             move = Twist()
             move.linear.x = SPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
@@ -307,7 +306,7 @@ class navigation():
                         
             if self.pastman == True:
                 if self.scanfortruck(frame) == True:
-                    move.linear.x = 0
+                    move.linear.x = 0.05
                     
             
             
@@ -378,6 +377,7 @@ class navigation():
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
 
             self.move_pub.publish(move)
 
@@ -395,17 +395,14 @@ class navigation():
 
             ## Crop the image to the ROI
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
-            cv2.waitKey(1)
+  
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
             lower_white = hsvConv (0, 10, 60)
             upper_white = hsvConv (75, 30, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
-            sensitivity = 15
-            cv2.waitKey(1)
-            ## Define a threshold value for detecting grayscale change
-            threshold_value = 100  # Adjust this threshold as needed
+
             cv2.imshow("white mask", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -512,6 +509,7 @@ class navigation():
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
 
             self.move_pub.publish(move)
 
@@ -577,18 +575,17 @@ class navigation():
 
             ## Crop the image to the ROI
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
-            cv2.waitKey(1)
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
             lower_red = hsvConv (0, 99, 99)
             upper_red = hsvConv (1, 100, 100)
             red_mask = cv2.inRange(hsv_image, lower_red, upper_red)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
-            sensitivity = 15
-            cv2.waitKey(1)
-            ## Define a threshold value for detecting grayscale change
-            threshold_value = 100  # Adjust this threshold as needed
+
+
             cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
             ## Find contours in the binary mask
             redcont, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
@@ -606,9 +603,9 @@ class navigation():
         
             frame = frameorig.copy()
         
-            h=350
+            h=200
             ## Define the coordinates of the region of interest (ROI)
-            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+120  # Adjust these coordinates as needed
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+320  # Adjust these coordinates as needed
 
             ## Crop the image to the ROI
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
@@ -626,15 +623,17 @@ class navigation():
             truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
                         ## Find contours in the binary mask
             truckcont, _ = cv2.findContours(truck_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            min_area = 750
+            min_area = 500
             max_area = 100000
             
             truckcont = [contour for contour in truckcont if min_area < cv2.contourArea(contour) < max_area]
             
             pid_img = cv2.drawContours(roi_image, truckcont, -1, (0, 255, 0), 1)
             
+            cv2.imshow("truck cont", cv2.cvtColor(truck_mask, cv2.COLOR_RGB2BGR))
             cv2.imshow("truck cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
 
+            cv2.waitKey(1)
             
             if len(truckcont) != 0:
                 return True
@@ -659,6 +658,8 @@ class navigation():
             blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
             
             cv2.imshow("pant mask", cv2.cvtColor(blue_mask, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+            
             ## Find contours in the binary mask
             bluecont, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             min_area = 100
