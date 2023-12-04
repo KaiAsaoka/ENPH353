@@ -16,11 +16,13 @@ from collections import namedtuple
 import pickle
 from std_msgs.msg import Bool
 from std_msgs.msg import Int32
+from std_msgs.msg import String
 
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
+import Levenshtein
 ##
 # @brief Callback method
 # @retval 
@@ -46,6 +48,8 @@ class navigation():
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         self.pastman = False
         print("Loaded template image file: " + self.template_path)
+
+        self.score_pub = rospy.Publisher("/score_tracker",String,queue_size=1)
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.image_callback)
         rospy.Subscriber("/read_sign", Int32, self.callback)
         rospy.Subscriber("/predict_sign", Int32, self.predict_callback)
@@ -60,43 +64,17 @@ class navigation():
         print("navigation init success")
 
     def predict_callback(self,data):
-
-        clue_prediction = []
-        cause_prediction = []
-
-        for letter in self.clue_sign:
-
-            clue_image = np.zeros((100, 100, 3), dtype=np.uint8)
-            isoletter = plotcontour(letter,clue_image)
-
-            img_aug = np.expand_dims(isoletter, axis=0)
-
-            prediction_onehot = self.model.predict(img_aug)[0]
-            index = np.where(prediction_onehot == 1)[0][0]
-            clue_prediction.append(self.chr_vec[index])
-
-        space = self.isSpace()
-
-        for letter in self.cause_sign:
-
-            cause_image = np.zeros((100, 100, 3), dtype=np.uint8)
-            isoletter = plotcontour(letter,cause_image)
-
-            img_aug = np.expand_dims(isoletter, axis=0)
-
-            prediction_onehot = self.model.predict(img_aug)[0]
-            index = np.where(prediction_onehot == 1)[0][0]
-            cause_prediction.append(self.chr_vec[index])
-
-        if(space > 0):
-            cause_prediction.insert(space+1, ' ')
-
-        cause_prediction.insert(1, ' ')
-
-
-        cause = ''.join(cause_prediction)
-
-        print(cause)
+        num = data.data
+        if(num == 0):
+            message = str('TEAM16,joebot,0,START')
+            self.score_pub.publish(message)
+        elif(num == -1):
+            message = str('TEAM16,joebot,-1,END')
+            self.score_pub.publish(message)
+        else:
+            self.makePrediction()
+        
+        
         
     def callback(self,data):
 
@@ -120,8 +98,8 @@ class navigation():
     def image_callback(self, data):
         
 
-        self.image_raw = data
-        self.tapefollow(data) 
+        #self.image_raw = data
+        #self.tapefollow(data) 
          
         WIDTH = 600
         HEIGHT = 400
@@ -711,14 +689,53 @@ class navigation():
             current_max_x = np.max(current_contour[:,0])
             next_min_x = np.min(next_contour[:, 0])
             
-            print(current_max_x)
-            print(next_min_x)
-            print("done")
             if (next_min_x - current_max_x) > THRESHOLD:
                 
                 index = i  # Large space detected
 
         return index
+    
+    def makePrediction(self):
+
+        clue_prediction = []
+        cause_prediction = []
+
+        for letter in self.clue_sign:
+
+            clue_image = np.zeros((100, 100, 3), dtype=np.uint8)
+            isoletter = plotcontour(letter,clue_image)
+
+            img_aug = np.expand_dims(isoletter, axis=0)
+
+            prediction_onehot = self.model.predict(img_aug)[0]
+            index = np.where(prediction_onehot == 1)[0][0]
+            clue_prediction.append(self.chr_vec[index])
+
+        #space = self.isSpace()
+
+        for letter in self.cause_sign:
+
+            cause_image = np.zeros((100, 100, 3), dtype=np.uint8)
+            isoletter = plotcontour(letter,cause_image)
+
+            img_aug = np.expand_dims(isoletter, axis=0)
+
+            prediction_onehot = self.model.predict(img_aug)[0]
+            index = np.where(prediction_onehot == 1)[0][0]
+            cause_prediction.append(self.chr_vec[index])
+
+        #if(space > 0):
+        #    cause_prediction.insert(space+1, ' ')
+
+        #cause_prediction.insert(1, ' ')
+
+        clue = ''.join(clue_prediction)
+        cause = ''.join(cause_prediction)
+
+        clueid = getClue(clue)+1
+        message = str('TEAM16,joebot,' + str(clueid) + ',' + cause)
+        print(message)
+        self.score_pub.publish(message)
 
     
 def findFullIndex(full):
@@ -832,7 +849,14 @@ def loadCsv(path):
             cause_t.append(cleaned_cause_t)
     return clue_t, cause_t
 
+def getClue(prediction):
+    truth = ["SIZE","VICTIM","CRIME","TIME","PLACE","MOTIVE","WEAPON","BANDIT"]
+    distances = [Levenshtein.distance(prediction, word) for word in truth]
 
+    # Find the index of the minimum distance (closest match)
+    closest_index = np.argmin(distances)
+
+    return closest_index
 
 def assign(sign,truth):
     rsign = []
