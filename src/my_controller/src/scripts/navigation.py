@@ -292,9 +292,9 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1
-                turn2 = 1.5
-                turn3 = 2
+                turn1 = 1.5
+                turn2 = 2
+                turn3 = 2.5
                 turn4 = 3
                 turn5 = 4
     
@@ -376,8 +376,8 @@ class navigation():
   
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_white = hsvConv (0, 10, 60)
-            upper_white = hsvConv (75, 30, 90)
+            lower_white = hsvConv (0, 9, 60)
+            upper_white = hsvConv (75, 31, 90)
             white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
@@ -386,7 +386,7 @@ class navigation():
             pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
                         
-            min_area = 1000
+            min_area = 900
             max_area = 100000
             
             pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
@@ -424,9 +424,9 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 0.75
-                turn2 = 1
-                turn3 = 1.2
+                turn1 = 1
+                turn2 = 1.25
+                turn3 = 1.5
                 turn4 = 2
                 turn5 = 3
                 
@@ -589,18 +589,18 @@ class navigation():
             roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
             
             hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
-            lower_truck1 = hsvConv (0, 0, 54)
-            upper_truck1 = hsvConv (1, 1, 75)
+            lower_truck1 = hsvConv (0, 0, 17.5)
+            upper_truck1 = hsvConv (1, 1, 29)
             
-            lower_truck2 = hsvConv (0, 0, 80)
-            upper_truck2 = hsvConv (1, 1, 90)
+            # lower_truck2 = hsvConv (0, 0, 80)
+            # upper_truck2 = hsvConv (1, 1, 90)
             
             truck_masklow = cv2.inRange(hsv_image, lower_truck1, upper_truck1)
-            truck_maskhigh = cv2.inRange(hsv_image, lower_truck2, upper_truck2)
+            # truck_maskhigh = cv2.inRange(hsv_image, lower_truck2, upper_truck2)
 
-            truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
+            #truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
                         ## Find contours in the binary mask
-            truckcont, _ = cv2.findContours(truck_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            truckcont, _ = cv2.findContours(truck_masklow, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             min_area = 500
             max_area = 100000
             
@@ -608,7 +608,7 @@ class navigation():
             
             pid_img = cv2.drawContours(roi_image, truckcont, -1, (0, 255, 0), 1)
             
-            cv2.imshow("truck cont", cv2.cvtColor(truck_mask, cv2.COLOR_RGB2BGR))
+            cv2.imshow("truck mask", cv2.cvtColor(truck_masklow, cv2.COLOR_RGB2BGR))
             cv2.imshow("truck cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
 
             cv2.waitKey(1)
