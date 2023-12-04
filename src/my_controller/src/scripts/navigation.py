@@ -587,9 +587,9 @@ class navigation():
 
             self.move_pub.publish(move)
 
-
-    def Tunnel(self, data):
+    def tunnelClimb(self, data):
         
+            
             SPEED = 0.1
             
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
@@ -616,113 +616,122 @@ class navigation():
             cv2.imshow("car mask", cv2.cvtColor(tunnel_mask, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
             pidcontours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        
-            cx = 0
-            cxnet = 0
-            moments = 0
-            cxavg = 640
-            
-            pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
 
-            ## Iterate through the contours and find the position of color change within the ROI
+            min_area = 100
             
-            if len(pidcontours) == 0:
-                self.grasscount += 1
-                if self.grasscount == 2:
-                    self.grassy = True
-                    print("grass time!!")
-                    
-            for contour in pidcontours:
+            if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) < min_area:
+                move = Twist()
+                move.linear.x = 0
+                move.angular.z = 5
+                self.move_pub.publish(move)
+            else:
+            
+                cx = 0
+                cxnet = 0
+                moments = 0
+                cxavg = 640
                 
+                pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
+
+                ## Iterate through the contours and find the position of color change within the ROI
                 
-                ## Calculate the centroid of the contour
-                M = cv2.moments(contour)
-
-                if M["m00"] != 0:
-                    cx = int(M["m10"] / M["m00"])
-
-                    ## Add the ROI offset to get the position within the original image
-                    cx += roi_x1
+                if len(pidcontours) == 0:
+                    self.grasscount += 1
+                    if self.grasscount == 2:
+                        self.grassy = True
+                        print("grass time!!")
+                        
+                for contour in pidcontours:
                     
-                    cxnet += cx
-                    moments += 1
+                    
+                    ## Calculate the centroid of the contour
+                    M = cv2.moments(contour)
 
-                    #print(f"Position of color change within ROI: ({cx}, {cy})")
-   
-            move = Twist()
-            move.linear.x = SPEED
-            cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
-            
-            if moments != 0:
-                cxavg = cxnet / moments
-            
-                turn0 = 0.25
-                turn1 = 0.25
-                turn2 = 0.25
-                turn3 = 0.25
-                turn4 = 0.25
-                turn5 = 0.25
+                    if M["m00"] != 0:
+                        cx = int(M["m10"] / M["m00"])
+
+                        ## Add the ROI offset to get the position within the original image
+                        cx += roi_x1
+                        
+                        cxnet += cx
+                        moments += 1
+
+                        #print(f"Position of color change within ROI: ({cx}, {cy})")
     
-                if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = turn5
-                    cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                move = Twist()
+                move.linear.x = SPEED
+                cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
+                
+                if moments != 0:
+                    cxavg = cxnet / moments
+                
+                    turn0 = 0.25
+                    turn1 = 0.25
+                    turn2 = 0.25
+                    turn3 = 0.25
+                    turn4 = 0.25
+                    turn5 = 0.25
+        
+                    if cxavg >= 0 and cxavg < 128:
+                        move.angular.z = turn5
+                        cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = turn4
-                    cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 128 and cxavg < 256:
+                        move.angular.z = turn4
+                        cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = turn3
-                    cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 256 and cxavg < 384:
+                        move.angular.z = turn3
+                        cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = turn2
-                    cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 384 and cxavg < 512:
+                        move.angular.z = turn2
+                        cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = turn1
-                    cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                    
-                elif cxavg >= 630 and cxavg < 650:
-                    move.angular.z = turn0
-                    cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                    
-                elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -turn1
-                    cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 512 and cxavg < 630:
+                        move.angular.z = turn1
+                        cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                        
+                    elif cxavg >= 630 and cxavg < 650:
+                        move.angular.z = turn0
+                        cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                        
+                    elif cxavg >= 650 and cxavg < 768:
+                        move.angular.z = -turn1
+                        cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -turn2
-                    cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 768 and cxavg < 896:
+                        move.angular.z = -turn2
+                        cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -turn3
-                    cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 896 and cxavg < 1024:
+                        move.angular.z = -turn3
+                        cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -turn4
-                    cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                    elif cxavg >= 1024 and cxavg < 1152:
+                        move.angular.z = -turn4
+                        cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-                else:
-                    move.angular.z = -turn5
-                    cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                    
-            center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
-            #print (center_coordinates)
-            radius = 30
-            color = (0, 0, 255)  # Red color in BGR format
-            thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
-            # Process the frame here (you can add your tracking code or other operations)
-            frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
+                    else:
+                        move.angular.z = -turn5
+                        cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                        
+                center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
+                #print (center_coordinates)
+                radius = 30
+                color = (0, 0, 255)  # Red color in BGR format
+                thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
+                # Process the frame here (you can add your tracking code or other operations)
+                frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
 
 
-            cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
-            #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
-            #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+                cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
+                #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
+                #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
+                cv2.waitKey(1)
 
-            self.move_pub.publish(move)
+                self.move_pub.publish(move)
 
     def carTunnel(self, data):
         
@@ -1064,15 +1073,7 @@ class navigation():
             return False
     # Read sign takes a perspective transformed image and a sign to read
     #
-    def tunnelClimb(self, data):
-     
-        move = Twist()
-        move.linear.x = 0
-        move.angular.z = 5
-        self.move_pub.publish(move)
 
-        
-        
     def readSign(self,signid,savepickle):
 
 
