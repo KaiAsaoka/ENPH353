@@ -201,8 +201,8 @@ class navigation():
                             self.wait_time = self.times
                             self.makePrediction()
 
-                        while self.times - self.wait_time < 2:
-                            continue
+                            while self.times - self.wait_time < 2:
+                                continue
 
                         #cv2.imshow("isoletter", isoletter)
                         #cv2.imshow("test", test)
