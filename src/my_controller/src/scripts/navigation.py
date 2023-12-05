@@ -179,13 +179,11 @@ class navigation():
             #### UNCOMMENT FOR REAL RUN
             self.image_raw = data
             self.tapefollow(data) 
-            #self.turn(data)
-             
+            
             WIDTH = 600
             HEIGHT = 400
             
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
-            
             # Apply blue color mask
     
             hsv_image = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
@@ -205,7 +203,7 @@ class navigation():
                 largest_contour = max(contours, key=cv2.contourArea)
                 
                   # minimum size of sign vector
-                print(cv2.contourArea(largest_contour))
+                #print(cv2.contourArea(largest_contour))
                 if (cv2.contourArea(largest_contour)) > self.signthresh:
                     
                     if self.capture == False:
@@ -323,12 +321,11 @@ class navigation():
             self.turn(data)
             self.predictions = True
 
-        elif self.grassy2 == False:
-            print("started tunnel climb")
-            self.tunnelClimb(data)
         else:
+            print("started tunnel climb")
             self.grassFollow2(data)
             self.signthresh = 35000
+            
             
             
             
@@ -1166,28 +1163,21 @@ class navigation():
     
     def turn(self, data):
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
-        cv2.imshow("Contour Image", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
-
-        while( self.times - self.turnstart < 2):
+        if(self.scanforblue(frame)):
+            self.climb = True
+            print("climbing")
+        else:
             move = Twist()
             move.linear.x = 0
             move.linear.y = 0
             move.linear.z = 0
 
-            move.angular.z = 1.5
+            move.angular.z = 0.75
             self.move_pub.publish(move)
-        
-        move = Twist()
-        move.linear.x = 0.1
-        move.angular.z = 0
-        self.move_pub.publish(move)
 
-        bot_thresh = 0
-        top_thresh = 10000
-        if(self.scanforwhite(frame,bot_thresh,top_thresh)):
-            self.climb = True
-            print("climbing")
+
+
+            
 
 
     def scanforcar(self, frameorig):
@@ -1372,6 +1362,43 @@ class navigation():
             else:
                 return False
             
+    def scanforblue(self, frameorig):
+        
+            frame = frameorig.copy()
+        
+            h=0
+            ## Define the coordinates of the region of interest (ROI)
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+720  # Adjust these coordinates as needed
+
+            ## Crop the image to the ROI
+            roi_image = frame[roi_y1:roi_y2, roi_x1:roi_x2]
+            
+            hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
+            lower_blue = np.array([115, 128, 95])
+            upper_blue = np.array([120, 255, 204])
+            blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+            ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
+
+
+            # cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+
+            ## Find contours in the binary mask
+            redcont, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            
+            pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
+            cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+            cv2.waitKey(1)
+            min_area = 35000
+            print("scanning for blue")
+            if (len(redcont) != 0):
+                print(cv2.contourArea(max(redcont, key=cv2.contourArea)))
+            if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
+                
+                return True
+            else:
+                return False
+    
     def scanfortruck(self, frameorig):
         
             frame = frameorig.copy()
