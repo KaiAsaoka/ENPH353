@@ -430,11 +430,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 2
-                turn2 = 3
-                turn3 = 4
-                turn4 = 5
-                turn5 = 6
+                turn1 = 2.5
+                turn2 = 3.5
+                turn3 = 4.5
+                turn4 = 5.5
+                turn5 = 6.5
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -828,11 +828,11 @@ class navigation():
                 
                 cxavg = cxnet / moments + 30
                 turn0 = 0
-                turn1 = 0.25
-                turn2 = 0.25
-                turn3 = 0.25
-                turn4 = 0.25
-                turn5 = 0.25
+                turn1 = 0.3
+                turn2 = 0.3
+                turn3 = 0.3
+                turn4 = 0.4
+                turn5 = 0.5
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
@@ -1163,7 +1163,7 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-            min_area = 360
+            min_area = 380
             
             if len(pidcontours) != 0 and cv2.contourArea(max(pidcontours, key=cv2.contourArea)) > min_area:
                 self.turntotun = True          
@@ -1184,7 +1184,7 @@ class navigation():
             move.linear.y = 0
             move.linear.z = 0
 
-            move.angular.z = 1.5
+            move.angular.z = 1.35
             self.move_pub.publish(move)
         
         move = Twist()

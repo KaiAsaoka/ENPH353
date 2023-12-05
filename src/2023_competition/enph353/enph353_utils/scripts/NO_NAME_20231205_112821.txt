@@ -7,3 +7,4 @@
 11:28:21.355: Clue WEAPON: R POLONIUM
 11:28:21.355: Clue BANDIT: V BARBIE
 11:28:21.982: First command velocity received.
+11:29:16.425: Message received: TEAM16,joebot,0,START
