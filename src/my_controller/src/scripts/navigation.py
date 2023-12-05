@@ -921,9 +921,9 @@ class navigation():
                 turn0 = 0
                 turn1 = .5
                 turn2 = .75
-                turn3 = 3
-                turn4 = 5
-                turn5 = 7
+                turn3 = 10
+                turn4 = 10
+                turn5 = 10
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -1381,14 +1381,14 @@ class navigation():
 
 
             # cv2.imshow("red mask", cv2.cvtColor(red_mask, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            # cv2.waitKey(1)
 
             ## Find contours in the binary mask
             redcont, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
-            cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            # cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+            # cv2.waitKey(1)
             min_area = 35000
             print("scanning for blue")
             if (len(redcont) != 0):

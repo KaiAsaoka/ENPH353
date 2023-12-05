@@ -1,0 +1,19 @@
+15:24:42.627: Clue SIZE: B 314
+15:24:42.627: Clue VICTIM: R CITIZENS
+15:24:42.628: Clue CRIME: Y IRRADIATE
+15:24:42.630: Clue TIME: G SPRING
+15:24:42.630: Clue PLACE: D CAVE
+15:24:42.631: Clue MOTIVE: I GLUTTONY
+15:24:42.631: Clue WEAPON: J ANTIMATTER
+15:24:42.631: Clue BANDIT: P LUIGI
+15:25:13.135: Message received: TEAM16,joebot,0,START
+15:25:13.135: Timer started.
+15:25:13.425: First command velocity received.
+15:25:15.307: Message received: TEAM16,joebot,1,B314
+15:25:15.308: Team total: 6 pts
+15:25:15.309: Awarded: 6 pts
+15:25:32.644: Message received: TEAM16,joebot,2,RCITIZENS
+15:25:32.645: Team total: 12 pts
+15:25:32.647: Awarded: 6 pts
+15:25:39.276: Message received: TEAM16,joebot,3,YIRRADIM5TE
+15:25:39.276: Awarded: 0 pts

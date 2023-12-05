@@ -1,0 +1,36 @@
+15:03:49.618: Clue SIZE: T 314
+15:03:49.618: Clue VICTIM: G PHYSICISTS
+15:03:49.619: Clue CRIME: E LIE TO
+15:03:49.619: Clue TIME: R NOON
+15:03:49.620: Clue PLACE: R MOON
+15:03:49.620: Clue MOTIVE: Z LOVE
+15:03:49.620: Clue WEAPON: S NEUTRINOS
+15:03:49.620: Clue BANDIT: M PIKACHU
+15:03:52.409: Message received: TEAM16,joebot,0,START
+15:03:52.409: Timer started.
+15:03:52.704: First command velocity received.
+15:03:54.506: Message received: TEAM16,joebot,1,T314
+15:03:54.507: Team total: 6 pts
+15:03:54.508: Awarded: 6 pts
+15:04:08.319: Message received: TEAM16,joebot,2,GPHYSICISTS
+15:04:08.320: Team total: 12 pts
+15:04:08.322: Awarded: 6 pts
+15:04:13.960: Message received: TEAM16,joebot,3,ELIETO
+15:04:13.961: Team total: 18 pts
+15:04:13.962: Awarded: 6 pts
+15:04:27.141: Message received: TEAM16,joebot,4,RNOON
+15:04:27.142: Team total: 24 pts
+15:04:27.143: Awarded: 6 pts
+15:05:00.563: Message received: TEAM16,joebot,5,RMOON
+15:05:00.564: Team total: 30 pts
+15:05:00.564: Awarded: 6 pts
+15:05:21.777: Message received: TEAM16,joebot,6,ZLOVE
+15:05:21.778: Team total: 36 pts
+15:05:21.780: Awarded: 6 pts
+15:05:36.148: Message received: TEAM16,joebot,7,SNEUTRINOS
+15:05:36.149: Team total: 44 pts
+15:05:36.150: Awarded: 8 pts
+15:06:41.663: Message received: TEAM16,joebot,8,MPIVCHU
+15:06:41.664: Awarded: 0 pts
+15:06:53.792: Bonus completed: +5 points
+15:06:53.793: Team total: 49 pts

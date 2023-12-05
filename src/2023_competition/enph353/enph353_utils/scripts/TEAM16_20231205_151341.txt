@@ -1,0 +1,33 @@
+15:13:16.891: Clue SIZE: W 314
+15:13:16.892: Clue VICTIM: M BACTERIA
+15:13:16.892: Clue CRIME: E DECELERATE
+15:13:16.893: Clue TIME: X MIDNIGHT
+15:13:16.893: Clue PLACE: U JUNGLE
+15:13:16.894: Clue MOTIVE: G THRILL
+15:13:16.894: Clue WEAPON: J POLONIUM
+15:13:16.894: Clue BANDIT: N BARBIE
+15:13:41.217: Message received: TEAM16,joebot,0,START
+15:13:41.218: Timer started.
+15:13:41.508: First command velocity received.
+15:13:43.332: Message received: TEAM16,joebot,1,W314
+15:13:43.333: Team total: 6 pts
+15:13:43.335: Awarded: 6 pts
+15:13:53.802: Message received: TEAM16,joebot,2,MBACTERIA
+15:13:53.803: Team total: 12 pts
+15:13:53.804: Awarded: 6 pts
+15:13:59.674: Message received: TEAM16,joebot,3,EOECELERATE
+15:13:59.675: Awarded: 0 pts
+15:14:12.119: Message received: TEAM16,joebot,4,XMIDNIGHT
+15:14:12.121: Team total: 18 pts
+15:14:12.124: Awarded: 6 pts
+15:14:45.203: Message received: TEAM16,joebot,5,UJUNGLE
+15:14:45.204: Team total: 24 pts
+15:14:45.207: Awarded: 6 pts
+15:15:06.384: Message received: TEAM16,joebot,6,GTHRILL
+15:15:06.385: Team total: 30 pts
+15:15:06.386: Awarded: 6 pts
+15:16:20.013: Message received: TEAM16,joebot,8,NBARBIE
+15:16:20.013: Team total: 38 pts
+15:16:20.015: Awarded: 8 pts
+15:16:24.766: Bonus completed: +5 points
+15:16:24.766: Team total: 43 pts

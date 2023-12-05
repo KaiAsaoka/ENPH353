@@ -1,0 +1,32 @@
+15:27:56.935: Clue SIZE: QUINTUPLETS
+15:27:56.936: Clue VICTIM: E BACTERIA
+15:27:56.936: Clue CRIME: K TELEPORT
+15:27:56.937: Clue TIME: K EONS
+15:27:56.937: Clue PLACE: J CLASS
+15:27:56.938: Clue MOTIVE: Z HATE
+15:27:56.938: Clue WEAPON: O POLONIUM
+15:27:56.938: Clue BANDIT: T HANNIBAL
+15:28:14.715: Message received: TEAM16,joebot,0,START
+15:28:14.716: Timer started.
+15:28:14.965: First command velocity received.
+15:28:17.416: Message received: TEAM16,joebot,1,QUINTUPLETS
+15:28:17.417: Team total: 6 pts
+15:28:17.417: Awarded: 6 pts
+15:28:34.678: Message received: TEAM16,joebot,2,EBACTERIA
+15:28:34.678: Team total: 12 pts
+15:28:34.681: Awarded: 6 pts
+15:28:40.886: Message received: TEAM16,joebot,3,KTELEPORT
+15:28:40.887: Team total: 18 pts
+15:28:40.888: Awarded: 6 pts
+15:28:52.133: Message received: TEAM16,joebot,4,KEONS
+15:28:52.133: Team total: 24 pts
+15:28:52.134: Awarded: 6 pts
+15:29:26.317: Message received: TEAM16,joebot,5,JCLASS
+15:29:26.317: Team total: 30 pts
+15:29:26.318: Awarded: 6 pts
+15:29:47.582: Message received: TEAM16,joebot,6,ZHATE
+15:29:47.583: Team total: 36 pts
+15:29:47.584: Awarded: 6 pts
+15:30:02.154: Message received: TEAM16,joebot,7,OPOLONIUM
+15:30:02.155: Team total: 44 pts
+15:30:02.156: Awarded: 8 pts
