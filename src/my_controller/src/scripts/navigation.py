@@ -930,11 +930,11 @@ class navigation():
                 cxavg = cxnet / moments + 250
             
                 turn0 = 0
-                turn1 = .25
-                turn2 = .5
-                turn3 = .75
-                turn4 = 1
-                turn5 = 1.25
+                turn1 = .5
+                turn2 = .75
+                turn3 = 1
+                turn4 = 1.25
+                turn5 = 1.5
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -1023,7 +1023,7 @@ class navigation():
             cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            min_area = 35
+            min_area = 30
             
             if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) > min_area:
                 print("tunnel pog!!")
