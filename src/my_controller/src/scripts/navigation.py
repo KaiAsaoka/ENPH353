@@ -321,7 +321,8 @@ class navigation():
             print("started tunnel climb")
             self.tunnelClimb(data)
         else:
-            self.grassFollow
+            print("TOUCHING GRASS!!!!!!")
+            self.grassFollow(data)
             
             
             
@@ -642,6 +643,7 @@ class navigation():
             moments = 0
             cxavg = 640
             pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
+            
             ## Iterate through the contours and find the position of color change within the ROI
             if self.scanforwhite(frame,1700,2200):
                 self.grassy2 = True
@@ -998,7 +1000,7 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-            min_area = 300
+            min_area = 360
             
             if len(pidcontours) != 0 and cv2.contourArea(max(pidcontours, key=cv2.contourArea)) > min_area:
                 self.turntotun = True          

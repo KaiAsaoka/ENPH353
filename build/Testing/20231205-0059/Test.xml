@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20231205-0059-Experimental"
+	Name="skynet"
+	Generator="ctest-3.16.3"
+	CompilerName="/usr/bin/c++"
+	CompilerVersion="9.4.0"
+	OSName="Linux"
+	Hostname="skynet"
+	OSRelease="5.15.0-84-generic"
+	OSVersion="#93~20.04.1-Ubuntu SMP Wed Sep 6 16:15:40 UTC 2023"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="142"
+	ProcessorCacheSize="8192"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="979"
+	TotalPhysicalMemory="31834"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2770.33"
+	>
+	<Testing>
+		<StartDateTime>Dec 04 16:59 PST</StartDateTime>
+		<StartTestTime>1701737959</StartTestTime>
+		<TestList/>
+		<EndDateTime>Dec 04 16:59 PST</EndDateTime>
+		<EndTestTime>1701737959</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
