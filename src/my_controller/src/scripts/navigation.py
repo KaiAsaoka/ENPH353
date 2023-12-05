@@ -322,7 +322,7 @@ class navigation():
             self.predictions = True
 
         else:
-            print("started tunnel climb")
+            #print("started tunnel climb")
             self.grassFollow2(data)
             self.signthresh = 35000
             
