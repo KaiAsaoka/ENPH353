@@ -1,0 +1,32 @@
+14:08:52.028: Clue SIZE: K RAYO10
+14:08:52.029: Clue VICTIM: V ALIENS
+14:08:52.030: Clue CRIME: E HEADBUT
+14:08:52.035: Clue TIME: X AUTUMN
+14:08:52.040: Clue PLACE: A CLASS
+14:08:52.041: Clue MOTIVE: D CURIOSITY
+14:08:52.042: Clue WEAPON: S PLASMA
+14:08:52.042: Clue BANDIT: B CAO CAO
+14:08:54.920: Message received: TEAM16,joebot,0,START
+14:08:54.921: Timer started.
+14:08:55.224: First command velocity received.
+14:08:57.300: Message received: TEAM16,joebot,1,KRAYO10
+14:08:57.301: Team total: 6 pts
+14:08:57.302: Awarded: 6 pts
+14:09:07.555: Message received: TEAM16,joebot,2,VALIENS
+14:09:07.555: Team total: 12 pts
+14:09:07.556: Awarded: 6 pts
+14:09:14.159: Message received: TEAM16,joebot,3,EHEADBUT
+14:09:14.159: Team total: 18 pts
+14:09:14.161: Awarded: 6 pts
+14:09:26.703: Message received: TEAM16,joebot,4,XAUTUMN
+14:09:26.706: Team total: 24 pts
+14:09:26.706: Awarded: 6 pts
+14:10:00.073: Message received: TEAM16,joebot,5,ACLASS
+14:10:00.075: Team total: 30 pts
+14:10:00.076: Awarded: 6 pts
+14:10:22.501: Message received: TEAM16,joebot,6,DCURIOSITY
+14:10:22.502: Team total: 36 pts
+14:10:22.504: Awarded: 6 pts
+14:11:40.407: Message received: TEAM16,joebot,8,BCAOCAO
+14:11:40.408: Team total: 44 pts
+14:11:40.408: Awarded: 8 pts
