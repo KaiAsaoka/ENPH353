@@ -407,59 +407,54 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = .5
-                turn2 = 2
-                turn3 = 3
-                turn4 = 4
-                turn5 = 5
-                turn6 = 6
+                turn1 = 2
+                turn2 = 3
+                turn3 = 4
+                turn4 = 5
+                turn5 = 6
     
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = turn6
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = turn5
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = turn4
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = turn3
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = turn2
-                    cv2.putText(frame, str(cxavg) + " le", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 630 and cxavg < 640:
                     move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg == 640:
+                    
+                elif cxavg >= 630 and cxavg < 650:
                     move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg > 640 and cxavg < 650:
+                    
+                elif cxavg >= 650 and cxavg < 768:
                     move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -turn2
-                    cv2.putText(frame, str(cxavg) + " ri", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -turn3
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -turn4
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -turn5
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -turn6
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
             center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
@@ -544,59 +539,54 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 0.25
-                turn2 = 0.75
-                turn3 = 1
-                turn4 = 1.2
-                turn5 = 2
-                turn6 = 3
+                turn1 = 0.75
+                turn2 = 1
+                turn3 = 1.2
+                turn4 = 2
+                turn5 = 3
                 
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = turn6
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = turn5
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = turn4
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = turn3
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = turn2
-                    cv2.putText(frame, str(cxavg) + " le", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 630 and cxavg < 640:
                     move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg == 640:
+                    
+                elif cxavg >= 630 and cxavg < 650:
                     move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg > 640 and cxavg < 650:
+                    
+                elif cxavg >= 650 and cxavg < 768:
                     move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -turn2
-                    cv2.putText(frame, str(cxavg) + " ri", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -turn3
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -turn4
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -turn5
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -turn6
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
             center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
@@ -626,7 +616,7 @@ class navigation():
         h=550
         
         ## Define the coordinates of the region of interest (ROI)
-        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+50  # Adjust these coordinates as needed
+        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
         ## Default Resolution x = 320, y = 240
         
         ## Crop the image to the ROI
@@ -682,59 +672,54 @@ class navigation():
             cxavg = cxnet / moments
         
             turn0 = 0
-            turn1 = 0.25
-            turn2 = 0.3
-            turn3 = .35
-            turn4 = .4
-            turn5 = .45
-            turn6 = .5
+            turn1 = 0.75
+            turn2 = 1
+            turn3 = 1.2
+            turn4 = 2
+            turn5 = 3
             
             if cxavg >= 0 and cxavg < 128:
-                move.angular.z = turn6
+                move.angular.z = turn5
                 cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 128 and cxavg < 256:
-                move.angular.z = turn5
+                move.angular.z = turn4
                 cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 256 and cxavg < 384:
-                move.angular.z = turn4
+                move.angular.z = turn3
                 cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 384 and cxavg < 512:
-                move.angular.z = turn3
+                move.angular.z = turn2
                 cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 512 and cxavg < 630:
-                move.angular.z = turn2
-                cv2.putText(frame, str(cxavg) + " le", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            elif cxavg >= 630 and cxavg < 640:
                 move.angular.z = turn1
                 cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            elif cxavg == 640:
+                
+            elif cxavg >= 630 and cxavg < 650:
                 move.angular.z = turn0
                 cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            elif cxavg > 640 and cxavg < 650:
+                
+            elif cxavg >= 650 and cxavg < 768:
                 move.angular.z = -turn1
                 cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-            elif cxavg >= 650 and cxavg < 768:
-                move.angular.z = -turn2
-                cv2.putText(frame, str(cxavg) + " ri", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 768 and cxavg < 896:
-                move.angular.z = -turn3
+                move.angular.z = -turn2
                 cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 896 and cxavg < 1024:
-                move.angular.z = -turn4
+                move.angular.z = -turn3
                 cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             elif cxavg >= 1024 and cxavg < 1152:
-                move.angular.z = -turn5
+                move.angular.z = -turn4
                 cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
             else:
-                move.angular.z = -turn6
+                move.angular.z = -turn5
                 cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                 
         center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
@@ -809,61 +794,44 @@ class navigation():
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             if moments != 0:
                 cxavg = cxnet / moments
-                
                 turn0 = 0
                 turn1 = 0.25
-                turn2 = 0.5
-                turn3 = .75
-                turn4 = 1
-                turn5 = 1.25
-                turn6 = 1.5
-                
+                turn2 = 0.25
+                turn3 = 0.25
+                turn4 = 0.25
+                turn5 = 0.25
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = turn6
-                    cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
-                elif cxavg >= 128 and cxavg < 256:
                     move.angular.z = turn5
-                    cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
-                elif cxavg >= 256 and cxavg < 384:
+                    cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                elif cxavg >= 128 and cxavg < 256:
                     move.angular.z = turn4
-                    cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
-                elif cxavg >= 384 and cxavg < 512:
+                    cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                elif cxavg >= 256 and cxavg < 384:
                     move.angular.z = turn3
-                    cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
-                elif cxavg >= 512 and cxavg < 630:
+                    cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                elif cxavg >= 384 and cxavg < 512:
                     move.angular.z = turn2
-                    cv2.putText(frame, str(cxavg) + " le", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 630 and cxavg < 640:
+                    cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+                elif cxavg >= 512 and cxavg < 630:
                     move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg == 640:
+                elif cxavg >= 630 and cxavg < 650:
                     move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg > 640 and cxavg < 650:
+                elif cxavg >= 650 and cxavg < 768:
                     move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -turn2
-                    cv2.putText(frame, str(cxavg) + " ri", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -turn3
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -turn4
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -turn5
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-
                 else:
-                    move.angular.z = -turn6
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
             center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
             #print (center_coordinates)
@@ -931,61 +899,56 @@ class navigation():
             
             if moments != 0:
                 cxavg = cxnet / moments + 250
-
+            
                 turn0 = 0
-                turn1 = 0.125
-                turn2 = 0.25
-                turn3 = .5
-                turn4 = .75
-                turn5 = 1
-                turn6 = 1.25
-                
+                turn1 = .25
+                turn2 = .5
+                turn3 = .75
+                turn4 = 1
+                turn5 = 1.25
+    
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = turn6
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = turn5
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = turn4
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = turn3
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = turn2
-                    cv2.putText(frame, str(cxavg) + " le", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 630 and cxavg < 640:
                     move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg == 640:
+                    
+                elif cxavg >= 630 and cxavg < 650:
                     move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg > 640 and cxavg < 650:
+                    
+                elif cxavg >= 650 and cxavg < 768:
                     move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -turn2
-                    cv2.putText(frame, str(cxavg) + " ri", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -turn3
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -turn4
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -turn5
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -turn6
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
             center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
@@ -1109,59 +1072,54 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 0.125
-                turn2 = 0.25
-                turn3 = .5
-                turn4 = .75
-                turn5 = 1
-                turn6 = 1.25
-                
+                turn1 = .25
+                turn2 = .5
+                turn3 = .75
+                turn4 = 1
+                turn5 = 1.25
+    
                 if cxavg >= 0 and cxavg < 128:
-                    move.angular.z = turn6
+                    move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 128 and cxavg < 256:
-                    move.angular.z = turn5
+                    move.angular.z = turn4
                     cv2.putText(frame, str(cxavg) + " LEft", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 256 and cxavg < 384:
-                    move.angular.z = turn4
+                    move.angular.z = turn3
                     cv2.putText(frame, str(cxavg) + " Left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 384 and cxavg < 512:
-                    move.angular.z = turn3
+                    move.angular.z = turn2
                     cv2.putText(frame, str(cxavg) + " left", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 512 and cxavg < 630:
-                    move.angular.z = turn2
-                    cv2.putText(frame, str(cxavg) + " le", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 630 and cxavg < 640:
                     move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg == 640:
+                    
+                elif cxavg >= 630 and cxavg < 650:
                     move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg > 640 and cxavg < 650:
+                    
+                elif cxavg >= 650 and cxavg < 768:
                     move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                elif cxavg >= 650 and cxavg < 768:
-                    move.angular.z = -turn2
-                    cv2.putText(frame, str(cxavg) + " ri", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 768 and cxavg < 896:
-                    move.angular.z = -turn3
+                    move.angular.z = -turn2
                     cv2.putText(frame, str(cxavg) + " right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 896 and cxavg < 1024:
-                    move.angular.z = -turn4
+                    move.angular.z = -turn3
                     cv2.putText(frame, str(cxavg) + " Right", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 elif cxavg >= 1024 and cxavg < 1152:
-                    move.angular.z = -turn5
+                    move.angular.z = -turn4
                     cv2.putText(frame, str(cxavg) + " RIght", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                 else:
-                    move.angular.z = -turn6
+                    move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     
             center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
