@@ -1,0 +1,32 @@
+12:02:21.920: Clue SIZE: F SINGLE
+12:02:21.921: Clue VICTIM: Q ALIENS
+12:02:21.921: Clue CRIME: L TELEPORT
+12:02:21.921: Clue TIME: E NOON
+12:02:21.922: Clue PLACE: W CAVE
+12:02:21.922: Clue MOTIVE: R PRIDE
+12:02:21.922: Clue WEAPON: B WATER
+12:02:21.922: Clue BANDIT: W GOKU
+12:02:42.473: Message received: TEAM16,joebot,0,START
+12:02:42.474: Timer started.
+12:02:42.744: First command velocity received.
+12:02:44.637: Message received: TEAM16,joebot,1,FSINGLE
+12:02:44.644: Team total: 6 pts
+12:02:44.651: Awarded: 6 pts
+12:02:55.071: Message received: TEAM16,joebot,2,QALIENS
+12:02:55.072: Team total: 12 pts
+12:02:55.072: Awarded: 6 pts
+12:03:02.482: Message received: TEAM16,joebot,3,LTELEPORT
+12:03:02.483: Team total: 18 pts
+12:03:02.483: Awarded: 6 pts
+12:03:19.063: Message received: TEAM16,joebot,4,ENOON
+12:03:19.065: Team total: 24 pts
+12:03:19.066: Awarded: 6 pts
+12:03:52.299: Message received: TEAM16,joebot,5,WCAVE
+12:03:52.300: Team total: 30 pts
+12:03:52.302: Awarded: 6 pts
+12:04:14.418: Message received: TEAM16,joebot,6,RPRIDE
+12:04:14.419: Team total: 36 pts
+12:04:14.420: Awarded: 6 pts
+12:04:26.589: Message received: TEAM16,joebot,7,BWATER
+12:04:26.590: Team total: 44 pts
+12:04:26.591: Awarded: 8 pts

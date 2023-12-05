@@ -1,0 +1,29 @@
+11:53:08.391: Clue SIZE: K DOZEN
+11:53:08.391: Clue VICTIM: H BED BUGS
+11:53:08.391: Clue CRIME: X BITE
+11:53:08.393: Clue TIME: D WINTER
+11:53:08.394: Clue PLACE: V JUNGLE
+11:53:08.395: Clue MOTIVE: S HATE
+11:53:08.395: Clue WEAPON: D POTATO GUN
+11:53:08.395: Clue BANDIT: W GOKU
+11:53:29.636: Message received: TEAM16,joebot,0,START
+11:53:29.637: Timer started.
+11:53:29.932: First command velocity received.
+11:53:31.968: Message received: TEAM16,joebot,1,KDOZEN
+11:53:31.969: Team total: 6 pts
+11:53:31.972: Awarded: 6 pts
+11:53:42.340: Message received: TEAM16,joebot,2,HBEDBUGS
+11:53:42.340: Team total: 12 pts
+11:53:42.344: Awarded: 6 pts
+11:53:48.450: Message received: TEAM16,joebot,3,XBITE
+11:53:48.451: Team total: 18 pts
+11:53:48.451: Awarded: 6 pts
+11:54:02.092: Message received: TEAM16,joebot,4,DWINTER
+11:54:02.094: Team total: 24 pts
+11:54:02.095: Awarded: 6 pts
+11:54:36.819: Message received: TEAM16,joebot,5,VJUNGLE
+11:54:36.819: Team total: 30 pts
+11:54:36.821: Awarded: 6 pts
+11:55:10.259: Message received: TEAM16,joebot,7,DPOTATOGUN
+11:55:10.260: Team total: 38 pts
+11:55:10.260: Awarded: 8 pts

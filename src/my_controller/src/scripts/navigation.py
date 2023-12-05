@@ -427,11 +427,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 2.5
-                turn2 = 3.5
-                turn3 = 4.5
-                turn4 = 5.5
-                turn5 = 6.5
+                turn1 = 3
+                turn2 = 4
+                turn3 = 5
+                turn4 = 6
+                turn5 = 7
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -698,7 +698,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
-            cxavg = cxnet / moments + 30
+            cxavg = cxnet / moments + 20
         
             turn0 = 0
             turn1 = 0.75
@@ -1160,7 +1160,7 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-            min_area = 380
+            min_area = 400
             
             if len(pidcontours) != 0 and cv2.contourArea(max(pidcontours, key=cv2.contourArea)) > min_area:
                 self.turntotun = True          
