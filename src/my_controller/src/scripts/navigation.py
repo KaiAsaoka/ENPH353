@@ -60,6 +60,8 @@ class navigation():
         self.pastman = False
         self.roadSpeed = 0.5
         self.grassSpeed = 0.2
+        self.signtresh = 0
+        self.truth = ["SIZE","VICTIM","CRIME","TIME","PLACE","MOTIVE","WEAPON","BANDIT"]
         
         #### SET TRUE FOR REAL RUN
         self.predictions = True
@@ -214,9 +216,9 @@ class navigation():
             
                 largest_contour = max(contours, key=cv2.contourArea)
                 
-                signtresh = 31000  # minimum size of sign vector
+                  # minimum size of sign vector
                 
-                if (cv2.contourArea(largest_contour)) > signtresh:
+                if (cv2.contourArea(largest_contour)) > self.signtresh:
                     
                     if self.capture == False:
                         
@@ -307,19 +309,20 @@ class navigation():
     
             cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
+            print(self.truth)
     
 
     def tapefollow(self, data):
         
 
         if self.grassy == False: #Road detection
-            
+            self.signtresh = 31000
             self.roadFollow(data)
             
            
                 
         elif self.tunnel == False: # grassy area
-           
+            self.signthresh = 31000
             self.grassFollow(data)
             
         elif self.car == False:
@@ -1285,12 +1288,12 @@ class navigation():
             else:
                 self.white_count = 0
 
-            print(largest_contour_area)
+           
             pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
             cv2.imshow("SCANFORWHITE", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            print(self.white_count > white_count_threshold)
+            
             return self.white_count > white_count_threshold
 
 
@@ -1532,10 +1535,25 @@ class navigation():
         clue = ''.join(clue_prediction)
         cause = ''.join(cause_prediction)
 
-        clueid = getClue(clue)+1
+        clueid = self.getClue(clue)+1
         message = str('TEAM16,joebot,' + str(clueid) + ',' + cause)
         print(message)
         self.score_pub.publish(message)
+
+    def getClue(self, prediction):
+    
+        truth = ["SIZE","VICTIM","CRIME","TIME","PLACE","MOTIVE","WEAPON","BANDIT"]
+        distances = [Levenshtein.distance(prediction, word) for word in truth]
+        # Find the index of the minimum distance (closest match)
+        
+        closest_index = np.argmin(distances)
+        
+        if(truth[closest_index] in self.truth):
+            self.truth.remove(truth[closest_index])
+            return closest_index
+        else:
+            return -5
+            
 
     
 def findFullIndex(full):
@@ -1574,7 +1592,7 @@ def convert_to_one_hot(Y):
         #           len(Clue[1]) = len(Clue[0])
 def createClueCause(clue_sign,clue_truth,cause_sign,cause_truth):
     if len(clue_sign) != len(clue_truth) or len(cause_sign) != len(cause_truth):
-        #print("LENGTH NO MATCHING")
+        
         clue = []
         cause = []
         full = []
@@ -1648,15 +1666,6 @@ def loadCsv(path):
             clue_t.append(cleaned_clue_t)
             cause_t.append(cleaned_cause_t)
     return clue_t, cause_t
-
-def getClue(prediction):
-    truth = ["SIZE","VICTIM","CRIME","TIME","PLACE","MOTIVE","WEAPON","BANDIT"]
-    distances = [Levenshtein.distance(prediction, word) for word in truth]
-
-    # Find the index of the minimum distance (closest match)
-    closest_index = np.argmin(distances)
-
-    return closest_index
 
 def assign(sign,truth):
     rsign = []
