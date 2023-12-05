@@ -59,7 +59,7 @@ class navigation():
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         self.pastman = False
         self.roadSpeed = 0.5
-        self.grassSpeed = 0.25
+        self.grassSpeed = 0.2
         
         #### SET TRUE FOR REAL RUN
         self.predictions = True
@@ -214,7 +214,7 @@ class navigation():
             
                 largest_contour = max(contours, key=cv2.contourArea)
                 
-                signtresh = 30000  # minimum size of sign vector
+                signtresh = 31000  # minimum size of sign vector
                 
                 if (cv2.contourArea(largest_contour)) > signtresh:
                     
