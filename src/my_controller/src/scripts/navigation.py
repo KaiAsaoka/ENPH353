@@ -59,7 +59,7 @@ class navigation():
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         self.pastman = False
         self.roadSpeed = 0.5
-        self.grassSpeed = 0.2
+        self.grassSpeed = 0.25
         
         #### SET TRUE FOR REAL RUN
         self.predictions = True
