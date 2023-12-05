@@ -34,7 +34,7 @@ class navigation():
     def __init__(self):
         
         testTruck = False
-        testgrass = False
+        testgrass = True
         testYoda = False
         testTunnel = False
         
@@ -61,12 +61,15 @@ class navigation():
         self.grassSpeed = 0.3
         #### SET TRUE FOR REAL RUN
         self.predictions = False
-        self.grass2 = False
+        self.grassy2 = False
+        
+        self.climb = False
         print("Loaded template image file: " + self.template_path)
 
         self.white_count = 0
         self.times = 0
         self.capture_time = 99999 # big number
+        self.turnstart = 0
 
         self.clock_sub = rospy.Subscriber("/clock",Clock,self.clock_callback)
         self.score_pub = rospy.Publisher("/score_tracker",String,queue_size=1)
@@ -81,8 +84,8 @@ class navigation():
                 self.predictions = False
                 self.grassy = True
                 self.pastman = True
-                self.grassSpeed = 0
-                self.roadSpeed = 0
+                self.grassSpeed = 0.3
+                self.roadSpeed = 0.3
                 
         if testYoda == True:
                 self.predictions = False
@@ -158,8 +161,8 @@ class navigation():
             
             #### UNCOMMENT FOR REAL RUN
             self.image_raw = data
-            #self.tapefollow(data) 
-            self.tunnelClimb(data)
+            self.tapefollow(data) 
+            #self.turn(data)
              
             WIDTH = 600
             HEIGHT = 400
@@ -310,9 +313,11 @@ class navigation():
             
         elif self.turntotun == False:
             self.pidcar(data)
-            self.currentTime = self.times
         
-        elif self.grass2 == False:
+        elif self.climb  == False:
+            self.turn(data)
+
+        elif self.grassy2 == False:
             print("started tunnel climb")
             self.tunnelClimb(data)
         else:
@@ -591,7 +596,7 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-            if self.grass2 == False and self.scanfortunnel(frame):
+            if self.grassy2 == False and self.scanfortunnel(frame):
                 self.tunnel = True
 
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
@@ -632,54 +637,37 @@ class navigation():
             pidcontours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
             min_area = 50
-            
-        #if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) < min_area:
-            #move = Twist()
-            #move.linear.x = 0
-            #move.angular.z = 5
-            #self.move_pub.publish(move)
-        #else:
-        
             cx = 0
             cxnet = 0
             moments = 0
             cxavg = 640
-            
             pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
             ## Iterate through the contours and find the position of color change within the ROI
-            
-            if self.scanforwhite(frame):
+            if self.scanforwhite(frame,1700,2200):
                 self.grassy2 = True
                 print("grass time!!")
-                    
+    
             for contour in pidcontours:
-                
-                
                 ## Calculate the centroid of the contour
                 M = cv2.moments(contour)
                 if M["m00"] != 0:
                     cx = int(M["m10"] / M["m00"])
                     ## Add the ROI offset to get the position within the original image
                     cx += roi_x1
-                    
                     cxnet += cx
                     moments += 1
                     #print(f"Position of color change within ROI: ({cx}, {cy})")
-
             move = Twist()
             move.linear.x = SPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
-            
             if moments != 0:
                 cxavg = cxnet / moments
-            
                 turn0 = 0.25
                 turn1 = 0.25
                 turn2 = 0.25
                 turn3 = 0.25
                 turn4 = 0.25
                 turn5 = 0.25
-    
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
@@ -695,11 +683,9 @@ class navigation():
                 elif cxavg >= 512 and cxavg < 630:
                     move.angular.z = turn1
                     cv2.putText(frame, str(cxavg) + " l", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                    
                 elif cxavg >= 630 and cxavg < 650:
                     move.angular.z = turn0
                     cv2.putText(frame, str(cxavg) + " none", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                    
                 elif cxavg >= 650 and cxavg < 768:
                     move.angular.z = -turn1
                     cv2.putText(frame, str(cxavg) + " r", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
@@ -715,7 +701,6 @@ class navigation():
                 else:
                     move.angular.z = -turn5
                     cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
-                    
             center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
             #print (center_coordinates)
             radius = 30
@@ -723,7 +708,7 @@ class navigation():
             thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
-            cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
+            cv2.imshow("TUNNEL PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
@@ -1016,7 +1001,8 @@ class navigation():
             min_area = 300
             
             if len(pidcontours) != 0 and cv2.contourArea(max(pidcontours, key=cv2.contourArea)) > min_area:
-                self.turntotun = True            
+                self.turntotun = True          
+                self.turnstart = self.times 
 
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
@@ -1025,6 +1011,29 @@ class navigation():
 
             self.move_pub.publish(move)
     
+    def turn(self, data):
+        frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
+        while( self.times - self.turnstart < 2):
+            move = Twist()
+            move.linear.x = 0
+            move.linear.y = 0
+            move.linear.z = 0
+
+            move.angular.z = 1.5
+            self.move_pub.publish(move)
+        
+        move = Twist()
+        move.linear.x = 0.1
+        move.angular.z = 0
+        self.move_pub.publish(move)
+
+        bot_thresh = 0
+        top_thresh = 10000
+        if(self.scanforwhite(frame,bot_thresh,top_thresh)):
+            self.climb = True
+            print("climbing")
+
+
     def scanforcar(self, frameorig):
     
         frame = frameorig.copy()
@@ -1069,7 +1078,7 @@ class navigation():
             return False
     # Read sign takes a perspective transformed image and a sign to read
     #
-    def scanforwhite(self,frameorig):
+    def scanforwhite(self,frameorig,bot,top):
             
             frame = frameorig.copy()
 
@@ -1106,12 +1115,10 @@ class navigation():
                     largest_contour_area = area
                     largest_contour = contour
 
-            white_lthreshold = 1700
-            white_hthreshold = 2200
             white_count_threshold = 10
             
 
-            if(white_hthreshold > largest_contour_area > white_lthreshold):
+            if(top > largest_contour_area > bot):
                 self.white_count += 1
             else:
                 self.white_count = 0
@@ -1121,7 +1128,7 @@ class navigation():
             cv2.imshow("SCANFORWHITE", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-
+            print(self.white_count > white_count_threshold)
             return self.white_count > white_count_threshold
 
 
