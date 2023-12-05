@@ -323,7 +323,7 @@ class navigation():
             self.grassFollow(data)
             
         elif self.car == False:
-            
+            self.predictions = False
             self.carTunnel(data)
             
         elif self.turntotun == False:
@@ -331,6 +331,7 @@ class navigation():
         
         elif self.climb  == False:
             self.turn(data)
+            self.predictions = True
 
         elif self.grassy2 == False:
             print("started tunnel climb")
