@@ -1,0 +1,23 @@
+13:54:55.999: Clue SIZE: X COUNTLESS
+13:54:56.000: Clue VICTIM: S DINOSAURS
+13:54:56.000: Clue CRIME: F DESTROY
+13:54:56.000: Clue TIME: D D DAY
+13:54:56.018: Clue PLACE: A BEACH
+13:54:56.019: Clue MOTIVE: U GLUTTONY
+13:54:56.019: Clue WEAPON: O ELECTRON
+13:54:56.019: Clue BANDIT: L THANOS
+13:55:00.879: Message received: TEAM16,joebot,0,START
+13:55:00.879: Timer started.
+13:55:01.272: First command velocity received.
+13:55:03.518: Message received: TEAM16,joebot,1,XCOUNTLESS
+13:55:03.518: Team total: 6 pts
+13:55:03.521: Awarded: 6 pts
+13:55:15.754: Message received: TEAM16,joebot,2,SDINOSAURS
+13:55:15.754: Team total: 12 pts
+13:55:15.755: Awarded: 6 pts
+13:55:21.567: Message received: TEAM16,joebot,3,FDESTROY
+13:55:21.568: Team total: 18 pts
+13:55:21.570: Awarded: 6 pts
+13:55:34.064: Message received: TEAM16,joebot,4,DDDAY
+13:55:34.065: Team total: 24 pts
+13:55:34.065: Awarded: 6 pts

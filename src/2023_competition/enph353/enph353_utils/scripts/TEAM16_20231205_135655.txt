@@ -1,0 +1,32 @@
+13:56:52.091: Clue SIZE: G TRIPLETS
+13:56:52.091: Clue VICTIM: D ROBOTS
+13:56:52.091: Clue CRIME: R PUNCH
+13:56:52.094: Clue TIME: V DUSK
+13:56:52.094: Clue PLACE: V CLASS
+13:56:52.094: Clue MOTIVE: J GLUTTONY
+13:56:52.094: Clue WEAPON: G FIRE
+13:56:52.095: Clue BANDIT: F LUIGI
+13:56:55.392: Message received: TEAM16,joebot,0,START
+13:56:55.393: Timer started.
+13:56:55.664: First command velocity received.
+13:56:57.897: Message received: TEAM16,joebot,1,GTRIPLETS
+13:56:57.898: Team total: 6 pts
+13:56:57.899: Awarded: 6 pts
+13:57:09.832: Message received: TEAM16,joebot,2,DROBOTS
+13:57:09.833: Team total: 12 pts
+13:57:09.834: Awarded: 6 pts
+13:57:15.965: Message received: TEAM16,joebot,3,RPUNCH
+13:57:15.966: Team total: 18 pts
+13:57:15.969: Awarded: 6 pts
+13:57:28.102: Message received: TEAM16,joebot,4,VDUSK
+13:57:28.104: Team total: 24 pts
+13:57:28.106: Awarded: 6 pts
+13:58:02.197: Message received: TEAM16,joebot,5,VCLASS
+13:58:02.198: Team total: 30 pts
+13:58:02.199: Awarded: 6 pts
+13:58:24.040: Message received: TEAM16,joebot,6,JGLUTTONY
+13:58:24.041: Team total: 36 pts
+13:58:24.043: Awarded: 6 pts
+13:58:38.295: Message received: TEAM16,joebot,7,GFIRE
+13:58:38.296: Team total: 44 pts
+13:58:38.298: Awarded: 8 pts

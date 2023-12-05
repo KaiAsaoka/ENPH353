@@ -418,9 +418,9 @@ class navigation():
             
                 turn0 = 0
                 turn1 = 1.25
-                turn2 = 3.5
-                turn3 = 4
-                turn4 = 4.5
+                turn2 = 4
+                turn3 = 4.5
+                turn4 = 5
                 turn5 = 5.5
     
                 if cxavg >= 0 and cxavg < 128:
@@ -818,8 +818,8 @@ class navigation():
                 turn1 = 0.3
                 turn2 = 0.3
                 turn3 = 0.3
-                turn4 = 0.4
-                turn5 = 0.5
+                turn4 = .75
+                turn5 = 1
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
                     cv2.putText(frame, str(cxavg) + " LEFT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
