@@ -60,7 +60,7 @@ class navigation():
         self.pastman = False
         self.roadSpeed = 0.5
         self.grassSpeed = 0.2
-        self.signtresh = 0
+        self.signthresh = 0
         self.truth = ["SIZE","VICTIM","CRIME","TIME","PLACE","MOTIVE","WEAPON","BANDIT"]
         
         #### SET TRUE FOR REAL RUN
@@ -205,8 +205,8 @@ class navigation():
                 largest_contour = max(contours, key=cv2.contourArea)
                 
                   # minimum size of sign vector
-                
-                if (cv2.contourArea(largest_contour)) > self.signtresh:
+                print(cv2.contourArea(largest_contour))
+                if (cv2.contourArea(largest_contour)) > self.signthresh:
                     
                     if self.capture == False:
                         
@@ -303,7 +303,7 @@ class navigation():
         
 
         if self.grassy == False: #Road detection
-            self.signtresh = 30000
+            self.signthresh = 30000
             self.roadFollow(data)
             
            
@@ -328,7 +328,7 @@ class navigation():
             self.tunnelClimb(data)
         else:
             self.grassFollow2(data)
-            self.signthresh = 75000
+            self.signthresh = 35000
             
             
             
