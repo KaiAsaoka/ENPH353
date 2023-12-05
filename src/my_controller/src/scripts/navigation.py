@@ -626,12 +626,12 @@ class navigation():
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
         
-        h = 430
+        h = 330
         
         w = 0
         
         ## Define the coordinates of the region of interest (ROI)
-        roi_x1, roi_y1, roi_x2, roi_y2 = 0 + w, h, 1280 - w, h+200  # Adjust these coordinates as needed
+        roi_x1, roi_y1, roi_x2, roi_y2 = 0 + w, h, 1280 - w, h+300  # Adjust these coordinates as needed
         ## Default Resolution x = 320, y = 240
         
         ## Crop the image to the ROI
@@ -640,7 +640,7 @@ class navigation():
         
         hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
         lower_white = hsvConv (30, 10, 60)
-        upper_white = hsvConv (75, 32, 90)
+        upper_white = hsvConv (75, 34, 90)
         white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
         ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
@@ -648,11 +648,18 @@ class navigation():
         ## Find contours in the binary mask
         pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
-                    
-        min_area = 1400
-        max_area = 100000
-        
-        pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
+
+        # Calculate the area of each contour
+        contour_areas = [cv2.contourArea(contour) for contour in pidcontours]
+
+        # Combine the contours and their areas into a list of tuples
+        contours_and_areas = zip(pidcontours, contour_areas)
+
+        # Sort the contours by area in descending order
+        contours_and_areas = sorted(contours_and_areas, key=lambda x: x[1], reverse=True)
+
+        # Extract the two largest contours
+        pidcontours = [contour for contour, area in contours_and_areas[:2]]
         
         cx = 0
         cxnet = 0
