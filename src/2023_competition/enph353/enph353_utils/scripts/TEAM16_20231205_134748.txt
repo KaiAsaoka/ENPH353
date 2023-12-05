@@ -1,0 +1,22 @@
+13:47:34.043: Clue SIZE: QUINTUPLETS
+13:47:34.043: Clue VICTIM: G DINOSAURS
+13:47:34.044: Clue CRIME: M STEAL
+13:47:34.045: Clue TIME: Z DAWN
+13:47:34.045: Clue PLACE: E MOON
+13:47:34.045: Clue MOTIVE: Z THRILL
+13:47:34.045: Clue WEAPON: O ROPE
+13:47:34.046: Clue BANDIT: U BARBIE
+13:47:48.616: Message received: TEAM16,joebot,0,START
+13:47:48.616: Timer started.
+13:47:48.890: First command velocity received.
+13:47:51.191: Message received: TEAM16,joebot,1,QUINTUPLETS
+13:47:51.192: Team total: 6 pts
+13:47:51.194: Awarded: 6 pts
+13:48:01.707: Message received: TEAM16,joebot,2,GDINOSAURS
+13:48:01.708: Team total: 12 pts
+13:48:01.710: Awarded: 6 pts
+13:48:07.661: Message received: TEAM16,joebot,3,MSTEAL
+13:48:07.662: Team total: 18 pts
+13:48:07.665: Awarded: 6 pts
+13:48:41.973: Message received: TEAM16,joebot,4,4MYYMYY
+13:48:41.973: Awarded: 0 pts
