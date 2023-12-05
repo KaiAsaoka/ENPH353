@@ -322,7 +322,7 @@ class navigation():
             self.predictions = True
 
         else:
-            print("started tunnel climb")
+            #print("started tunnel climb")
             self.grassFollow2(data)
             self.signthresh = 35000
             
@@ -921,9 +921,9 @@ class navigation():
                 turn0 = 0
                 turn1 = .5
                 turn2 = .75
-                turn3 = 3
-                turn4 = 5
-                turn5 = 7
+                turn3 = 9
+                turn4 = 9
+                turn5 = 9
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -1387,8 +1387,8 @@ class navigation():
             redcont, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
-            cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            #cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+            #cv2.waitKey(1)
             min_area = 35000
             print("scanning for blue")
             if (len(redcont) != 0):
