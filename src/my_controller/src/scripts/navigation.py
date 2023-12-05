@@ -58,9 +58,9 @@ class navigation():
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         self.pastman = False
         self.roadSpeed = 0.5
-        self.grassSpeed = 0.3
+        self.grassSpeed = 0.2
         #### SET TRUE FOR REAL RUN
-        self.predictions = False
+        self.predictions = True
         self.grassy2 = False
         
         self.climb = False
@@ -1340,7 +1340,7 @@ class navigation():
             
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
             
-            min_area = 4000
+            min_area = 3000
             
             if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
                 
