@@ -269,9 +269,9 @@ class navigation():
                         
                         ### Screens
                         lettermask = dst.copy()
-                        letterimage = cv2.drawContours(lettermask, self.letters, -1, (0, 255, 0), 1)    
-                        cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
-                        cv2.waitKey(1)
+                        # letterimage = cv2.drawContours(lettermask, self.letters, -1, (0, 255, 0), 1)    
+                        # cv2.imshow("Letter Image", cv2.cvtColor(letterimage, cv2.COLOR_RGB2BGR))
+                        # cv2.waitKey(1)
     
                         dstup = dst.copy()
                         uletterimage = cv2.drawContours(dstup, self.clue_sign, -1, (0, 255, 0), 1)
@@ -486,6 +486,7 @@ class navigation():
 
 
     def grassFollow(self,data):
+        
             GRASSSPEED = self.grassSpeed
             
             frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
@@ -778,11 +779,11 @@ class navigation():
             #tunnel_copy = hsv_tunnel.copy()
             tunnel_contours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             tunnel = cv2.drawContours(frame.copy(), tunnel_contours, -1, (0, 255, 0), 1)
-            cv2.imshow("Tunnel", cv2.cvtColor(tunnel, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            # cv2.imshow("Tunnel", cv2.cvtColor(tunnel, cv2.COLOR_RGB2BGR))
+
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
-            cv2.imshow("tunnel mask", cv2.cvtColor(tunnel_mask, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("tunnel mask", cv2.cvtColor(tunnel_mask, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
             pidcontours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -860,7 +861,7 @@ class navigation():
             thickness = -1 # Thickness of the circle's border (use -1 for a filled circle)
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
-            cv2.imshow("TUNNEL PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
+            cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
@@ -923,9 +924,9 @@ class navigation():
                 turn0 = 0
                 turn1 = .5
                 turn2 = .75
-                turn3 = 1
-                turn4 = 3
-                turn5 = 5
+                turn3 = 3
+                turn4 = 5
+                turn5 = 7
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -1011,8 +1012,8 @@ class navigation():
             #tunnel_copy = hsv_tunnel.copy()
             tunnel_contours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)            
             pid_img = cv2.drawContours(frame, tunnel_contours, -1, (0, 255, 0), 1)
-            cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            # cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+            # cv2.waitKey(1)
 
             min_area = 30
             
@@ -1048,7 +1049,7 @@ class navigation():
             car_mask = cv2.bitwise_or(car_masklow, car_maskhigh)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
-            cv2.imshow("car mask", cv2.cvtColor(car_mask, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("car mask", cv2.cvtColor(car_mask, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
             pidcontours, _ = cv2.findContours(car_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
@@ -1165,6 +1166,9 @@ class navigation():
     
     def turn(self, data):
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
+        cv2.imshow("Contour Image", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+        cv2.waitKey(1)
+
         while( self.times - self.turnstart < 2):
             move = Twist()
             move.linear.x = 0
@@ -1212,14 +1216,14 @@ class navigation():
         ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
 
-        cv2.imshow("red mask", cv2.cvtColor(car_mask, cv2.COLOR_RGB2BGR))
-        cv2.waitKey(1)
+        # cv2.imshow("red mask", cv2.cvtColor(car_mask, cv2.COLOR_RGB2BGR))
+        # cv2.waitKey(1)
 
         ## Find contours in the binary mask
         redcont, _ = cv2.findContours(car_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
         pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
-        cv2.imshow("car cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+        # cv2.imshow("car cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
 
         min_area = 2
         
@@ -1277,8 +1281,8 @@ class navigation():
 
            
             pid_img = cv2.drawContours(roi_image.copy(), pidcontours, -1, (0, 255, 0), 1)
-            cv2.imshow("SCANFORWHITE", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
+            # cv2.imshow("SCANFORWHITE", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+            # cv2.waitKey(1)
 
             
             return self.white_count > white_count_threshold
@@ -1392,15 +1396,15 @@ class navigation():
             #truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
                         ## Find contours in the binary mask
             truckcont, _ = cv2.findContours(truck_masklow, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            min_area = 250
+            min_area = 275
             max_area = 100000
             
             truckcont = [contour for contour in truckcont if min_area < cv2.contourArea(contour) < max_area]
             
             pid_img = cv2.drawContours(roi_image, truckcont, -1, (0, 255, 0), 1)
             
-            cv2.imshow("truck mask", cv2.cvtColor(truck_masklow, cv2.COLOR_RGB2BGR))
-            cv2.imshow("truck cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("truck mask", cv2.cvtColor(truck_masklow, cv2.COLOR_RGB2BGR))
+            # cv2.imshow("truck cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
 
             cv2.waitKey(1)
             

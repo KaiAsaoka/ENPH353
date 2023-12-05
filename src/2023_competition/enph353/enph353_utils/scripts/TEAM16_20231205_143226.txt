@@ -1,0 +1,34 @@
+14:32:24.577: Clue SIZE: W RAYO10
+14:32:24.578: Clue VICTIM: R JEDIS
+14:32:24.578: Clue CRIME: T TRESPASS
+14:32:24.578: Clue TIME: L DUSK
+14:32:24.579: Clue PLACE: D BENU
+14:32:24.579: Clue MOTIVE: K REVENGE
+14:32:24.579: Clue WEAPON: J NEUTRINOS
+14:32:24.579: Clue BANDIT: T LUIGI
+14:32:26.735: Message received: TEAM16,joebot,0,START
+14:32:26.735: Timer started.
+14:32:27.022: First command velocity received.
+14:32:29.047: Message received: TEAM16,joebot,1,WRAYO10
+14:32:29.048: Team total: 6 pts
+14:32:29.049: Awarded: 6 pts
+14:32:40.598: Message received: TEAM16,joebot,2,RJEDIS
+14:32:40.599: Team total: 12 pts
+14:32:40.599: Awarded: 6 pts
+14:32:47.220: Message received: TEAM16,joebot,3,TTRESPASS
+14:32:47.221: Team total: 18 pts
+14:32:47.226: Awarded: 6 pts
+14:32:58.985: Message received: TEAM16,joebot,4,LDUSK
+14:32:58.988: Team total: 24 pts
+14:32:58.990: Awarded: 6 pts
+14:33:32.682: Message received: TEAM16,joebot,5,DBENU
+14:33:32.683: Team total: 30 pts
+14:33:32.684: Awarded: 6 pts
+14:33:54.303: Message received: TEAM16,joebot,6,KREVENGE
+14:33:54.303: Team total: 36 pts
+14:33:54.312: Awarded: 6 pts
+14:35:14.014: Message received: TEAM16,joebot,8,TLUIGI
+14:35:14.015: Team total: 44 pts
+14:35:14.017: Awarded: 8 pts
+14:35:16.265: Bonus completed: +5 points
+14:35:16.266: Team total: 49 pts

@@ -1,0 +1,23 @@
+14:29:45.704: Clue SIZE: QUINTUPLETS
+14:29:45.704: Clue VICTIM: S CITIZENS
+14:29:45.704: Clue CRIME: I STEAL
+14:29:45.706: Clue TIME: M DAWN
+14:29:45.706: Clue PLACE: M HOSPITAL
+14:29:45.706: Clue MOTIVE: W BOREDOM
+14:29:45.706: Clue WEAPON: L POTATO GUN
+14:29:45.707: Clue BANDIT: Y HANNIBAL
+14:29:50.244: Message received: TEAM16,joebot,0,START
+14:29:50.245: Timer started.
+14:29:50.539: First command velocity received.
+14:29:52.987: Message received: TEAM16,joebot,1,QUINTUPLETS
+14:29:52.988: Team total: 6 pts
+14:29:52.988: Awarded: 6 pts
+14:30:07.061: Message received: TEAM16,joebot,2,SCITIZENS
+14:30:07.062: Team total: 12 pts
+14:30:07.064: Awarded: 6 pts
+14:30:12.919: Message received: TEAM16,joebot,3,ISTEAL
+14:30:12.920: Team total: 18 pts
+14:30:12.922: Awarded: 6 pts
+14:30:35.123: Message received: TEAM16,joebot,4,MDAWN
+14:30:35.125: Team total: 24 pts
+14:30:35.127: Awarded: 6 pts
