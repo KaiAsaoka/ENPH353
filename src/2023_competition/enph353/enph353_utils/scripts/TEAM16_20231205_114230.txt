@@ -1,0 +1,31 @@
+11:42:24.329: Clue SIZE: T DOZEN
+11:42:24.329: Clue VICTIM: V JEDIS
+11:42:24.329: Clue CRIME: D CURSE
+11:42:24.330: Clue TIME: M WINTER
+11:42:24.330: Clue PLACE: N BASEMENT
+11:42:24.330: Clue MOTIVE: Y LOVE
+11:42:24.330: Clue WEAPON: B PENCIL
+11:42:24.331: Clue BANDIT: B SHREK
+11:42:24.703: First command velocity received.
+11:42:30.054: Message received: TEAM16,joebot,0,START
+11:42:30.054: Timer started.
+11:42:32.241: Message received: TEAM16,joebot,1,TDOZEN
+11:42:32.242: Team total: 6 pts
+11:42:32.244: Awarded: 6 pts
+11:42:43.310: Message received: TEAM16,joebot,2,VJEDIS
+11:42:43.311: Team total: 12 pts
+11:42:43.312: Awarded: 6 pts
+11:42:50.009: Message received: TEAM16,joebot,3,DCURSE
+11:42:50.010: Team total: 18 pts
+11:42:50.010: Awarded: 6 pts
+11:43:03.162: Message received: TEAM16,joebot,4,MWI7LTER
+11:43:03.165: Awarded: 0 pts
+11:43:37.071: Message received: TEAM16,joebot,5,NBASEMENT
+11:43:37.072: Team total: 24 pts
+11:43:37.074: Awarded: 6 pts
+11:43:58.718: Message received: TEAM16,joebot,6,YLOVE
+11:43:58.718: Team total: 30 pts
+11:43:58.720: Awarded: 6 pts
+11:44:11.970: Message received: TEAM16,joebot,7,BPENCIL
+11:44:11.970: Team total: 38 pts
+11:44:11.973: Awarded: 8 pts
