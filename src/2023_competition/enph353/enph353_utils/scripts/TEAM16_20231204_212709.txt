@@ -1,0 +1,23 @@
+21:26:54.442: Clue SIZE: H TRIPLETS
+21:26:54.443: Clue VICTIM: Y PARROTS
+21:26:54.443: Clue CRIME: P IRRADIATE
+21:26:54.448: Clue TIME: I 2023
+21:26:54.453: Clue PLACE: J FOREST
+21:26:54.453: Clue MOTIVE: U BOREDOM
+21:26:54.453: Clue WEAPON: H ELECTRON
+21:26:54.453: Clue BANDIT: J THANOS
+21:27:09.459: Message received: TEAM16,joebot,0,START
+21:27:09.460: Timer started.
+21:27:09.773: First command velocity received.
+21:27:12.013: Message received: TEAM16,joebot,1,HTRIPLETS
+21:27:12.014: Team total: 6 pts
+21:27:12.023: Awarded: 6 pts
+21:27:27.324: Message received: TEAM16,joebot,2,YPARROTS
+21:27:27.324: Team total: 12 pts
+21:27:27.326: Awarded: 6 pts
+21:27:33.627: Message received: TEAM16,joebot,3,PIRRADIATE
+21:27:33.627: Team total: 18 pts
+21:27:33.627: Awarded: 6 pts
+21:27:47.245: Message received: TEAM16,joebot,1,
+21:27:47.247: Team total: 12 pts
+21:27:47.250: Awarded: 0 pts

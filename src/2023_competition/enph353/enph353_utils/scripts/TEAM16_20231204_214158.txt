@@ -1,0 +1,23 @@
+21:41:52.207: Clue SIZE: E DOZEN
+21:41:52.207: Clue VICTIM: Y BUNNIES
+21:41:52.208: Clue CRIME: K CURSE
+21:41:52.209: Clue TIME: E Q DAY
+21:41:52.209: Clue PLACE: W JUNGLE
+21:41:52.209: Clue MOTIVE: N PASSION
+21:41:52.210: Clue WEAPON: L PLASMA
+21:41:52.210: Clue BANDIT: J SHREK
+21:41:53.114: First command velocity received.
+21:41:58.311: Message received: TEAM16,joebot,0,START
+21:41:58.312: Timer started.
+21:42:00.502: Message received: TEAM16,joebot,1,EDOZEN
+21:42:00.502: Team total: 6 pts
+21:42:00.502: Awarded: 6 pts
+21:42:11.145: Message received: TEAM16,joebot,2,YBUNNIES
+21:42:11.146: Team total: 12 pts
+21:42:11.148: Awarded: 6 pts
+21:42:17.295: Message received: TEAM16,joebot,3,KCURSE
+21:42:17.296: Team total: 18 pts
+21:42:17.300: Awarded: 6 pts
+21:42:32.014: Message received: TEAM16,joebot,1,
+21:42:32.015: Team total: 12 pts
+21:42:32.017: Awarded: 0 pts

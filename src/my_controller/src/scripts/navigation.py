@@ -405,20 +405,24 @@ class navigation():
             move.linear.x = SPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             
+            turn = True
+            
             if self.pastman == False:
                 if self.scanforred(frame) == True:
                     move.linear.x = 0
+                    turn = False
                     if self.scanforman(frame) == True:
                         self.pastman = True
                         print("self.pastman =" + str(self.pastman))
                         
             if self.pastman == True:
                 if self.scanfortruck(frame) == True:
-                    move.linear.x = 0.05
+                    move.linear.x = 0
+                    turn = False
                     
             
             
-            if moments != 0:
+            if moments != 0 and turn == True:
                 cxavg = cxnet / moments
             
                 turn0 = 0
@@ -693,7 +697,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
-            cxavg = cxnet / moments + 20
+            cxavg = cxnet / moments + 30
         
             turn0 = 0
             turn1 = 0.75
@@ -818,7 +822,7 @@ class navigation():
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             if moments != 0:
                 
-                cxavg = cxnet / moments + 20
+                cxavg = cxnet / moments + 30
                 turn0 = 0
                 turn1 = 0.25
                 turn2 = 0.25
@@ -1019,7 +1023,7 @@ class navigation():
             cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            min_area = 40
+            min_area = 35
             
             if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) > min_area:
                 print("tunnel pog!!")
