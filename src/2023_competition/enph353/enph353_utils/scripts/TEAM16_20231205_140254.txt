@@ -1,0 +1,23 @@
+14:02:50.190: Clue SIZE: QUINTUPLETS
+14:02:50.191: Clue VICTIM: H ROBOTS
+14:02:50.191: Clue CRIME: T ACCELERATE
+14:02:50.192: Clue TIME: X JURASIC
+14:02:50.192: Clue PLACE: Z HOSPITAL
+14:02:50.192: Clue MOTIVE: Q FEAR
+14:02:50.192: Clue WEAPON: J ANTIMATTER
+14:02:50.193: Clue BANDIT: Z GOKU
+14:02:54.097: Message received: TEAM16,joebot,0,START
+14:02:54.097: Timer started.
+14:02:54.348: First command velocity received.
+14:02:56.681: Message received: TEAM16,joebot,1,QUINTUPLETS
+14:02:56.681: Team total: 6 pts
+14:02:56.682: Awarded: 6 pts
+14:03:07.820: Message received: TEAM16,joebot,2,HROBOTS
+14:03:07.821: Team total: 12 pts
+14:03:07.821: Awarded: 6 pts
+14:03:14.670: Message received: TEAM16,joebot,3,TACCELERATE
+14:03:14.671: Team total: 18 pts
+14:03:14.673: Awarded: 6 pts
+14:03:29.638: Message received: TEAM16,joebot,4,XJURASIC
+14:03:29.639: Team total: 24 pts
+14:03:29.641: Awarded: 6 pts

@@ -1,0 +1,20 @@
+14:00:20.974: Clue SIZE: N SINGLE
+14:00:20.975: Clue VICTIM: H DINOSAURS
+14:00:20.975: Clue CRIME: P BITE
+14:00:20.977: Clue TIME: L SPRING
+14:00:20.978: Clue PLACE: I SEWERS
+14:00:20.978: Clue MOTIVE: Z BOREDOM
+14:00:20.978: Clue WEAPON: Y ANTIMATTER
+14:00:20.979: Clue BANDIT: D TEMUJIN
+14:00:27.073: Message received: TEAM16,joebot,0,START
+14:00:27.075: Timer started.
+14:00:27.378: First command velocity received.
+14:00:29.477: Message received: TEAM16,joebot,1,NSINGLE
+14:00:29.478: Team total: 6 pts
+14:00:29.478: Awarded: 6 pts
+14:00:41.010: Message received: TEAM16,joebot,2,HDINOSAURS
+14:00:41.010: Team total: 12 pts
+14:00:41.012: Awarded: 6 pts
+14:00:46.350: Message received: TEAM16,joebot,3,PBITE
+14:00:46.351: Team total: 18 pts
+14:00:46.352: Awarded: 6 pts

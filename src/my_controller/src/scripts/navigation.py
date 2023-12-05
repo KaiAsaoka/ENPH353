@@ -414,7 +414,7 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1.25
+                turn1 = 1.75
                 turn2 = 4
                 turn3 = 4.5
                 turn4 = 5
@@ -1089,11 +1089,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = .5
-                turn2 = .75
-                turn3 = 1.25
-                turn4 = 1.5
-                turn5 = 1.75
+                turn1 = .25
+                turn2 = .5
+                turn3 = 1.5
+                turn4 = 1.75
+                turn5 = 2
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -1421,7 +1421,7 @@ class navigation():
             #truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
                         ## Find contours in the binary mask
             truckcont, _ = cv2.findContours(truck_masklow, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            min_area = 200
+            min_area = 250
             max_area = 100000
             
             truckcont = [contour for contour in truckcont if min_area < cv2.contourArea(contour) < max_area]
