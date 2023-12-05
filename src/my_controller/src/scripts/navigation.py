@@ -328,6 +328,7 @@ class navigation():
             self.tunnelClimb(data)
         else:
             self.grassFollow2(data)
+            self.signthresh = 75000
             
             
             
@@ -1520,11 +1521,12 @@ class navigation():
 
         clue = ''.join(clue_prediction)
         cause = ''.join(cause_prediction)
-
         clueid = self.getClue(clue)+1
-        message = str('TEAM16,joebot,' + str(clueid) + ',' + cause)
-        print(message)
-        self.score_pub.publish(message)
+        if(clueid > 0):
+        
+            message = str('TEAM16,joebot,' + str(clueid) + ',' + cause)
+            print(message)
+            self.score_pub.publish(message)
 
     def getClue(self, prediction):
     
