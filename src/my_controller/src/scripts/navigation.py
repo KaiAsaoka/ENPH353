@@ -37,7 +37,7 @@ class navigation():
         testgrass = False
         testYoda = False
         testTunnel = False
-        testGrass2 = True
+        testGrass2 = False
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
@@ -60,8 +60,10 @@ class navigation():
         self.pastman = False
         self.roadSpeed = 0.5
         self.grassSpeed = 0.2
+        
         #### SET TRUE FOR REAL RUN
-        self.predictions = False
+        self.predictions = True
+        
         self.grassy2 = False
         
         self.climb = False
@@ -119,7 +121,7 @@ class navigation():
                 
             
 
-        #rostopic pub /read_sign std_msgs/Int32 "data: 0"
+        #rostopic pub /predict_sign std_msgs/Int32 "data: 0"
         if self.predictions:
             self.start = False
 
@@ -691,7 +693,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
-            cxavg = cxnet / moments
+            cxavg = cxnet / moments + 20
         
             turn0 = 0
             turn1 = 0.75
