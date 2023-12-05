@@ -817,7 +817,8 @@ class navigation():
             move.linear.x = SPEED
             cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
             if moments != 0:
-                cxavg = cxnet / moments
+                
+                cxavg = cxnet / moments + 20
                 turn0 = 0
                 turn1 = 0.25
                 turn2 = 0.25
@@ -1018,7 +1019,7 @@ class navigation():
             cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            min_area = 20
+            min_area = 30
             
             if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) > min_area:
                 print("tunnel pog!!")
