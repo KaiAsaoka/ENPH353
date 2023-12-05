@@ -37,6 +37,7 @@ class navigation():
         testgrass = False
         testYoda = False
         testTunnel = False
+        testGrass2 = True
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
@@ -60,7 +61,7 @@ class navigation():
         self.roadSpeed = 0.5
         self.grassSpeed = 0.2
         #### SET TRUE FOR REAL RUN
-        self.predictions = True
+        self.predictions = False
         self.grassy2 = False
         
         self.climb = False
@@ -104,7 +105,19 @@ class navigation():
                 self.grassSpeed = 0
                 self.roadSpeed = 0
             
-    
+        if testGrass2 == True:
+                self.predictions = False
+                self.grassy2 = True
+                self.climb = True
+                self.turntotun = True
+                self.tunnel = True
+                self.car = True
+                self.grassy = True
+                self.pastman = True
+
+        
+                
+            
 
         #rostopic pub /read_sign std_msgs/Int32 "data: 0"
         if self.predictions:
@@ -613,10 +626,12 @@ class navigation():
         
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
         
-        h=550
+        h = 430
+        
+        w = 0
         
         ## Define the coordinates of the region of interest (ROI)
-        roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
+        roi_x1, roi_y1, roi_x2, roi_y2 = 0 + w, h, 1280 - w, h+200  # Adjust these coordinates as needed
         ## Default Resolution x = 320, y = 240
         
         ## Crop the image to the ROI
@@ -625,7 +640,7 @@ class navigation():
         
         hsv_image = cv2.cvtColor(roi_image, cv2.COLOR_RGB2HSV)
         lower_white = hsvConv (30, 10, 60)
-        upper_white = hsvConv (75, 30, 90)
+        upper_white = hsvConv (75, 32, 90)
         white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
         ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
@@ -634,7 +649,7 @@ class navigation():
         pidcontours, _ = cv2.findContours(white_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
                     
-        min_area = 1000
+        min_area = 1400
         max_area = 100000
         
         pidcontours = [contour for contour in pidcontours if min_area < cv2.contourArea(contour) < max_area]
