@@ -1,0 +1,36 @@
+11:32:01.050: Clue SIZE: V TRIPLETS
+11:32:01.050: Clue VICTIM: I BUNNIES
+11:32:01.051: Clue CRIME: S TELEPORT
+11:32:01.051: Clue TIME: N DUSK
+11:32:01.052: Clue PLACE: R HOSPITAL
+11:32:01.052: Clue MOTIVE: O GLUTTONY
+11:32:01.053: Clue WEAPON: Q POLONIUM
+11:32:01.053: Clue BANDIT: D CAO CAO
+11:32:02.179: First command velocity received.
+11:32:07.190: Message received: TEAM16,joebot,0,START
+11:32:07.191: Timer started.
+11:32:09.523: Message received: TEAM16,joebot,1,VTRIPLETS
+11:32:09.523: Team total: 6 pts
+11:32:09.526: Awarded: 6 pts
+11:32:20.202: Message received: TEAM16,joebot,2,IBUNNIES
+11:32:20.202: Team total: 12 pts
+11:32:20.203: Awarded: 6 pts
+11:32:26.272: Message received: TEAM16,joebot,3,STELEPORT
+11:32:26.273: Team total: 18 pts
+11:32:26.273: Awarded: 6 pts
+11:32:39.665: Message received: TEAM16,joebot,1,
+11:32:39.668: Team total: 12 pts
+11:32:39.669: Awarded: 0 pts
+11:32:51.137: Message received: TEAM16,joebot,1,
+11:32:51.138: Awarded: 0 pts
+11:33:02.204: Message received: TEAM16,joebot,4,NDUSK
+11:33:02.205: Team total: 18 pts
+11:33:02.207: Awarded: 6 pts
+11:33:36.133: Message received: TEAM16,joebot,5,RHOSPITAL
+11:33:36.133: Team total: 24 pts
+11:33:36.134: Awarded: 6 pts
+11:34:05.775: Message received: TEAM16,joebot,7,QPOLONIUM
+11:34:05.776: Team total: 32 pts
+11:34:05.776: Awarded: 8 pts
+11:35:17.454: Message received: TEAM16,joebot,8,DCA0CAO
+11:35:17.455: Awarded: 0 pts

@@ -426,11 +426,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 2
-                turn2 = 3
-                turn3 = 4
-                turn4 = 5
-                turn5 = 6
+                turn1 = 2.5
+                turn2 = 3.5
+                turn3 = 4.5
+                turn4 = 5.5
+                turn5 = 6.5
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
