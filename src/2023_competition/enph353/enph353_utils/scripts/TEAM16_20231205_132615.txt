@@ -1,0 +1,34 @@
+13:26:08.680: Clue SIZE: R TRIPLETS
+13:26:08.680: Clue VICTIM: V BACTERIA
+13:26:08.680: Clue CRIME: E TELEPORT
+13:26:08.682: Clue TIME: Z SPRING
+13:26:08.682: Clue PLACE: Z MALL
+13:26:08.682: Clue MOTIVE: K GLUTTONY
+13:26:08.682: Clue WEAPON: W FIRE
+13:26:08.683: Clue BANDIT: P SAURON
+13:26:15.019: Message received: TEAM16,joebot,0,START
+13:26:15.020: Timer started.
+13:26:15.272: First command velocity received.
+13:26:17.440: Message received: TEAM16,joebot,1,RTRIPLETS
+13:26:17.441: Team total: 6 pts
+13:26:17.443: Awarded: 6 pts
+13:26:33.699: Message received: TEAM16,joebot,2,VBACTERIA
+13:26:33.700: Team total: 12 pts
+13:26:33.702: Awarded: 6 pts
+13:26:39.308: Message received: TEAM16,joebot,3,ETELEPORT
+13:26:39.309: Team total: 18 pts
+13:26:39.309: Awarded: 6 pts
+13:26:51.989: Message received: TEAM16,joebot,4,ZSPRING
+13:26:51.991: Team total: 24 pts
+13:26:51.992: Awarded: 6 pts
+13:27:26.338: Message received: TEAM16,joebot,5,ZMALL
+13:27:26.338: Team total: 30 pts
+13:27:26.340: Awarded: 6 pts
+13:27:48.618: Message received: TEAM16,joebot,6,KGLUTTONY
+13:27:48.619: Team total: 36 pts
+13:27:48.620: Awarded: 6 pts
+13:28:00.500: Message received: TEAM16,joebot,7,WFIRE
+13:28:00.500: Team total: 44 pts
+13:28:00.502: Awarded: 8 pts
+13:29:09.020: Message received: TEAM16,joebot,8,TSM5UR0N
+13:29:09.021: Awarded: 0 pts

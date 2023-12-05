@@ -1,0 +1,29 @@
+13:10:03.752: Clue SIZE: G COUNTLESS
+13:10:03.752: Clue VICTIM: C DINOSAURS
+13:10:03.752: Clue CRIME: F STEAL
+13:10:03.755: Clue TIME: E DAWN
+13:10:03.755: Clue PLACE: M SEWERS
+13:10:03.755: Clue MOTIVE: R BOREDOM
+13:10:03.756: Clue WEAPON: A STICK
+13:10:03.756: Clue BANDIT: E LUIGI
+13:10:07.044: Message received: TEAM16,joebot,0,START
+13:10:07.044: Timer started.
+13:10:07.350: First command velocity received.
+13:10:09.727: Message received: TEAM16,joebot,1,GCOUNTLESS
+13:10:09.727: Team total: 6 pts
+13:10:09.729: Awarded: 6 pts
+13:10:22.614: Message received: TEAM16,joebot,2,CDINOSAURS
+13:10:22.614: Team total: 12 pts
+13:10:22.615: Awarded: 6 pts
+13:10:28.570: Message received: TEAM16,joebot,3,FSTEAL
+13:10:28.571: Team total: 18 pts
+13:10:28.574: Awarded: 6 pts
+13:10:40.356: Message received: TEAM16,joebot,4,EDAWN
+13:10:40.357: Team total: 24 pts
+13:10:40.360: Awarded: 6 pts
+13:11:13.642: Message received: TEAM16,joebot,5,MSEWERS
+13:11:13.643: Team total: 30 pts
+13:11:13.643: Awarded: 6 pts
+13:11:35.617: Message received: TEAM16,joebot,6,RBOREDOM
+13:11:35.617: Team total: 36 pts
+13:11:35.618: Awarded: 6 pts
