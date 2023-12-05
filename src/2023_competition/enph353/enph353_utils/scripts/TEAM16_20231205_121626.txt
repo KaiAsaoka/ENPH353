@@ -1,0 +1,31 @@
+12:16:23.486: Clue SIZE: J 314
+12:16:23.486: Clue VICTIM: Z ROBOTS
+12:16:23.486: Clue CRIME: U DESTROY
+12:16:23.488: Clue TIME: B WINTER
+12:16:23.488: Clue PLACE: V BASEMENT
+12:16:23.488: Clue MOTIVE: S FAME
+12:16:23.489: Clue WEAPON: C ELECTRON
+12:16:23.489: Clue BANDIT: C SHREK
+12:16:26.384: Message received: TEAM16,joebot,0,START
+12:16:26.387: Timer started.
+12:16:26.669: First command velocity received.
+12:16:28.715: Message received: TEAM16,joebot,1,J314
+12:16:28.725: Team total: 6 pts
+12:16:28.725: Awarded: 6 pts
+12:16:42.615: Message received: TEAM16,joebot,2,ZROBOTS
+12:16:42.616: Team total: 12 pts
+12:16:42.617: Awarded: 6 pts
+12:16:49.179: Message received: TEAM16,joebot,3,UDESTROY
+12:16:49.179: Team total: 18 pts
+12:16:49.181: Awarded: 6 pts
+12:17:02.074: Message received: TEAM16,joebot,4,BWINTER
+12:17:02.076: Team total: 24 pts
+12:17:02.077: Awarded: 6 pts
+12:17:11.181: Message received: TEAM16,joebot,-4,
+12:17:11.182: Invalid plate location: -4
+12:17:32.015: Message received: TEAM16,joebot,6,SFAME
+12:17:32.016: Team total: 30 pts
+12:17:32.017: Awarded: 6 pts
+12:18:51.920: Message received: TEAM16,joebot,8,CSHREK
+12:18:51.921: Team total: 38 pts
+12:18:51.921: Awarded: 8 pts

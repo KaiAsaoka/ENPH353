@@ -1,0 +1,37 @@
+12:54:21.044: Clue SIZE: V LEGIONS
+12:54:21.045: Clue VICTIM: X BED BUGS
+12:54:21.045: Clue CRIME: G LIE TO
+12:54:21.046: Clue TIME: D JURASIC
+12:54:21.046: Clue PLACE: T THE HOOD
+12:54:21.046: Clue MOTIVE: D PRIDE
+12:54:21.046: Clue WEAPON: V ANTIMATTER
+12:54:21.046: Clue BANDIT: V GODZILA
+12:54:23.754: Message received: TEAM16,joebot,0,START
+12:54:23.756: Timer started.
+12:54:24.097: First command velocity received.
+12:54:26.286: Message received: TEAM16,joebot,1,VLEGIONS
+12:54:26.287: Team total: 6 pts
+12:54:26.288: Awarded: 6 pts
+12:54:38.998: Message received: TEAM16,joebot,2,XBEDBUGS
+12:54:38.998: Team total: 12 pts
+12:54:38.999: Awarded: 6 pts
+12:54:44.678: Message received: TEAM16,joebot,3,GLIETO
+12:54:44.678: Team total: 18 pts
+12:54:44.679: Awarded: 6 pts
+12:54:57.714: Message received: TEAM16,joebot,4,DJURASIC
+12:54:57.717: Team total: 24 pts
+12:54:57.717: Awarded: 6 pts
+12:55:31.545: Message received: TEAM16,joebot,5,TTHEHOOD
+12:55:31.546: Team total: 30 pts
+12:55:31.548: Awarded: 6 pts
+12:55:52.809: Message received: TEAM16,joebot,6,DPRIDE
+12:55:52.810: Team total: 36 pts
+12:55:52.810: Awarded: 6 pts
+12:56:04.814: Message received: TEAM16,joebot,7,VANTIMATTER
+12:56:04.815: Team total: 44 pts
+12:56:04.817: Awarded: 8 pts
+12:57:15.404: Message received: TEAM16,joebot,8,VGODZILA
+12:57:15.404: Team total: 52 pts
+12:57:15.406: Awarded: 8 pts
+12:57:23.908: Bonus completed: +5 points
+12:57:23.910: Team total: 57 pts

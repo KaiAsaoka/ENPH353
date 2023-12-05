@@ -1,0 +1,26 @@
+12:50:43.853: Clue SIZE: M SINGLE
+12:50:43.854: Clue VICTIM: J CITIZENS
+12:50:43.854: Clue CRIME: G PUNCH
+12:50:43.854: Clue TIME: W JURASIC
+12:50:43.855: Clue PLACE: C BASEMENT
+12:50:43.855: Clue MOTIVE: H GLUTTONY
+12:50:43.855: Clue WEAPON: C NEUTRINOS
+12:50:43.855: Clue BANDIT: L CAESAR
+12:50:50.249: Message received: TEAM16,joebot,0,START
+12:50:50.250: Timer started.
+12:50:50.555: First command velocity received.
+12:50:52.621: Message received: TEAM16,joebot,1,MSINGLE
+12:50:52.621: Team total: 6 pts
+12:50:52.623: Awarded: 6 pts
+12:51:04.559: Message received: TEAM16,joebot,2,JCITIZENS
+12:51:04.560: Team total: 12 pts
+12:51:04.560: Awarded: 6 pts
+12:51:10.435: Message received: TEAM16,joebot,3,GPUNCH
+12:51:10.435: Team total: 18 pts
+12:51:10.438: Awarded: 6 pts
+12:51:29.765: Message received: TEAM16,joebot,4,WJURASIC
+12:51:29.767: Team total: 24 pts
+12:51:29.769: Awarded: 6 pts
+12:52:26.030: Message received: TEAM16,joebot,5,CBASEMENT
+12:52:26.031: Team total: 30 pts
+12:52:26.032: Awarded: 6 pts

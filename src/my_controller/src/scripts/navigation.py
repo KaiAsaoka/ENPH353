@@ -194,18 +194,6 @@ class navigation():
             blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
 
             #####
-            hsv_tunnel = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
-            tunnel_lower = np.array([0, 70, 60])
-            tunnel_upper = np.array([10, 100, 90])
-            tunnel_mask = cv2.inRange(hsv_tunnel, tunnel_lower, tunnel_upper)
-            
-            #tunnel_copy = hsv_tunnel.copy()
-            tunnel_contours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            tunnel = cv2.drawContours(frame.copy(), tunnel_contours, -1, (0, 255, 0), 1)
-            cv2.imshow("Tunnel", cv2.cvtColor(tunnel, cv2.COLOR_RGB2BGR))
-            cv2.waitKey(1)
-            #print(largest_contour_area)
-            #####
             ### Find contours
             contours, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             contour = frame.copy()
@@ -309,20 +297,19 @@ class navigation():
     
             cv2.imshow("Contour Image", cv2.cvtColor(contour, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
-            print(self.truth)
     
 
     def tapefollow(self, data):
         
 
         if self.grassy == False: #Road detection
-            self.signtresh = 31000
+            self.signtresh = 30000
             self.roadFollow(data)
             
            
                 
         elif self.tunnel == False: # grassy area
-            self.signthresh = 31000
+            self.signthresh = 30000
             self.grassFollow(data)
             
         elif self.car == False:
@@ -340,7 +327,6 @@ class navigation():
             print("started tunnel climb")
             self.tunnelClimb(data)
         else:
-            print("TOUCHING GRASS!!!!!!")
             self.grassFollow2(data)
             
             
@@ -430,11 +416,11 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 3
-                turn2 = 4
-                turn3 = 5
-                turn4 = 6
-                turn5 = 7
+                turn1 = 1.5
+                turn2 = 3.5
+                turn3 = 4
+                turn4 = 4.5
+                turn5 = 5.5
     
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -564,9 +550,9 @@ class navigation():
                 turn0 = 0
                 turn1 = 0.75
                 turn2 = 1
-                turn3 = 1.2
-                turn4 = 2
-                turn5 = 3
+                turn3 = 1.25
+                turn4 = 1.25
+                turn5 = 1.25
                 
                 if cxavg >= 0 and cxavg < 128:
                     move.angular.z = turn5
@@ -1405,7 +1391,7 @@ class navigation():
             #truck_mask = cv2.bitwise_or(truck_masklow, truck_maskhigh)
                         ## Find contours in the binary mask
             truckcont, _ = cv2.findContours(truck_masklow, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            min_area = 500
+            min_area = 300
             max_area = 100000
             
             truckcont = [contour for contour in truckcont if min_area < cv2.contourArea(contour) < max_area]

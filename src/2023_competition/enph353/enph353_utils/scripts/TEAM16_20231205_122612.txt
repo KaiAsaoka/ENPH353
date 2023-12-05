@@ -1,0 +1,23 @@
+12:26:10.000: Clue SIZE: QUINTUPLETS
+12:26:10.000: Clue VICTIM: J FRODO
+12:26:10.001: Clue CRIME: TRANSMOGRIFY
+12:26:10.003: Clue TIME: E AUTUMN
+12:26:10.004: Clue PLACE: F HOSPITAL
+12:26:10.004: Clue MOTIVE: V PASSION
+12:26:10.004: Clue WEAPON: Y ELECTRON
+12:26:10.004: Clue BANDIT: A PIKACHU
+12:26:12.699: Message received: TEAM16,joebot,0,START
+12:26:12.700: Timer started.
+12:26:12.989: First command velocity received.
+12:26:15.500: Message received: TEAM16,joebot,1,QUINTUPLETS
+12:26:15.500: Team total: 6 pts
+12:26:15.502: Awarded: 6 pts
+12:26:35.795: Message received: TEAM16,joebot,2,JFRODO
+12:26:35.796: Team total: 12 pts
+12:26:35.797: Awarded: 6 pts
+12:26:42.582: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+12:26:42.583: Team total: 18 pts
+12:26:42.584: Awarded: 6 pts
+12:27:33.613: Message received: TEAM16,joebot,5,FHOSPITAL
+12:27:33.614: Team total: 24 pts
+12:27:33.616: Awarded: 6 pts

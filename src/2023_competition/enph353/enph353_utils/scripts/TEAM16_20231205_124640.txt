@@ -1,0 +1,31 @@
+12:46:36.169: Clue SIZE: L LEGIONS
+12:46:36.169: Clue VICTIM: X BED BUGS
+12:46:36.169: Clue CRIME: J DEFRAUD
+12:46:36.170: Clue TIME: I AUTUMN
+12:46:36.170: Clue PLACE: H BEACH
+12:46:36.171: Clue MOTIVE: V ACCIDENT
+12:46:36.171: Clue WEAPON: D PLASMA
+12:46:36.171: Clue BANDIT: B EINSTEIN
+12:46:40.409: Message received: TEAM16,joebot,0,START
+12:46:40.410: Timer started.
+12:46:40.669: First command velocity received.
+12:46:43.088: Message received: TEAM16,joebot,1,LLEGIONS
+12:46:43.089: Team total: 6 pts
+12:46:43.089: Awarded: 6 pts
+12:46:58.026: Message received: TEAM16,joebot,2,XBEDBUGS
+12:46:58.027: Team total: 12 pts
+12:46:58.027: Awarded: 6 pts
+12:47:04.140: Message received: TEAM16,joebot,3,JDEFRAUD
+12:47:04.141: Team total: 18 pts
+12:47:04.145: Awarded: 6 pts
+12:47:16.055: Message received: TEAM16,joebot,4,IAUTUMN
+12:47:16.058: Team total: 24 pts
+12:47:16.059: Awarded: 6 pts
+12:47:50.501: Message received: TEAM16,joebot,5,HBEACH
+12:47:50.502: Team total: 30 pts
+12:47:50.505: Awarded: 6 pts
+12:48:25.468: Message received: TEAM16,joebot,6,VACCIDENT
+12:48:25.469: Team total: 36 pts
+12:48:25.469: Awarded: 6 pts
+12:48:53.870: Message received: TEAM16,joebot,-4,VACCIDENT
+12:48:53.870: Invalid plate location: -4

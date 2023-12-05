@@ -1,0 +1,35 @@
+12:09:14.198: Clue SIZE: E LEGIONS
+12:09:14.198: Clue VICTIM: I BED BUGS
+12:09:14.198: Clue CRIME: S TELEPORT
+12:09:14.198: Clue TIME: J TWILIGHT
+12:09:14.198: Clue PLACE: T MARS
+12:09:14.199: Clue MOTIVE: W FAME
+12:09:14.199: Clue WEAPON: O WATER
+12:09:14.199: Clue BANDIT: I SHREK
+12:09:15.803: First command velocity received.
+12:09:22.615: Message received: TEAM16,joebot,0,START
+12:09:22.615: Timer started.
+12:09:25.231: Message received: TEAM16,joebot,1,ELEGIONS
+12:09:25.231: Team total: 6 pts
+12:09:25.234: Awarded: 6 pts
+12:09:38.001: Message received: TEAM16,joebot,2,IBEDBUGS
+12:09:38.002: Team total: 12 pts
+12:09:38.004: Awarded: 6 pts
+12:09:44.463: Message received: TEAM16,joebot,3,STELEPORT
+12:09:44.464: Team total: 18 pts
+12:09:44.464: Awarded: 6 pts
+12:09:56.957: Message received: TEAM16,joebot,4,JTWILIGHT
+12:09:56.959: Team total: 24 pts
+12:09:56.961: Awarded: 6 pts
+12:10:06.763: Message received: TEAM16,joebot,-4,
+12:10:06.763: Invalid plate location: -4
+12:10:27.977: Message received: TEAM16,joebot,6,WFAME
+12:10:27.977: Team total: 30 pts
+12:10:27.978: Awarded: 6 pts
+12:10:40.129: Message received: TEAM16,joebot,7,OWATER
+12:10:40.129: Team total: 38 pts
+12:10:40.130: Awarded: 8 pts
+12:10:54.509: Bonus completed: +5 points
+12:10:54.510: Team total: 43 pts
+12:11:51.066: Message received: TEAM16,joebot,8,ISHPEK
+12:11:51.066: Awarded: 0 pts

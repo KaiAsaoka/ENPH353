@@ -1,0 +1,26 @@
+12:31:06.480: Clue SIZE: D 314
+12:31:06.480: Clue VICTIM: G ROBOTS
+12:31:06.480: Clue CRIME: B BITE
+12:31:06.482: Clue TIME: C AUTUMN
+12:31:06.482: Clue PLACE: UNDERGROUND
+12:31:06.482: Clue MOTIVE: U PRIDE
+12:31:06.483: Clue WEAPON: O ROCKET
+12:31:06.483: Clue BANDIT: F GOKU
+12:31:10.464: Message received: TEAM16,joebot,0,START
+12:31:10.465: Timer started.
+12:31:10.735: First command velocity received.
+12:31:12.558: Message received: TEAM16,joebot,1,D314
+12:31:12.558: Team total: 6 pts
+12:31:12.562: Awarded: 6 pts
+12:31:28.018: Message received: TEAM16,joebot,2,GROBOTS
+12:31:28.021: Team total: 12 pts
+12:31:28.022: Awarded: 6 pts
+12:31:34.336: Message received: TEAM16,joebot,3,BBITE
+12:31:34.336: Team total: 18 pts
+12:31:34.339: Awarded: 6 pts
+12:31:46.809: Message received: TEAM16,joebot,4,CAUTUMN
+12:31:46.812: Team total: 24 pts
+12:31:46.814: Awarded: 6 pts
+12:32:26.451: Message received: TEAM16,joebot,5,UNDERGROUND
+12:32:26.452: Team total: 30 pts
+12:32:26.452: Awarded: 6 pts

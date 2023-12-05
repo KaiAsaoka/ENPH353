@@ -1,0 +1,27 @@
+12:20:28.008: Clue SIZE: H SINGLE
+12:20:28.008: Clue VICTIM: L FRODO
+12:20:28.008: Clue CRIME: Z HEADBUT
+12:20:28.009: Clue TIME: W Q DAY
+12:20:28.009: Clue PLACE: L CAVE
+12:20:28.009: Clue MOTIVE: O GREED
+12:20:28.010: Clue WEAPON: K FIRE
+12:20:28.010: Clue BANDIT: O LUIGI
+12:20:31.216: Message received: TEAM16,joebot,0,START
+12:20:31.217: Timer started.
+12:20:31.470: First command velocity received.
+12:20:33.472: Message received: TEAM16,joebot,1,HSINGLE
+12:20:33.473: Team total: 6 pts
+12:20:33.474: Awarded: 6 pts
+12:20:45.387: Message received: TEAM16,joebot,2,LFRODO
+12:20:45.388: Team total: 12 pts
+12:20:45.389: Awarded: 6 pts
+12:20:51.534: Message received: TEAM16,joebot,3,ZHEADBUT
+12:20:51.534: Team total: 18 pts
+12:20:51.535: Awarded: 6 pts
+12:21:03.914: Message received: TEAM16,joebot,4,WQDAY
+12:21:03.916: Team total: 24 pts
+12:21:03.918: Awarded: 6 pts
+12:21:17.471: Message received: TEAM16,joebot,-4,
+12:21:17.471: Invalid plate location: -4
+12:21:26.333: Message received: TEAM16,joebot,-4,
+12:21:26.334: Invalid plate location: -4
