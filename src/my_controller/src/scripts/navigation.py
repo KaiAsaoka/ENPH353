@@ -36,6 +36,7 @@ class navigation():
         testTruck = False
         testgrass = False
         testYoda = False
+        testTunnel = False
         
         self.sift = cv2.SIFT_create()
         self.grassy = False
@@ -85,6 +86,16 @@ class navigation():
                 
         if testYoda == True:
                 self.predictions = False
+                self.grassy = True
+                self.pastman = True
+                self.grassSpeed = 0
+                self.roadSpeed = 0
+                
+        if testTunnel == True:
+                self.predictions = False
+                self.turntotun = True
+                self.tunnel = True
+                self.car = True
                 self.grassy = True
                 self.pastman = True
                 self.grassSpeed = 0
@@ -616,11 +627,11 @@ class navigation():
             cv2.waitKey(1)
             ## Define the lower and upper bounds for the color you want to detect (here, it's blue)
 
-            cv2.imshow("car mask", cv2.cvtColor(tunnel_mask, cv2.COLOR_RGB2BGR))
+            cv2.imshow("tunnel mask", cv2.cvtColor(tunnel_mask, cv2.COLOR_RGB2BGR))
             ## Find contours in the binary mask
             pidcontours, _ = cv2.findContours(tunnel_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-            min_area = 100
+            min_area = 50
             
         #if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) < min_area:
             #move = Twist()
