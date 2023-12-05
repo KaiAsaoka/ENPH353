@@ -34,7 +34,7 @@ class navigation():
     def __init__(self):
         
         testTruck = False
-        testgrass = True
+        testgrass = False
         testYoda = False
         testTunnel = False
         
@@ -58,9 +58,9 @@ class navigation():
         self.move_pub = rospy.Publisher("/R1/cmd_vel",Twist,queue_size=1)
         self.pastman = False
         self.roadSpeed = 0.5
-        self.grassSpeed = 0.3
+        self.grassSpeed = 0.2
         #### SET TRUE FOR REAL RUN
-        self.predictions = False
+        self.predictions = True
         self.grassy2 = False
         
         self.climb = False
@@ -365,7 +365,7 @@ class navigation():
             
             if len(pidcontours) == 0:
                 self.grasscount += 1
-                if self.grasscount == 2:
+                if self.grasscount == 1:
                     self.grassy = True
                     print("grass time!!")
                     
@@ -1210,7 +1210,7 @@ class navigation():
             
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
             
-            min_area = 4000
+            min_area = 3000
             
             if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:
                 
