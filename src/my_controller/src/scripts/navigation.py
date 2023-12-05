@@ -1019,7 +1019,7 @@ class navigation():
             cv2.imshow("tunnel cont", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            min_area = 30
+            min_area = 40
             
             if len(tunnel_contours) != 0 and cv2.contourArea(max(tunnel_contours, key=cv2.contourArea)) > min_area:
                 print("tunnel pog!!")
