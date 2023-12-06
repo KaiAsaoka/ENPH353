@@ -147,17 +147,18 @@ class navigation():
         self.move_pub.publish(move)
         num = data.data
         if(num == 1):
-            self.reinit()
+            self.reinit(1)
             angle_rad = math.radians(80)
             position = [0.5,0,0.25,0,0,math.sin(angle_rad / 2),math.cos(angle_rad / 2)]
             self.spawn_position(position)
             print("respawning")
             time = self.times
         else:
+            self.reinit(-1)
             time = self.times
             while(self.times - time < 2):
                 continue
-            position = [-4,-2.35,0.25,0,0,0,0]
+            position = [-4,-2.375,0.25,0,0,0,0]
             self.spawn_position(position)
 
 
@@ -1621,19 +1622,34 @@ class navigation():
             print ("Service call failed")
 
     
-    def reinit(self):
-        testgrass = True
-        self.start = True
-        self.climb  = False
-        self.tunnel = False
-        self.car = False
-        self.turntotun = False
+    def reinit(self,id):
+        if(id == 1):
+            testgrass = True
+            self.start = True
+            self.climb  = False
+            self.tunnel = False
+            self.car = False
+            self.turntotun = False
 
-        if testgrass == True:
-                self.grassy = True
-                self.pastman = True
-                self.grassSpeed = 0.2
-                self.roadSpeed = 0.5
+            if testgrass == True:
+                    self.grassy = True
+                    self.pastman = True
+                    self.grassSpeed = 0.2
+                    self.roadSpeed = 0.5
+        else:
+            self.start = True
+            self.grassy = True #Road detection
+            self.tunnel = True # grassy area
+            self.car = True
+            self.predictions = True
+            self.turntotun = True
+            self.climb  = True
+            self.predictions = True
+            self.grassSpeed = 0.2
+            self.roadSpeed = 0.5
+        
+
+
                 
             
 
