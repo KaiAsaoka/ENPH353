@@ -367,7 +367,7 @@ class navigation():
             h=430
             
             ## Define the coordinates of the region of interest (ROI)
-            roi_x1, roi_y1, roi_x2, roi_y2 = 0 + 200, h, 1280 - 200, h+10  # Adjust these coordinates as needed
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280 - 260, h+10  # Adjust these coordinates as needed
             ## Default Resolution x = 320, y = 240
 
             ## Crop the image to the ROI
@@ -432,7 +432,7 @@ class navigation():
                         
             if self.pastman == True:
                 if self.scanfortruck(frame) == True:
-                    move.linear.x = 0.0001
+                    move.linear.x = 0
                     turn = False
                     
             
@@ -441,7 +441,7 @@ class navigation():
                 cxavg = cxnet / moments
             
                 turn0 = 0
-                turn1 = 1.75
+                turn1 = 1.25
                 turn2 = 4
                 turn3 = 4.5
                 turn4 = 5
@@ -506,7 +506,15 @@ class navigation():
             #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
 
-            self.move_pub.publish(move)
+
+            if len(pidcontours) == 0:
+                self.grasscount += 1
+                if self.grasscount == 1:
+                    self.grassy = True
+                    print("grass time!!")
+            else:
+                
+                self.move_pub.publish(move)
 
 
     def grassFollow(self,data):
@@ -518,7 +526,7 @@ class navigation():
             h=430
             
             ## Define the coordinates of the region of interest (ROI)
-            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
+            roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+80  # Adjust these coordinates as needed
             ## Default Resolution x = 320, y = 240
             
             ## Crop the image to the ROI
@@ -632,15 +640,18 @@ class navigation():
             # Process the frame here (you can add your tracking code or other operations)
             frame_with_circle = cv2.circle(pid_img, center_coordinates, radius, color, thickness)
 
-            if self.grassy2 == False and self.scanfortunnel(frame):
-                self.tunnel = True
+
 
             cv2.imshow("PID", cv2.cvtColor(frame_with_circle, cv2.COLOR_RGB2BGR))
             #cv2.imshow("pidimg", cv2.cvtColor(white_mask, cv2.COLOR_RGB2BGR))
             #cv2.imshow("hsv", cv2.cvtColor(roi_image, cv2.COLOR_RGB2BGR))
             cv2.waitKey(1)
-
-            self.move_pub.publish(move)
+            if self.grassy2 == False and self.scanfortunnel(frame):
+                move.angular.z = 0
+                self.move_pub.publish(move)
+                self.tunnel = True
+            else:
+                self.move_pub.publish(move)
             
             
     def grassFollow2(self,data):
@@ -717,10 +728,10 @@ class navigation():
         
             turn0 = 0
             turn1 = 0.75
-            turn2 = 1.25
-            turn3 = 1.5
+            turn2 = 1
+            turn3 = 1.2
             turn4 = 2
-            turn5 = 3.5
+            turn5 = 3
             
             if cxavg >= 0 and cxavg < 128:
                 move.angular.z = turn5

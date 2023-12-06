@@ -1,0 +1,28 @@
+13:43:03.603: Clue SIZE: SINGLE
+13:43:03.604: Clue VICTIM: TOURISTS
+13:43:03.605: Clue CRIME: TRESPASS
+13:43:03.606: Clue TIME: 2023
+13:43:03.607: Clue PLACE: HOSPITAL
+13:43:03.609: Clue MOTIVE: HATE
+13:43:03.610: Clue WEAPON: ROPE
+13:43:03.611: Clue BANDIT: LENIN
+13:43:07.512: Message received: TEAM16,joebot,0,START
+13:43:07.513: Timer started.
+13:43:07.770: First command velocity received.
+13:43:09.769: Message received: TEAM16,joebot,1,SINGLE
+13:43:09.770: Team total: 6 pts
+13:43:09.770: Awarded: 6 pts
+13:43:22.903: Message received: TEAM16,joebot,2,TOURISTS
+13:43:22.903: Team total: 12 pts
+13:43:22.906: Awarded: 6 pts
+13:43:28.963: Message received: TEAM16,joebot,3,TRESPASS
+13:43:28.964: Team total: 18 pts
+13:43:28.965: Awarded: 6 pts
+13:43:41.554: Message received: TEAM16,joebot,4,2O23
+13:43:41.556: Awarded: 0 pts
+13:44:15.614: Message received: TEAM16,joebot,5,HOSPITAL
+13:44:15.614: Team total: 24 pts
+13:44:15.615: Awarded: 6 pts
+13:44:37.742: Message received: TEAM16,joebot,6,HATE
+13:44:37.742: Team total: 30 pts
+13:44:37.745: Awarded: 6 pts

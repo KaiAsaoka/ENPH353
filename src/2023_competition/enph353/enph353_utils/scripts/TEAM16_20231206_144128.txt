@@ -1,0 +1,31 @@
+14:41:25.504: Clue SIZE: FIVE
+14:41:25.504: Clue VICTIM: FRODOS
+14:41:25.504: Clue CRIME: HEADBUT
+14:41:25.506: Clue TIME: YESTERDAY
+14:41:25.506: Clue PLACE: AMAZON
+14:41:25.507: Clue MOTIVE: GLAMOUR
+14:41:25.507: Clue WEAPON: KRYPTONITE
+14:41:25.507: Clue BANDIT: TEMUJIN
+14:41:28.352: Message received: TEAM16,joebot,0,START
+14:41:28.353: Timer started.
+14:41:28.643: First command velocity received.
+14:41:30.446: Message received: TEAM16,joebot,1,FIVE
+14:41:30.446: Team total: 6 pts
+14:41:30.448: Awarded: 6 pts
+14:41:42.066: Message received: TEAM16,joebot,2,FRODOS
+14:41:42.066: Team total: 12 pts
+14:41:42.068: Awarded: 6 pts
+14:41:47.965: Message received: TEAM16,joebot,3,HEADBUT
+14:41:47.966: Team total: 18 pts
+14:41:47.967: Awarded: 6 pts
+14:42:00.391: Message received: TEAM16,joebot,4,YESTEROAY
+14:42:00.393: Awarded: 0 pts
+14:42:37.140: Message received: TEAM16,joebot,5,AMAZON
+14:42:37.141: Team total: 24 pts
+14:42:37.146: Awarded: 6 pts
+14:42:58.165: Message received: TEAM16,joebot,6,GLAMOUR
+14:42:58.166: Team total: 30 pts
+14:42:58.167: Awarded: 6 pts
+14:44:13.829: Message received: TEAM16,joebot,8,TEMUJIN
+14:44:13.830: Team total: 38 pts
+14:44:13.834: Awarded: 8 pts

@@ -1,0 +1,39 @@
+15:01:47.332: Clue SIZE: ZEPTILLION
+15:01:47.332: Clue VICTIM: KOALAS
+15:01:47.332: Clue CRIME: DEFRAUD
+15:01:47.334: Clue TIME: DAWN
+15:01:47.334: Clue PLACE: SWITZERLAND
+15:01:47.334: Clue MOTIVE: HATE
+15:01:47.334: Clue WEAPON: ICYCLE
+15:01:47.335: Clue BANDIT: SATOSHI
+15:01:49.402: Message received: TEAM16,joebot,0,START
+15:01:49.403: Timer started.
+15:01:49.659: First command velocity received.
+15:01:51.962: Message received: TEAM16,joebot,1,ZEPTILLION
+15:01:51.963: Team total: 6 pts
+15:01:51.965: Awarded: 6 pts
+15:02:05.203: Message received: TEAM16,joebot,2,KOALAS
+15:02:05.204: Team total: 12 pts
+15:02:05.205: Awarded: 6 pts
+15:02:11.264: Message received: TEAM16,joebot,3,DEFRAUD
+15:02:11.264: Team total: 18 pts
+15:02:11.266: Awarded: 6 pts
+15:02:24.025: Message received: TEAM16,joebot,4,DAWN
+15:02:24.028: Team total: 24 pts
+15:02:24.029: Awarded: 6 pts
+15:02:58.079: Message received: TEAM16,joebot,5,SWITZERLAND
+15:02:58.080: Team total: 30 pts
+15:02:58.080: Awarded: 6 pts
+15:03:18.370: Message received: TEAM16,joebot,6,HATE
+15:03:18.371: Team total: 36 pts
+15:03:18.372: Awarded: 6 pts
+15:03:32.999: Message received: TEAM16,joebot,7,ICYCLE
+15:03:33.000: Team total: 44 pts
+15:03:33.001: Awarded: 8 pts
+15:04:40.215: Message received: TEAM16,joebot,8,SATOSHI
+15:04:40.216: Team total: 52 pts
+15:04:40.217: Awarded: 8 pts
+15:04:45.511: Bonus completed: +5 points
+15:04:45.512: Team total: 57 pts
+15:04:57.323: Message received: TEAM16,joebot,-1,END
+15:04:57.325: Timer stopped: 170.08 sec sim time (real time: 187sec).

@@ -1,0 +1,25 @@
+14:04:55.426: Clue SIZE: TWO
+14:04:55.426: Clue VICTIM: QUOKKAS
+14:04:55.426: Clue CRIME: TRANSMOGRIFY
+14:04:55.428: Clue TIME: NOON
+14:04:55.428: Clue PLACE: EXIT 8
+14:04:55.428: Clue MOTIVE: IGNORANCE
+14:04:55.429: Clue WEAPON: KRYPTONITE
+14:04:55.429: Clue BANDIT: GOKU
+14:04:57.718: Message received: TEAM16,joebot,0,START
+14:04:57.719: Timer started.
+14:04:57.988: First command velocity received.
+14:04:59.722: Message received: TEAM16,joebot,1,TWO
+14:04:59.723: Team total: 6 pts
+14:04:59.725: Awarded: 6 pts
+14:05:11.604: Message received: TEAM16,joebot,2,QUOKKAS
+14:05:11.605: Team total: 12 pts
+14:05:11.616: Awarded: 6 pts
+14:05:17.416: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+14:05:17.417: Team total: 18 pts
+14:05:17.418: Awarded: 6 pts
+14:05:30.826: Message received: TEAM16,joebot,4,SLO7L
+14:05:30.827: Awarded: 0 pts
+14:06:04.801: Message received: TEAM16,joebot,6,IGNORANCE
+14:06:04.801: Team total: 24 pts
+14:06:04.803: Awarded: 6 pts

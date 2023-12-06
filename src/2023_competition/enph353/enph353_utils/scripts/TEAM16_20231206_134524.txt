@@ -1,0 +1,29 @@
+13:45:21.372: Clue SIZE: SINGLE
+13:45:21.372: Clue VICTIM: QUOKKAS
+13:45:21.372: Clue CRIME: STEAL
+13:45:21.373: Clue TIME: SPRING
+13:45:21.373: Clue PLACE: VILLAGE
+13:45:21.373: Clue MOTIVE: FEAR
+13:45:21.373: Clue WEAPON: ROPE
+13:45:21.373: Clue BANDIT: SATOSHI
+13:45:22.885: First command velocity received.
+13:45:24.983: Message received: TEAM16,joebot,0,START
+13:45:24.983: Timer started.
+13:45:28.607: Message received: TEAM16,joebot,1,SINGLE
+13:45:28.608: Team total: 6 pts
+13:45:28.609: Awarded: 6 pts
+13:45:43.185: Message received: TEAM16,joebot,2,QUOKKAS
+13:45:43.185: Team total: 12 pts
+13:45:43.187: Awarded: 6 pts
+13:45:49.121: Message received: TEAM16,joebot,3,STEAL
+13:45:49.122: Team total: 18 pts
+13:45:49.124: Awarded: 6 pts
+13:46:01.517: Message received: TEAM16,joebot,4,SPRING
+13:46:01.520: Team total: 24 pts
+13:46:01.521: Awarded: 6 pts
+13:46:35.130: Message received: TEAM16,joebot,5,VILLAGE
+13:46:35.130: Team total: 30 pts
+13:46:35.131: Awarded: 6 pts
+13:46:56.103: Message received: TEAM16,joebot,6,FEAR
+13:46:56.104: Team total: 36 pts
+13:46:56.110: Awarded: 6 pts

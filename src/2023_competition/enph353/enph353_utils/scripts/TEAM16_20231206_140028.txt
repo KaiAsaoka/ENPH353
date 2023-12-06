@@ -1,0 +1,23 @@
+14:00:21.510: Clue SIZE: THREE
+14:00:21.510: Clue VICTIM: ALIENS
+14:00:21.511: Clue CRIME: DECELERATE
+14:00:21.512: Clue TIME: YESTERDAY
+14:00:21.512: Clue PLACE: BEACH
+14:00:21.512: Clue MOTIVE: CURIOSITY
+14:00:21.513: Clue WEAPON: POSITRON
+14:00:21.513: Clue BANDIT: PIKACHU
+14:00:22.524: First command velocity received.
+14:00:28.315: Message received: TEAM16,joebot,0,START
+14:00:28.316: Timer started.
+14:00:30.601: Message received: TEAM16,joebot,1,THREE
+14:00:30.601: Team total: 6 pts
+14:00:30.602: Awarded: 6 pts
+14:00:41.909: Message received: TEAM16,joebot,2,ALIENS
+14:00:41.909: Team total: 12 pts
+14:00:41.910: Awarded: 6 pts
+14:00:47.973: Message received: TEAM16,joebot,3,DECELERATE
+14:00:47.973: Team total: 18 pts
+14:00:47.974: Awarded: 6 pts
+14:01:00.693: Message received: TEAM16,joebot,4,YESTERDAY
+14:01:00.693: Team total: 24 pts
+14:01:00.695: Awarded: 6 pts

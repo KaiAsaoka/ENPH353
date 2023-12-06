@@ -1,0 +1,29 @@
+14:30:20.594: Clue SIZE: THREE
+14:30:20.594: Clue VICTIM: ZOMBIES
+14:30:20.594: Clue CRIME: HEADBUT
+14:30:20.596: Clue TIME: SPRING
+14:30:20.596: Clue PLACE: UNDERGROUND
+14:30:20.596: Clue MOTIVE: REVOLT
+14:30:20.596: Clue WEAPON: POLONIUM
+14:30:20.597: Clue BANDIT: THANOS
+14:30:21.050: First command velocity received.
+14:30:25.207: Message received: TEAM16,joebot,0,START
+14:30:25.207: Timer started.
+14:30:27.490: Message received: TEAM16,joebot,1,THREE
+14:30:27.606: Team total: 6 pts
+14:30:27.726: Awarded: 6 pts
+14:30:38.490: Message received: TEAM16,joebot,2,ZOMBIES
+14:30:38.491: Team total: 12 pts
+14:30:38.493: Awarded: 6 pts
+14:30:43.934: Message received: TEAM16,joebot,3,HEADBUT
+14:30:43.935: Team total: 18 pts
+14:30:43.937: Awarded: 6 pts
+14:31:01.631: Message received: TEAM16,joebot,4,SPRING
+14:31:01.634: Team total: 24 pts
+14:31:01.635: Awarded: 6 pts
+14:31:35.904: Message received: TEAM16,joebot,5,UNDERGROUND
+14:31:35.905: Team total: 30 pts
+14:31:35.906: Awarded: 6 pts
+14:31:58.421: Message received: TEAM16,joebot,6,REVOLT
+14:31:58.422: Team total: 36 pts
+14:31:58.423: Awarded: 6 pts

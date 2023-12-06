@@ -1,0 +1,28 @@
+14:18:01.584: Clue SIZE: COUNTLESS
+14:18:01.584: Clue VICTIM: FRODOS
+14:18:01.586: Clue CRIME: TRANSMOGRIFY
+14:18:01.592: Clue TIME: DUSK
+14:18:01.594: Clue PLACE: THE HOOD
+14:18:01.594: Clue MOTIVE: FAME
+14:18:01.594: Clue WEAPON: FIRE
+14:18:01.594: Clue BANDIT: SHREK
+14:18:03.679: Message received: TEAM16,joebot,0,START
+14:18:03.679: Timer started.
+14:18:03.989: First command velocity received.
+14:18:06.141: Message received: TEAM16,joebot,1,COUNTLESS
+14:18:06.142: Team total: 6 pts
+14:18:06.144: Awarded: 6 pts
+14:18:17.840: Message received: TEAM16,joebot,2,FRODOS
+14:18:17.841: Team total: 12 pts
+14:18:17.843: Awarded: 6 pts
+14:18:23.775: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+14:18:23.776: Team total: 18 pts
+14:18:23.777: Awarded: 6 pts
+14:19:09.838: Message received: TEAM16,joebot,5,THEHD
+14:19:09.839: Awarded: 0 pts
+14:19:31.973: Message received: TEAM16,joebot,6,FAME
+14:19:31.974: Team total: 24 pts
+14:19:31.976: Awarded: 6 pts
+14:19:45.530: Message received: TEAM16,joebot,7,FIRE
+14:19:45.532: Team total: 32 pts
+14:19:45.533: Awarded: 8 pts

@@ -1,0 +1,23 @@
+14:08:00.526: Clue SIZE: TRIPLETS
+14:08:00.526: Clue VICTIM: CITIZENS
+14:08:00.527: Clue CRIME: STEAL
+14:08:00.528: Clue TIME: Q DAY
+14:08:00.528: Clue PLACE: THE HOOD
+14:08:00.529: Clue MOTIVE: HATE
+14:08:00.529: Clue WEAPON: NEUTRINOS
+14:08:00.529: Clue BANDIT: SHREK
+14:08:03.353: Message received: TEAM16,joebot,0,START
+14:08:03.353: Timer started.
+14:08:03.613: First command velocity received.
+14:08:05.708: Message received: TEAM16,joebot,1,TRIPLETS
+14:08:05.708: Team total: 6 pts
+14:08:05.709: Awarded: 6 pts
+14:08:17.155: Message received: TEAM16,joebot,2,CITIZENS
+14:08:17.158: Team total: 12 pts
+14:08:17.158: Awarded: 6 pts
+14:08:23.411: Message received: TEAM16,joebot,3,STEAL
+14:08:23.412: Team total: 18 pts
+14:08:23.412: Awarded: 6 pts
+14:08:35.187: Message received: TEAM16,joebot,4,QDAY
+14:08:35.189: Team total: 24 pts
+14:08:35.190: Awarded: 6 pts

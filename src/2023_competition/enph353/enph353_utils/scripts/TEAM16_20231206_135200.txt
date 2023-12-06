@@ -1,0 +1,32 @@
+13:50:46.169: Clue SIZE: SINGLE
+13:50:46.170: Clue VICTIM: BACTERIA
+13:50:46.170: Clue CRIME: STEAL
+13:50:46.173: Clue TIME: AUTUMN
+13:50:46.179: Clue PLACE: BASEMENT
+13:50:46.180: Clue MOTIVE: HATE
+13:50:46.180: Clue WEAPON: BALOON
+13:50:46.181: Clue BANDIT: EINSTEIN
+13:50:47.353: First command velocity received.
+13:52:00.465: Message received: TEAM16,joebot,0,START
+13:52:00.466: Timer started.
+13:52:02.789: Message received: TEAM16,joebot,1,SINGLE
+13:52:02.790: Team total: 6 pts
+13:52:02.795: Awarded: 6 pts
+13:52:18.025: Message received: TEAM16,joebot,2,BACTERIA
+13:52:18.026: Team total: 12 pts
+13:52:18.028: Awarded: 6 pts
+13:52:24.951: Message received: TEAM16,joebot,3,STEAL
+13:52:24.952: Team total: 18 pts
+13:52:24.954: Awarded: 6 pts
+13:52:37.735: Message received: TEAM16,joebot,4,AUTUMN
+13:52:37.739: Team total: 24 pts
+13:52:37.740: Awarded: 6 pts
+13:53:11.800: Message received: TEAM16,joebot,5,BASEMENT
+13:53:11.801: Team total: 30 pts
+13:53:11.801: Awarded: 6 pts
+13:53:33.686: Message received: TEAM16,joebot,6,HATE
+13:53:33.687: Team total: 36 pts
+13:53:33.699: Awarded: 6 pts
+13:53:47.347: Message received: TEAM16,joebot,7,BALOON
+13:53:47.348: Team total: 44 pts
+13:53:47.350: Awarded: 8 pts

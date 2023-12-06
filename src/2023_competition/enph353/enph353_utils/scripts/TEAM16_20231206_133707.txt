@@ -1,0 +1,28 @@
+13:37:03.618: Clue SIZE: FIVE
+13:37:03.618: Clue VICTIM: KANGAROO
+13:37:03.619: Clue CRIME: DECELERATE
+13:37:03.619: Clue TIME: MIDNIGHT
+13:37:03.619: Clue PLACE: JUNGLE
+13:37:03.620: Clue MOTIVE: FEAR
+13:37:03.620: Clue WEAPON: FIRE
+13:37:03.620: Clue BANDIT: LUIGI
+13:37:07.754: Message received: TEAM16,joebot,0,START
+13:37:07.755: Timer started.
+13:37:08.097: First command velocity received.
+13:37:09.868: Message received: TEAM16,joebot,1,FIVE
+13:37:09.868: Team total: 6 pts
+13:37:09.869: Awarded: 6 pts
+13:37:23.109: Message received: TEAM16,joebot,2,VNGAROO
+13:37:23.110: Awarded: 0 pts
+13:37:29.608: Message received: TEAM16,joebot,3,DECELERATE
+13:37:29.608: Team total: 12 pts
+13:37:29.611: Awarded: 6 pts
+13:37:41.059: Message received: TEAM16,joebot,4,MIDNIGHT
+13:37:41.062: Team total: 18 pts
+13:37:41.063: Awarded: 6 pts
+13:38:14.630: Message received: TEAM16,joebot,5,JUNGLE
+13:38:14.631: Team total: 24 pts
+13:38:14.633: Awarded: 6 pts
+13:38:35.838: Message received: TEAM16,joebot,6,FEAR
+13:38:35.839: Team total: 30 pts
+13:38:35.841: Awarded: 6 pts

@@ -1,0 +1,29 @@
+13:47:58.691: Clue SIZE: LEGIONS
+13:47:58.691: Clue VICTIM: KOALAS
+13:47:58.691: Clue CRIME: SWEAR
+13:47:58.691: Clue TIME: JURASIC
+13:47:58.692: Clue PLACE: HOTEL
+13:47:58.692: Clue MOTIVE: IMPULSE
+13:47:58.692: Clue WEAPON: TAMAGOCHI
+13:47:58.692: Clue BANDIT: EINSTEIN
+13:48:05.943: Message received: TEAM16,joebot,0,START
+13:48:05.943: Timer started.
+13:48:06.239: First command velocity received.
+13:48:08.161: Message received: TEAM16,joebot,1,LEGIONS
+13:48:08.161: Team total: 6 pts
+13:48:08.164: Awarded: 6 pts
+13:48:19.907: Message received: TEAM16,joebot,2,KOALAS
+13:48:19.908: Team total: 12 pts
+13:48:19.910: Awarded: 6 pts
+13:48:26.107: Message received: TEAM16,joebot,3,SWEAR
+13:48:26.108: Team total: 18 pts
+13:48:26.108: Awarded: 6 pts
+13:48:45.660: Message received: TEAM16,joebot,4,JURASIC
+13:48:45.662: Team total: 24 pts
+13:48:45.663: Awarded: 6 pts
+13:49:19.529: Message received: TEAM16,joebot,5,HOTEL
+13:49:19.529: Team total: 30 pts
+13:49:19.531: Awarded: 6 pts
+13:49:42.268: Message received: TEAM16,joebot,6,IMPULSE
+13:49:42.269: Team total: 36 pts
+13:49:42.270: Awarded: 6 pts

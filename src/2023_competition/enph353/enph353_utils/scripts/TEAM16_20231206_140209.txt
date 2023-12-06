@@ -1,0 +1,27 @@
+14:02:06.399: Clue SIZE: RAYO10
+14:02:06.399: Clue VICTIM: CITIZENS
+14:02:06.399: Clue CRIME: TELEPORT
+14:02:06.400: Clue TIME: DAWN
+14:02:06.400: Clue PLACE: HOTEL
+14:02:06.400: Clue MOTIVE: CURIOSITY
+14:02:06.400: Clue WEAPON: STICK
+14:02:06.401: Clue BANDIT: SHREK
+14:02:09.891: Message received: TEAM16,joebot,0,START
+14:02:09.892: Timer started.
+14:02:10.173: First command velocity received.
+14:02:12.137: Message received: TEAM16,joebot,1,RAYO1O
+14:02:12.138: Awarded: 0 pts
+14:02:24.300: Message received: TEAM16,joebot,2,CITIZENS
+14:02:24.300: Team total: 6 pts
+14:02:24.303: Awarded: 6 pts
+14:02:31.014: Message received: TEAM16,joebot,3,TELEPORT
+14:02:31.014: Team total: 12 pts
+14:02:31.017: Awarded: 6 pts
+14:02:42.315: Message received: TEAM16,joebot,4,DAW7L
+14:02:42.316: Awarded: 0 pts
+14:03:17.002: Message received: TEAM16,joebot,5,HOTEL
+14:03:17.002: Team total: 18 pts
+14:03:17.003: Awarded: 6 pts
+14:03:38.576: Message received: TEAM16,joebot,6,CURIOSITY
+14:03:38.577: Team total: 24 pts
+14:03:38.577: Awarded: 6 pts

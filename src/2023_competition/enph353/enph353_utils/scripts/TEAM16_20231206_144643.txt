@@ -1,0 +1,13 @@
+14:46:40.932: Clue SIZE: SINGLE
+14:46:40.933: Clue VICTIM: DINOSAURS
+14:46:40.933: Clue CRIME: HEADBUT
+14:46:40.933: Clue TIME: DAWN
+14:46:40.933: Clue PLACE: CAVE
+14:46:40.933: Clue MOTIVE: SELF DEFENSE
+14:46:40.934: Clue WEAPON: TAMAGOCHI
+14:46:40.934: Clue BANDIT: THANOS
+14:46:43.191: Message received: TEAM16,joebot,0,START
+14:46:43.192: Timer started.
+14:46:43.496: First command velocity received.
+14:46:44.963: Message received: TEAM16,joebot,1,
+14:46:44.963: Awarded: 0 pts

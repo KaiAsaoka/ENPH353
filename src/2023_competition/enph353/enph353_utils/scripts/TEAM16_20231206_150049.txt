@@ -1,0 +1,20 @@
+15:00:44.532: Clue SIZE: 10 GOOGLES
+15:00:44.532: Clue VICTIM: QUOKKAS
+15:00:44.532: Clue CRIME: TELEPORT
+15:00:44.535: Clue TIME: JURASIC
+15:00:44.536: Clue PLACE: VILLAGE
+15:00:44.536: Clue MOTIVE: IMPULSE
+15:00:44.537: Clue WEAPON: TAMAGOCHI
+15:00:44.538: Clue BANDIT: ZELOS
+15:00:45.867: First command velocity received.
+15:00:49.523: Message received: TEAM16,joebot,0,START
+15:00:49.523: Timer started.
+15:00:52.031: Message received: TEAM16,joebot,1,10GOOGLES
+15:00:52.031: Team total: 6 pts
+15:00:52.032: Awarded: 6 pts
+15:01:05.024: Message received: TEAM16,joebot,2,QUOKKAS
+15:01:05.024: Team total: 12 pts
+15:01:05.026: Awarded: 6 pts
+15:01:11.375: Message received: TEAM16,joebot,3,TELEPORT
+15:01:11.375: Team total: 18 pts
+15:01:11.376: Awarded: 6 pts

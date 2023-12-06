@@ -1,0 +1,23 @@
+14:23:57.173: Clue SIZE: FEW
+14:23:57.173: Clue VICTIM: ANTS
+14:23:57.173: Clue CRIME: SWEAR
+14:23:57.174: Clue TIME: DUSK
+14:23:57.174: Clue PLACE: MARS
+14:23:57.175: Clue MOTIVE: CURIOSITY
+14:23:57.175: Clue WEAPON: ROCKET
+14:23:57.175: Clue BANDIT: LUCIFER
+14:24:02.947: First command velocity received.
+14:24:06.935: Message received: TEAM16,joebot,0,START
+14:24:06.936: Timer started.
+14:24:09.270: Message received: TEAM16,joebot,1,TRIPLETS
+14:24:09.270: Awarded: 0 pts
+14:24:21.162: Message received: TEAM16,joebot,2,CITIZENS
+14:24:21.163: Awarded: 0 pts
+14:24:27.734: Message received: TEAM16,joebot,3,DECELERATE
+14:24:27.735: Awarded: 0 pts
+14:24:42.437: Message received: TEAM16,joebot,4,QDAY
+14:24:42.438: Awarded: 0 pts
+14:25:15.771: Message received: TEAM16,joebot,5,HOSPITAL
+14:25:15.773: Awarded: 0 pts
+14:25:38.310: Message received: TEAM16,joebot,6,GLUTTONY
+14:25:38.311: Awarded: 0 pts

@@ -1,0 +1,23 @@
+14:15:20.529: Clue SIZE: DOZEN
+14:15:20.529: Clue VICTIM: BUNNIES
+14:15:20.529: Clue CRIME: STRIKE
+14:15:20.530: Clue TIME: SPRING
+14:15:20.530: Clue PLACE: BASEMENT
+14:15:20.530: Clue MOTIVE: FEAR
+14:15:20.531: Clue WEAPON: PENCIL
+14:15:20.531: Clue BANDIT: CAESAR
+14:15:23.290: Message received: TEAM16,joebot,0,START
+14:15:23.291: Timer started.
+14:15:23.582: First command velocity received.
+14:15:25.460: Message received: TEAM16,joebot,1,DOZEN
+14:15:25.460: Team total: 6 pts
+14:15:25.463: Awarded: 6 pts
+14:15:45.185: Message received: TEAM16,joebot,3,STRIKE
+14:15:45.186: Team total: 12 pts
+14:15:45.188: Awarded: 6 pts
+14:15:57.415: Message received: TEAM16,joebot,4,SPRING
+14:15:57.416: Team total: 18 pts
+14:15:57.420: Awarded: 6 pts
+14:16:36.091: Message received: TEAM16,joebot,5,BASEMENT
+14:16:36.093: Team total: 24 pts
+14:16:36.093: Awarded: 6 pts

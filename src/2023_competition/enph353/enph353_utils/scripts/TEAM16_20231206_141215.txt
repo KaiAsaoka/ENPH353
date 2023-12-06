@@ -1,0 +1,20 @@
+14:12:10.775: Clue SIZE: BAKER DOZEN
+14:12:10.775: Clue VICTIM: ANTS
+14:12:10.775: Clue CRIME: TRANSMOGRIFY
+14:12:10.777: Clue TIME: WINTER
+14:12:10.777: Clue PLACE: FIELD
+14:12:10.777: Clue MOTIVE: REVENGE
+14:12:10.777: Clue WEAPON: ANTIMATTER
+14:12:10.777: Clue BANDIT: SAURON
+14:12:13.476: First command velocity received.
+14:12:15.050: Message received: TEAM16,joebot,0,START
+14:12:15.050: Timer started.
+14:12:19.918: Message received: TEAM16,joebot,1,BAKERDOZEN
+14:12:19.919: Team total: 6 pts
+14:12:19.921: Awarded: 6 pts
+14:12:33.939: Message received: TEAM16,joebot,2,ANTS
+14:12:33.940: Team total: 12 pts
+14:12:33.943: Awarded: 6 pts
+14:12:40.049: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+14:12:40.051: Team total: 18 pts
+14:12:40.054: Awarded: 6 pts

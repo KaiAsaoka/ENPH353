@@ -1,0 +1,20 @@
+14:58:28.947: Clue SIZE: COUNTLESS
+14:58:28.947: Clue VICTIM: CITIZENS
+14:58:28.947: Clue CRIME: PUNCH
+14:58:28.947: Clue TIME: D DAY
+14:58:28.948: Clue PLACE: JUNGLE
+14:58:28.948: Clue MOTIVE: GLUTTONY
+14:58:28.948: Clue WEAPON: PENCIL
+14:58:28.948: Clue BANDIT: HANNIBAL
+14:58:32.868: First command velocity received.
+14:58:38.690: Message received: TEAM16,joebot,0,START
+14:58:38.691: Timer started.
+14:58:41.197: Message received: TEAM16,joebot,1,COUNTLESS
+14:58:41.198: Team total: 6 pts
+14:58:41.198: Awarded: 6 pts
+14:58:51.226: Message received: TEAM16,joebot,2,CITIZENS
+14:58:51.227: Team total: 12 pts
+14:58:51.227: Awarded: 6 pts
+14:58:56.724: Message received: TEAM16,joebot,3,PUNCH
+14:58:56.725: Team total: 18 pts
+14:58:56.726: Awarded: 6 pts

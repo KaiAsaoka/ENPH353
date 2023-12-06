@@ -1,0 +1,20 @@
+14:34:28.934: Clue SIZE: 314
+14:34:28.935: Clue VICTIM: ROBOTS
+14:34:28.935: Clue CRIME: TRANSMOGRIFY
+14:34:28.937: Clue TIME: TWILIGHT
+14:34:28.937: Clue PLACE: EVEREST
+14:34:28.938: Clue MOTIVE: PRIDE
+14:34:28.938: Clue WEAPON: POTATO GUN
+14:34:28.938: Clue BANDIT: TEMUJIN
+14:34:31.893: Message received: TEAM16,joebot,0,START
+14:34:31.893: Timer started.
+14:34:32.193: First command velocity received.
+14:34:33.956: Message received: TEAM16,joebot,1,314
+14:34:33.957: Team total: 6 pts
+14:34:33.958: Awarded: 6 pts
+14:34:45.289: Message received: TEAM16,joebot,2,ROBOTS
+14:34:45.291: Team total: 12 pts
+14:34:45.294: Awarded: 6 pts
+14:34:51.879: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+14:34:51.880: Team total: 18 pts
+14:34:51.880: Awarded: 6 pts

@@ -1,0 +1,30 @@
+14:47:55.376: Clue SIZE: BAKER DOZEN
+14:47:55.376: Clue VICTIM: PANDAS
+14:47:55.376: Clue CRIME: TRANSMOGRIFY
+14:47:55.379: Clue TIME: DAWN
+14:47:55.379: Clue PLACE: UNDERGROUND
+14:47:55.379: Clue MOTIVE: GLUTTONY
+14:47:55.379: Clue WEAPON: HOLY GRENADE
+14:47:55.380: Clue BANDIT: LUIGI
+14:48:26.982: First command velocity received.
+14:48:29.285: Message received: TEAM16,joebot,1,BAKERDOZEN
+14:48:29.286: Team total: 6 pts
+14:48:29.288: Awarded: 6 pts
+14:48:41.326: Message received: TEAM16,joebot,2,PANDAS
+14:48:41.326: Team total: 12 pts
+14:48:41.328: Awarded: 6 pts
+14:48:48.515: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+14:48:48.515: Team total: 18 pts
+14:48:48.516: Awarded: 6 pts
+14:48:59.331: Message received: TEAM16,joebot,4,DAW7L
+14:48:59.333: Awarded: 0 pts
+14:49:33.967: Message received: TEAM16,joebot,5,UNDERGROUND
+14:49:33.968: Team total: 24 pts
+14:49:33.969: Awarded: 6 pts
+14:49:55.552: Message received: TEAM16,joebot,6,GLUTTONY
+14:49:55.553: Team total: 30 pts
+14:49:55.554: Awarded: 6 pts
+14:51:13.393: Message received: TEAM16,joebot,8,LYIGI
+14:51:13.393: Awarded: 0 pts
+14:51:25.012: Bonus completed: +5 points
+14:51:25.013: Team total: 35 pts

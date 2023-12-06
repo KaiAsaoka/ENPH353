@@ -1,0 +1,20 @@
+14:22:16.362: Clue SIZE: QUINTUPLETS
+14:22:16.362: Clue VICTIM: DINOSAURS
+14:22:16.362: Clue CRIME: PUNCH
+14:22:16.363: Clue TIME: DUSK
+14:22:16.363: Clue PLACE: MARS
+14:22:16.363: Clue MOTIVE: GLAMOUR
+14:22:16.364: Clue WEAPON: BALOON
+14:22:16.364: Clue BANDIT: THANOS
+14:22:16.976: First command velocity received.
+14:22:22.297: Message received: TEAM16,joebot,0,START
+14:22:22.298: Timer started.
+14:22:24.898: Message received: TEAM16,joebot,1,QUINTUPLETS
+14:22:24.898: Team total: 6 pts
+14:22:24.899: Awarded: 6 pts
+14:22:36.556: Message received: TEAM16,joebot,2,DINOSAURS
+14:22:36.557: Team total: 12 pts
+14:22:36.557: Awarded: 6 pts
+14:22:42.672: Message received: TEAM16,joebot,3,PUNCH
+14:22:42.673: Team total: 18 pts
+14:22:42.675: Awarded: 6 pts
