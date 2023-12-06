@@ -11,30 +11,42 @@ import string
 from random import randint
 from PIL import Image, ImageFont, ImageDraw
 
-entries = {'SIZE': ["TWO", "314", "DOZEN", "RAYO10", "COUNTLESS", "LEGIONS",
-                    "TRIPLETS", "QUINTUPLETS", "SINGLE"],
-           'VICTIM': ["PARROTS", "ROBOTS", "BACTERIA", "JEDIS", "ALIENS", 
-                      "CITIZENS", "PHYSICISTS", "FRODO", "DINOSAURS", "BUNNIES",
-                      "BED BUGS", "ANTS", "QUOKKAS"],
-           'CRIME': ["STEAL", "TRESPASS", "LIE TO", "DESTROY", "PUNCH", "BITE", 
-                     "TRANSMOGRIFY", "TELEPORT", "ACCELERATE", "IRRADIATE",
-                     "CURSE", "HEADBUT", "DEFRAUD", "DECELERATE", "TICKLE"],
-           'TIME': ["NOON", "MIDNIGHT", "DAWN", "DUSK", "JURASIC", "TWILIGHT",
-                    "D DAY", "Q DAY", "2023", "WINTER", "SUMMER", "SPRING",
-                    "AUTUMN", "EONS"],
-           'PLACE': ["HOSPITAL", "MALL", "FOREST", "MOON", "CLASS", "BEACH", 
-                     "JUNGLE", "BASEMENT", "THE HOOD", "SEWERS", "CAVE",
-                     "BENU", "MARS", "UNDERGROUND"],
-           'MOTIVE': ["GLUTTONY", "CURIOSITY", "IGNORANCE", "FEAR", "PRIDE", 
-                      "LOVE", "REVENGE", "PASSION", "BOREDOM", "THRILL", 
-                      "GREED", "FAME", "ACCIDENT", "HATE", "SELF DEFENSE"],
-           'WEAPON': ["STICK", "ROCKET", "ANTIMATTER", "NEUTRINOS", "SHURIKEN", 
-                      "PENCIL", "PLASMA", "WATER", "FIRE", "POTATO GUN", 
-                      "ROPE", "ELECTRON", "HIGH VOLTAGE", "POLONIUM"],
-           'BANDIT': ["EINSTEIN", "PIKACHU", "SHREK", "LUIGI", "BARBIE", 
-                      "BATMAN", "CAESAR", "SAURON", "THANOS", "GOKU", 
-                      "CAO CAO", "THE DEVIL", "GODZILA", "TEMUJIN", 
-                      "HANNIBAL"]
+entries = {'SIZE': ["100", "10 GOOGLES", "314", "A PAIR", "BAKER DOZEN",
+                    "COUNTLESS", "DOZEN", "FEW", "FIVE", "HALF DOZEN",
+                    "LEGIONS", "MANY", "QUINTUPLETS", "RAYO10", "SINGLE",
+                    "THREE", "TRIPLETS", "TWO", "UNCOUNTABLE", "ZEPTILLION"],
+           'VICTIM': ["ALIENS", "ANTS", "BACTERIA", "BED BUGS", "BUNNIES",
+                      "CITIZENS", "DINOSAURS", "FRODOS", "JEDIS", "KANGAROO",
+                      "KOALAS", "PANDAS", "PARROTS", "PHYSICISTS", "QUOKKAS",
+                      "ROBOTS", "RABBITS", "TOURISTS", "ZOMBIES"],
+           'CRIME': ["ACCELERATE", "BITE", "CURSE", "DECELERATE", "DEFRAUD",
+                     "DESTROY", "HEADBUT", "IRRADIATE", "LIE TO", "POKE",
+                     "PUNCH", "PUSH", "SCARE", "STEAL", "STRIKE", "SWEAR",
+                     "TELEPORT", "THINKING", "TICKLE", "TRANSMOGRIFY",
+                     "TRESPASS"],
+           'TIME': ["2023", "AUTUMN", "DAWN", "D DAY", "DUSK", "EONS AGO",
+                    "JURASIC", "MIDNIGHT", "NOON", "Q DAY", "SPRING",
+                    "SUMMER", "TOMORROW", "TWILIGHT", "WINTER", "YESTERDAY"],
+           'PLACE': ["AMAZON", "ARCTIC", "BASEMENT", "BEACH", "BENU", "CAVE",
+                     "CLASS", "EVEREST", "EXIT 8", "FIELD", "FOREST",
+                     "HOSPITAL", "HOTEL", "JUNGLE", "MADAGASCAR", "MALL",
+                     "MARS", "MINE", "MOON", "SEWERS", "SWITZERLAND",
+                     "THE HOOD", "UNDERGROUND", "VILLAGE"],
+           'MOTIVE': ["ACCIDENT", "BOREDOM", "CURIOSITY", "FAME", "FEAR",
+                      "FOOLISHNESS", "GLAMOUR", "GLUTTONY", "GREED", "HATE",
+                      "HASTE", "IGNORANCE", "IMPULSE", "LOVE", "LOATHING",
+                      "PASSION", "PRIDE", "RAGE", "REVENGE", "REVOLT",
+                      "SELF DEFENSE", "THRILL", "ZEALOUSNESS"],
+           'WEAPON': ["ANTIMATTER", "BALOON", "CHEESE", "ELECTRON", "FIRE",
+                      "FLASHLIGHT", "HIGH VOLTAGE", "HOLY GRENADE", "ICYCLE",
+                      "KRYPTONITE", "NEUTRINOS", "PENCIL", "PLASMA",
+                      "POLONIUM", "POSITRON", "POTATO GUN", "ROCKET", "ROPE",
+                      "SHURIKEN", "SPONGE", "STICK", "TAMAGOCHI", "WATER",
+                      "WRENCH"],
+           'BANDIT': ["BARBIE", "BATMAN", "CAESAR", "CAO CAO", "EINSTEIN",
+                      "GODZILA", "GOKU", "HANNIBAL", "L", "LENIN", "LUCIFER",
+                      "LUIGI", "PIKACHU", "SATOSHI", "SHREK", "SAURON",
+                      "THANOS", "TEMUJIN", "THE DEVIL", "ZELOS"]
            }
 
 # Find the path to this script
@@ -56,8 +68,8 @@ with open(SCRIPT_PATH + "plates.csv", 'w') as plates_file:
         j = random.randint(0, len(entries[key])-1)
         random_value = entries[key][j]
 
-        if len(random_value) < 11:
-            random_value = random.choice(string.ascii_uppercase) + " " + random_value
+        #if len(random_value) < 11:
+            #random_value = random.choice(string.ascii_uppercase) + " " + random_value
 
         entry = key + "," + random_value
         print(entry)

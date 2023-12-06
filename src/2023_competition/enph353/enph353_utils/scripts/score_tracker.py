@@ -5,10 +5,10 @@ from PyQt5.QtGui import (QPixmap)
 from PyQt5.QtCore import (Qt, QTimer, pyqtSignal)
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
+from openai import OpenAI
 from python_qt_binding import loadUi
 
 import csv
-import openai
 import os
 import requests
 import rospy
@@ -337,10 +337,7 @@ class Window(QtWidgets.QMainWindow):
         URL = "https://phas.ubc.ca/~miti/ENPH353/ENPH353Keys.txt"
 
         response = requests.get(URL)
-        API_KEY, API_ORG, _ = response.text.split(',')
-
-        openai.organization = API_ORG
-        openai.api_key = API_KEY
+        API_KEY,_ = response.text.split(',')
 
         inspector_name = self.team_ID_value_QL.text()
         size   =  str(self.predictions_scores_QTW.item(0, 2).text())
@@ -361,8 +358,12 @@ Clue: PLACE: {place}
 Clue: MOTIVE: {motive}
 Clue: WEAPON: {weapon}
 Clue: BANDIT: {bandit}"""
+        
+        client = OpenAI(
+            api_key=API_KEY
+        )
 
-        completion = openai.ChatCompletion.create(
+        completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": f"You are inspector {inspector_name}, a wise detective \
