@@ -6,6 +6,7 @@
 
 import rospy
 import cv2
+import math
 import numpy as np
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
@@ -18,6 +19,8 @@ from std_msgs.msg import Bool
 from std_msgs.msg import Int32
 from std_msgs.msg import String
 from rosgraph_msgs.msg import Clock
+from gazebo_msgs.srv import SetModelState
+from gazebo_msgs.msg import ModelState
 
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
@@ -81,6 +84,7 @@ class navigation():
         rospy.Subscriber("/R1/pi_camera/image_raw", Image, self.image_callback)
         rospy.Subscriber("/read_sign", Int32, self.callback)
         rospy.Subscriber("/predict_sign", Int32, self.predict_callback)
+        rospy.Subscriber("/respawn",Int32,self.respawn_callback)
         
         #### SET FALSE FOR REAL RUN
         self.start = True
@@ -133,6 +137,31 @@ class navigation():
                             ,"O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
 
         print("navigation init success")
+    def respawn_callback(self,data):
+        
+        move = Twist()
+        move.linear.x = 0
+        move.linear.y = 0
+        move.linear.z = 0
+        move.angular.z = 0
+        self.move_pub.publish(move)
+        num = data.data
+        if(num == 1):
+            self.reinit(1)
+            angle_rad = math.radians(80)
+            position = [0.5,0,0.25,0,0,math.sin(angle_rad / 2),math.cos(angle_rad / 2)]
+            self.spawn_position(position)
+            print("respawning")
+            time = self.times
+        else:
+            self.reinit(-1)
+            time = self.times
+            while(self.times - time < 2):
+                continue
+            position = [-4,-2.375,0.25,0,0,0,0]
+            self.spawn_position(position)
+
+
 
     def predict_callback(self,data):
         num = data.data
@@ -303,9 +332,7 @@ class navigation():
         if self.grassy == False: #Road detection
             self.signthresh = 30000
             self.roadFollow(data)
-            
-           
-                
+
         elif self.tunnel == False: # grassy area
             self.signthresh = 30000
             self.grassFollow(data)
@@ -1572,6 +1599,58 @@ class navigation():
             return closest_index
         else:
             return -5
+        
+    def spawn_position(self, position):
+
+        msg = ModelState()
+        msg.model_name = 'R1'
+
+        msg.pose.position.x = position[0]
+        msg.pose.position.y = position[1]
+        msg.pose.position.z = position[2]
+        msg.pose.orientation.x = position[3]
+        msg.pose.orientation.y = position[4]
+        msg.pose.orientation.z = position[5]
+        msg.pose.orientation.w = position[6]
+
+        rospy.wait_for_service('/gazebo/set_model_state')
+        try:
+            set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+            resp = set_state( msg )
+
+        except rospy.ServiceException:
+            print ("Service call failed")
+
+    
+    def reinit(self,id):
+        if(id == 1):
+            testgrass = True
+            self.start = True
+            self.climb  = False
+            self.tunnel = False
+            self.car = False
+            self.turntotun = False
+
+            if testgrass == True:
+                    self.grassy = True
+                    self.pastman = True
+                    self.grassSpeed = 0.2
+                    self.roadSpeed = 0.5
+        else:
+            self.start = True
+            self.grassy = True #Road detection
+            self.tunnel = True # grassy area
+            self.car = True
+            self.predictions = True
+            self.turntotun = True
+            self.climb  = True
+            self.predictions = True
+            self.grassSpeed = 0.2
+            self.roadSpeed = 0.5
+        
+
+
+                
             
 
     
