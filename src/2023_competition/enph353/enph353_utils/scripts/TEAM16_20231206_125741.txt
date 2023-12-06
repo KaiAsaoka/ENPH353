@@ -1,0 +1,20 @@
+12:57:37.911: Clue SIZE: RAYO10
+12:57:37.911: Clue VICTIM: DINOSAURS
+12:57:37.912: Clue CRIME: HEADBUT
+12:57:37.913: Clue TIME: JURASIC
+12:57:37.913: Clue PLACE: CLASS
+12:57:37.913: Clue MOTIVE: FEAR
+12:57:37.913: Clue WEAPON: FLASHLIGHT
+12:57:37.914: Clue BANDIT: SAURON
+12:57:41.316: Message received: TEAM16,joebot,0,START
+12:57:41.317: Timer started.
+12:57:41.663: First command velocity received.
+12:57:43.801: Message received: TEAM16,joebot,1,RAYO10
+12:57:43.802: Team total: 6 pts
+12:57:43.803: Awarded: 6 pts
+12:57:57.921: Message received: TEAM16,joebot,2,DINOSAURS
+12:57:57.921: Team total: 12 pts
+12:57:57.923: Awarded: 6 pts
+12:58:03.985: Message received: TEAM16,joebot,3,HEADBUT
+12:58:03.986: Team total: 18 pts
+12:58:03.989: Awarded: 6 pts

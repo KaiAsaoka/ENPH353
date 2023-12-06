@@ -1,0 +1,20 @@
+12:56:01.842: Clue SIZE: FIVE
+12:56:01.842: Clue VICTIM: ZOMBIES
+12:56:01.842: Clue CRIME: SWEAR
+12:56:01.844: Clue TIME: MIDNIGHT
+12:56:01.845: Clue PLACE: AMAZON
+12:56:01.845: Clue MOTIVE: GLAMOUR
+12:56:01.845: Clue WEAPON: ELECTRON
+12:56:01.845: Clue BANDIT: SATOSHI
+12:56:06.727: Message received: TEAM16,joebot,0,START
+12:56:06.728: Timer started.
+12:56:06.969: First command velocity received.
+12:56:08.712: Message received: TEAM16,joebot,1,FIVE
+12:56:08.713: Team total: 6 pts
+12:56:08.714: Awarded: 6 pts
+12:56:20.431: Message received: TEAM16,joebot,2,ZOMBIES
+12:56:20.432: Team total: 12 pts
+12:56:20.432: Awarded: 6 pts
+12:56:26.312: Message received: TEAM16,joebot,3,SWEAR
+12:56:26.313: Team total: 18 pts
+12:56:26.314: Awarded: 6 pts

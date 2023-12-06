@@ -1,0 +1,32 @@
+13:06:51.639: Clue SIZE: UNCOUNTABLE
+13:06:51.639: Clue VICTIM: ZOMBIES
+13:06:51.640: Clue CRIME: PUNCH
+13:06:51.641: Clue TIME: D DAY
+13:06:51.641: Clue PLACE: THE HOOD
+13:06:51.642: Clue MOTIVE: PASSION
+13:06:51.643: Clue WEAPON: ICYCLE
+13:06:51.643: Clue BANDIT: CAESAR
+13:06:54.653: First command velocity received.
+13:07:08.268: Message received: TEAM16,joebot,0,START
+13:07:08.270: Timer started.
+13:07:20.365: Message received: TEAM16,joebot,2,ZOMBIES
+13:07:20.366: Team total: 6 pts
+13:07:20.368: Awarded: 6 pts
+13:07:26.082: Message received: TEAM16,joebot,3,PUNCH
+13:07:26.083: Team total: 12 pts
+13:07:26.084: Awarded: 6 pts
+13:07:38.797: Message received: TEAM16,joebot,4,DDAY
+13:07:38.797: Team total: 18 pts
+13:07:38.800: Awarded: 6 pts
+13:08:12.690: Message received: TEAM16,joebot,5,THEHD
+13:08:12.693: Awarded: 0 pts
+13:08:34.313: Message received: TEAM16,joebot,6,PASSION
+13:08:34.314: Team total: 24 pts
+13:08:34.316: Awarded: 6 pts
+13:08:48.150: Message received: TEAM16,joebot,7,ICYCLE
+13:08:48.151: Team total: 32 pts
+13:08:48.152: Awarded: 8 pts
+13:09:54.430: Message received: TEAM16,joebot,-1,END
+13:09:54.430: Timer stopped: 163.71 sec sim time (real time: 166sec).
+13:10:04.079: Message received: TEAM16,joebot,1,
+13:10:04.080: Awarded: 0 pts

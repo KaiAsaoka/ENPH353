@@ -1,0 +1,20 @@
+12:50:21.868: Clue SIZE: COUNTLESS
+12:50:21.869: Clue VICTIM: ROBOTS
+12:50:21.869: Clue CRIME: DESTROY
+12:50:21.871: Clue TIME: WINTER
+12:50:21.871: Clue PLACE: ARCTIC
+12:50:21.871: Clue MOTIVE: HATE
+12:50:21.872: Clue WEAPON: ROCKET
+12:50:21.872: Clue BANDIT: BATMAN
+12:50:29.103: Message received: TEAM16,joebot,0,START
+12:50:29.103: Timer started.
+12:50:29.359: First command velocity received.
+12:50:31.722: Message received: TEAM16,joebot,1,COUNTLESS
+12:50:31.723: Team total: 6 pts
+12:50:31.724: Awarded: 6 pts
+12:50:49.586: Message received: TEAM16,joebot,2,ROBOTS
+12:50:49.587: Team total: 12 pts
+12:50:49.587: Awarded: 6 pts
+12:50:55.590: Message received: TEAM16,joebot,3,DESTROY
+12:50:55.591: Team total: 18 pts
+12:50:55.593: Awarded: 6 pts

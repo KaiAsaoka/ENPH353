@@ -1,0 +1,30 @@
+13:29:49.911: Clue SIZE: TWO
+13:29:49.911: Clue VICTIM: BACTERIA
+13:29:49.911: Clue CRIME: LIE TO
+13:29:49.913: Clue TIME: 2023
+13:29:49.914: Clue PLACE: FIELD
+13:29:49.914: Clue MOTIVE: PRIDE
+13:29:49.914: Clue WEAPON: SHURIKEN
+13:29:49.915: Clue BANDIT: CAO CAO
+13:29:54.619: Message received: TEAM16,joebot,0,START
+13:29:54.620: Timer started.
+13:29:54.875: First command velocity received.
+13:30:08.825: Message received: TEAM16,joebot,2,BACTERIA
+13:30:08.826: Team total: 6 pts
+13:30:08.828: Awarded: 6 pts
+13:30:14.549: Message received: TEAM16,joebot,3,LIETO
+13:30:14.550: Team total: 12 pts
+13:30:14.550: Awarded: 6 pts
+13:30:27.663: Message received: TEAM16,joebot,1,2
+13:30:27.664: Awarded: 0 pts
+13:31:01.815: Message received: TEAM16,joebot,5,FIELD
+13:31:01.815: Team total: 18 pts
+13:31:01.818: Awarded: 6 pts
+13:31:23.533: Message received: TEAM16,joebot,6,PRIDE
+13:31:23.534: Team total: 24 pts
+13:31:23.536: Awarded: 6 pts
+13:31:37.662: Message received: TEAM16,joebot,7,SHURIKEN
+13:31:37.663: Team total: 32 pts
+13:31:37.663: Awarded: 8 pts
+13:32:41.125: Message received: TEAM16,joebot,8,5A0CAO
+13:32:41.126: Awarded: 0 pts

@@ -1,0 +1,29 @@
+12:44:27.835: Clue SIZE: MANY
+12:44:27.836: Clue VICTIM: ANTS
+12:44:27.836: Clue CRIME: TRESPASS
+12:44:27.837: Clue TIME: SUMMER
+12:44:27.837: Clue PLACE: UNDERGROUND
+12:44:27.837: Clue MOTIVE: HATE
+12:44:27.837: Clue WEAPON: WRENCH
+12:44:27.838: Clue BANDIT: TEMUJIN
+12:44:33.028: Message received: TEAM16,joebot,0,START
+12:44:33.029: Timer started.
+12:44:33.359: First command velocity received.
+12:44:35.105: Message received: TEAM16,joebot,1,MANY
+12:44:35.105: Team total: 6 pts
+12:44:35.106: Awarded: 6 pts
+12:44:48.500: Message received: TEAM16,joebot,2,ANTS
+12:44:48.500: Team total: 12 pts
+12:44:48.501: Awarded: 6 pts
+12:44:54.597: Message received: TEAM16,joebot,3,TRESPASS
+12:44:54.597: Team total: 18 pts
+12:44:54.598: Awarded: 6 pts
+12:45:07.350: Message received: TEAM16,joebot,4,SUMMER
+12:45:07.352: Team total: 24 pts
+12:45:07.353: Awarded: 6 pts
+12:45:41.755: Message received: TEAM16,joebot,5,UNDERGROUND
+12:45:41.756: Team total: 30 pts
+12:45:41.758: Awarded: 6 pts
+12:46:04.222: Message received: TEAM16,joebot,6,HATE
+12:46:04.223: Team total: 36 pts
+12:46:04.233: Awarded: 6 pts

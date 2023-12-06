@@ -1,0 +1,14 @@
+13:16:00.715: Clue SIZE: 10 GOOGLES
+13:16:00.715: Clue VICTIM: ALIENS
+13:16:00.715: Clue CRIME: TRANSMOGRIFY
+13:16:00.716: Clue TIME: AUTUMN
+13:16:00.716: Clue PLACE: JUNGLE
+13:16:00.716: Clue MOTIVE: THRILL
+13:16:00.717: Clue WEAPON: ANTIMATTER
+13:16:00.717: Clue BANDIT: GOKU
+13:16:07.427: Message received: TEAM16,joebot,0,START
+13:16:07.427: Timer started.
+13:16:07.714: First command velocity received.
+13:16:09.849: Message received: TEAM16,joebot,1,10GOOGLES
+13:16:09.850: Team total: 6 pts
+13:16:09.852: Awarded: 6 pts

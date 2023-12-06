@@ -1,0 +1,27 @@
+13:34:05.947: Clue SIZE: HALF DOZEN
+13:34:05.947: Clue VICTIM: KANGAROO
+13:34:05.947: Clue CRIME: TICKLE
+13:34:05.948: Clue TIME: NOON
+13:34:05.949: Clue PLACE: FOREST
+13:34:05.949: Clue MOTIVE: PRIDE
+13:34:05.949: Clue WEAPON: PLASMA
+13:34:05.949: Clue BANDIT: LUIGI
+13:34:09.005: Message received: TEAM16,joebot,0,START
+13:34:09.006: Timer started.
+13:34:09.262: First command velocity received.
+13:34:11.530: Message received: TEAM16,joebot,1,HALFDOZEN
+13:34:11.530: Team total: 6 pts
+13:34:11.538: Awarded: 6 pts
+13:34:22.757: Message received: TEAM16,joebot,2,VNGAROO
+13:34:22.757: Awarded: 0 pts
+13:34:28.716: Message received: TEAM16,joebot,3,TICKLE
+13:34:28.717: Team total: 12 pts
+13:34:28.718: Awarded: 6 pts
+13:34:40.127: Message received: TEAM16,joebot,4,NOO7L
+13:34:40.131: Awarded: 0 pts
+13:35:14.862: Message received: TEAM16,joebot,5,FOREST
+13:35:14.862: Team total: 18 pts
+13:35:14.864: Awarded: 6 pts
+13:35:37.558: Message received: TEAM16,joebot,6,PRIDE
+13:35:37.559: Team total: 24 pts
+13:35:37.561: Awarded: 6 pts

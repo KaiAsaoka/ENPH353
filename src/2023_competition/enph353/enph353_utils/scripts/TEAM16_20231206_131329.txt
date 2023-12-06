@@ -1,0 +1,18 @@
+13:13:23.761: Clue SIZE: THREE
+13:13:23.761: Clue VICTIM: ZOMBIES
+13:13:23.761: Clue CRIME: DECELERATE
+13:13:23.764: Clue TIME: DUSK
+13:13:23.764: Clue PLACE: ARCTIC
+13:13:23.764: Clue MOTIVE: HATE
+13:13:23.764: Clue WEAPON: BALOON
+13:13:23.765: Clue BANDIT: CAO CAO
+13:13:24.691: First command velocity received.
+13:13:29.296: Message received: TEAM16,joebot,0,START
+13:13:29.297: Timer started.
+13:13:41.735: Message received: TEAM16,joebot,2,ZOMBIES
+13:13:41.735: Team total: 6 pts
+13:13:41.738: Awarded: 6 pts
+13:13:47.403: Message received: TEAM16,joebot,3,OECELERATE
+13:13:47.404: Awarded: 0 pts
+13:13:51.124: Message received: TEAM16,joebot,1,
+13:13:51.125: Awarded: 0 pts

@@ -1,0 +1,20 @@
+12:47:42.013: Clue SIZE: 314
+12:47:42.013: Clue VICTIM: FRODOS
+12:47:42.013: Clue CRIME: CURSE
+12:47:42.013: Clue TIME: D DAY
+12:47:42.014: Clue PLACE: BASEMENT
+12:47:42.014: Clue MOTIVE: ZEALOUSNESS
+12:47:42.014: Clue WEAPON: TAMAGOCHI
+12:47:42.014: Clue BANDIT: GODZILA
+12:47:57.515: Message received: TEAM16,joebot,0,START
+12:47:57.515: Timer started.
+12:47:57.783: First command velocity received.
+12:47:59.479: Message received: TEAM16,joebot,1,314
+12:47:59.480: Team total: 6 pts
+12:47:59.482: Awarded: 6 pts
+12:48:10.896: Message received: TEAM16,joebot,2,FRODOS
+12:48:10.897: Team total: 12 pts
+12:48:10.899: Awarded: 6 pts
+12:48:16.700: Message received: TEAM16,joebot,3,CURSE
+12:48:16.701: Team total: 18 pts
+12:48:16.702: Awarded: 6 pts

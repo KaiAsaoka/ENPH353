@@ -405,7 +405,7 @@ class navigation():
                         
             if self.pastman == True:
                 if self.scanfortruck(frame) == True:
-                    move.linear.x = 0
+                    move.linear.x = 0.0001
                     turn = False
                     
             
@@ -690,10 +690,10 @@ class navigation():
         
             turn0 = 0
             turn1 = 0.75
-            turn2 = 1
-            turn3 = 1.2
+            turn2 = 1.25
+            turn3 = 1.5
             turn4 = 2
-            turn5 = 3
+            turn5 = 3.5
             
             if cxavg >= 0 and cxavg < 128:
                 move.angular.z = turn5
@@ -1228,7 +1228,7 @@ class navigation():
             
             frame = frameorig.copy()
 
-            h=430
+            h=440
             
             ## Define the coordinates of the region of interest (ROI)
             roi_x1, roi_y1, roi_x2, roi_y2 = 0, h, 1280, h+100  # Adjust these coordinates as needed
@@ -1462,7 +1462,7 @@ class navigation():
             
             ## Find contours in the binary mask
             bluecont, _ = cv2.findContours(blue_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            min_area = 100
+            min_area = 50
             max_area = 100000
             
             bluecont = [contour for contour in bluecont if min_area < cv2.contourArea(contour) < max_area]

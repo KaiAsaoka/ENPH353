@@ -1,0 +1,20 @@
+13:11:38.902: Clue SIZE: BAKER DOZEN
+13:11:38.902: Clue VICTIM: KOALAS
+13:11:38.902: Clue CRIME: POKE
+13:11:38.903: Clue TIME: SUMMER
+13:11:38.904: Clue PLACE: EXIT 8
+13:11:38.904: Clue MOTIVE: IMPULSE
+13:11:38.904: Clue WEAPON: HIGH VOLTAGE
+13:11:38.904: Clue BANDIT: LENIN
+13:11:49.923: Message received: TEAM16,joebot,0,START
+13:11:49.924: Timer started.
+13:11:50.205: First command velocity received.
+13:11:52.498: Message received: TEAM16,joebot,1,BAKERDOZEN
+13:11:52.499: Team total: 6 pts
+13:11:52.503: Awarded: 6 pts
+13:12:04.446: Message received: TEAM16,joebot,2,KOALAS
+13:12:04.447: Team total: 12 pts
+13:12:04.449: Awarded: 6 pts
+13:12:09.952: Message received: TEAM16,joebot,3,POKE
+13:12:09.953: Team total: 18 pts
+13:12:09.955: Awarded: 6 pts

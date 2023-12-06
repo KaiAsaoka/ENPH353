@@ -1,0 +1,23 @@
+13:01:25.145: Clue SIZE: 100
+13:01:25.145: Clue VICTIM: FRODOS
+13:01:25.146: Clue CRIME: TELEPORT
+13:01:25.146: Clue TIME: SPRING
+13:01:25.146: Clue PLACE: BEACH
+13:01:25.147: Clue MOTIVE: PASSION
+13:01:25.147: Clue WEAPON: PLASMA
+13:01:25.147: Clue BANDIT: SATOSHI
+13:01:28.338: Message received: TEAM16,joebot,0,START
+13:01:28.339: Timer started.
+13:01:28.614: First command velocity received.
+13:01:30.588: Message received: TEAM16,joebot,1,100
+13:01:30.588: Team total: 6 pts
+13:01:30.589: Awarded: 6 pts
+13:01:44.538: Message received: TEAM16,joebot,2,FRODOS
+13:01:44.539: Team total: 12 pts
+13:01:44.541: Awarded: 6 pts
+13:01:51.095: Message received: TEAM16,joebot,3,TELEPORT
+13:01:51.096: Team total: 18 pts
+13:01:51.096: Awarded: 6 pts
+13:02:03.270: Message received: TEAM16,joebot,4,SPRING
+13:02:03.272: Team total: 24 pts
+13:02:03.274: Awarded: 6 pts

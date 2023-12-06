@@ -1,0 +1,19 @@
+12:59:24.717: Clue SIZE: RAYO10
+12:59:24.717: Clue VICTIM: ALIENS
+12:59:24.718: Clue CRIME: TELEPORT
+12:59:24.722: Clue TIME: WINTER
+12:59:24.723: Clue PLACE: VILLAGE
+12:59:24.723: Clue MOTIVE: ZEALOUSNESS
+12:59:24.723: Clue WEAPON: WRENCH
+12:59:24.723: Clue BANDIT: LUCIFER
+12:59:25.471: First command velocity received.
+12:59:30.601: Message received: TEAM16,joebot,0,START
+12:59:30.601: Timer started.
+12:59:32.779: Message received: TEAM16,joebot,1,RAYO1O
+12:59:32.780: Awarded: 0 pts
+12:59:47.730: Message received: TEAM16,joebot,2,ALIENS
+12:59:47.731: Team total: 6 pts
+12:59:47.732: Awarded: 6 pts
+12:59:54.872: Message received: TEAM16,joebot,3,TELEPORT
+12:59:54.873: Team total: 12 pts
+12:59:54.874: Awarded: 6 pts

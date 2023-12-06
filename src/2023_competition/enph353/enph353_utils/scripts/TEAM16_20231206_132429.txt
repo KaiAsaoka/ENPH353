@@ -1,0 +1,37 @@
+13:24:24.366: Clue SIZE: THREE
+13:24:24.366: Clue VICTIM: ALIENS
+13:24:24.366: Clue CRIME: HEADBUT
+13:24:24.791: Clue TIME: AUTUMN
+13:24:24.895: Clue PLACE: UNDERGROUND
+13:24:24.930: Clue MOTIVE: GREED
+13:24:24.930: Clue WEAPON: FLASHLIGHT
+13:24:24.931: Clue BANDIT: CAESAR
+13:24:25.532: First command velocity received.
+13:24:29.541: Message received: TEAM16,joebot,0,START
+13:24:29.542: Timer started.
+13:24:31.654: Message received: TEAM16,joebot,1,THREE
+13:24:31.655: Team total: 6 pts
+13:24:31.655: Awarded: 6 pts
+13:24:42.433: Message received: TEAM16,joebot,2,ALIENS
+13:24:42.434: Team total: 12 pts
+13:24:42.436: Awarded: 6 pts
+13:24:49.385: Message received: TEAM16,joebot,3,HEADBUT
+13:24:49.386: Team total: 18 pts
+13:24:49.388: Awarded: 6 pts
+13:25:06.744: Message received: TEAM16,joebot,4,AUTUMN
+13:25:06.746: Team total: 24 pts
+13:25:06.747: Awarded: 6 pts
+13:25:40.432: Message received: TEAM16,joebot,5,UNDERGROUND
+13:25:40.433: Team total: 30 pts
+13:25:40.435: Awarded: 6 pts
+13:26:01.974: Message received: TEAM16,joebot,6,GREED
+13:26:01.975: Team total: 36 pts
+13:26:01.976: Awarded: 6 pts
+13:26:15.755: Message received: TEAM16,joebot,7,FLASHLIGHT
+13:26:15.756: Team total: 44 pts
+13:26:15.758: Awarded: 8 pts
+13:27:21.217: Message received: TEAM16,joebot,8,CAESAR
+13:27:21.218: Team total: 52 pts
+13:27:21.220: Awarded: 8 pts
+13:27:23.338: Bonus completed: +5 points
+13:27:23.338: Team total: 57 pts

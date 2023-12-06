@@ -1,0 +1,33 @@
+13:20:04.921: Clue SIZE: 100
+13:20:04.921: Clue VICTIM: TOURISTS
+13:20:04.921: Clue CRIME: POKE
+13:20:04.925: Clue TIME: D DAY
+13:20:04.925: Clue PLACE: MADAGASCAR
+13:20:04.925: Clue MOTIVE: ZEALOUSNESS
+13:20:04.926: Clue WEAPON: ELECTRON
+13:20:04.926: Clue BANDIT: LUCIFER
+13:20:10.949: Message received: TEAM16,joebot,0,START
+13:20:10.949: Timer started.
+13:20:11.209: First command velocity received.
+13:20:12.862: Message received: TEAM16,joebot,1,100
+13:20:12.863: Team total: 6 pts
+13:20:12.864: Awarded: 6 pts
+13:20:25.899: Message received: TEAM16,joebot,2,TOURISTS
+13:20:25.900: Team total: 12 pts
+13:20:25.901: Awarded: 6 pts
+13:20:31.292: Message received: TEAM16,joebot,3,POKE
+13:20:31.293: Team total: 18 pts
+13:20:31.295: Awarded: 6 pts
+13:20:43.719: Message received: TEAM16,joebot,4,DDM5Y
+13:20:43.722: Awarded: 0 pts
+13:21:17.864: Message received: TEAM16,joebot,5,MADAGASCAR
+13:21:17.865: Team total: 24 pts
+13:21:17.867: Awarded: 6 pts
+13:21:39.266: Message received: TEAM16,joebot,6,ZEALOUSNESS
+13:21:39.267: Team total: 30 pts
+13:21:39.269: Awarded: 6 pts
+13:21:52.960: Message received: TEAM16,joebot,7,ELECTRON
+13:21:52.960: Team total: 38 pts
+13:21:52.962: Awarded: 8 pts
+13:23:07.591: Bonus completed: +5 points
+13:23:07.592: Team total: 43 pts

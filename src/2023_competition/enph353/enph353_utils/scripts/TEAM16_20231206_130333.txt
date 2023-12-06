@@ -1,0 +1,32 @@
+13:03:30.494: Clue SIZE: DOZEN
+13:03:30.494: Clue VICTIM: ANTS
+13:03:30.494: Clue CRIME: PUNCH
+13:03:30.497: Clue TIME: JURASIC
+13:03:30.497: Clue PLACE: THE HOOD
+13:03:30.498: Clue MOTIVE: PRIDE
+13:03:30.498: Clue WEAPON: ROCKET
+13:03:30.498: Clue BANDIT: GODZILA
+13:03:33.523: Message received: TEAM16,joebot,0,START
+13:03:33.524: Timer started.
+13:03:33.869: First command velocity received.
+13:03:35.785: Message received: TEAM16,joebot,1,DOZEN
+13:03:35.786: Team total: 6 pts
+13:03:35.789: Awarded: 6 pts
+13:03:49.095: Message received: TEAM16,joebot,2,ANTS
+13:03:49.095: Team total: 12 pts
+13:03:49.098: Awarded: 6 pts
+13:03:54.670: Message received: TEAM16,joebot,3,PUNCH
+13:03:54.671: Team total: 18 pts
+13:03:54.672: Awarded: 6 pts
+13:04:07.548: Message received: TEAM16,joebot,4,JURASIC
+13:04:07.551: Team total: 24 pts
+13:04:07.553: Awarded: 6 pts
+13:04:41.330: Message received: TEAM16,joebot,5,THEHD
+13:04:41.331: Awarded: 0 pts
+13:05:02.842: Message received: TEAM16,joebot,6,PRIDE
+13:05:02.843: Team total: 30 pts
+13:05:02.844: Awarded: 6 pts
+13:06:18.665: Message received: TEAM16,joebot,8,GOOZILA
+13:06:18.666: Awarded: 0 pts
+13:06:22.083: Bonus completed: +5 points
+13:06:22.085: Team total: 35 pts

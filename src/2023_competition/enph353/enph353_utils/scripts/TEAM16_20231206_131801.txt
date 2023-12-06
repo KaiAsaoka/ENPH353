@@ -1,0 +1,19 @@
+13:17:56.500: Clue SIZE: A PAIR
+13:17:56.500: Clue VICTIM: ANTS
+13:17:56.501: Clue CRIME: DECELERATE
+13:17:56.501: Clue TIME: TWILIGHT
+13:17:56.501: Clue PLACE: SWITZERLAND
+13:17:56.502: Clue MOTIVE: FEAR
+13:17:56.502: Clue WEAPON: SPONGE
+13:17:56.502: Clue BANDIT: L
+13:18:01.277: Message received: TEAM16,joebot,0,START
+13:18:01.278: Timer started.
+13:18:01.576: First command velocity received.
+13:18:03.553: Message received: TEAM16,joebot,1,APAIR
+13:18:03.553: Team total: 6 pts
+13:18:03.553: Awarded: 6 pts
+13:18:17.217: Message received: TEAM16,joebot,2,ANTS
+13:18:17.218: Team total: 12 pts
+13:18:17.219: Awarded: 6 pts
+13:18:24.114: Message received: TEAM16,joebot,3,DECELERAYE
+13:18:24.115: Awarded: 0 pts

@@ -1,0 +1,17 @@
+12:53:08.371: Clue SIZE: TWO
+12:53:08.371: Clue VICTIM: PARROTS
+12:53:08.371: Clue CRIME: ACCELERATE
+12:53:08.374: Clue TIME: SUMMER
+12:53:08.374: Clue PLACE: MADAGASCAR
+12:53:08.375: Clue MOTIVE: LOVE
+12:53:08.375: Clue WEAPON: POTATO GUN
+12:53:08.376: Clue BANDIT: HANNIBAL
+12:53:12.061: Message received: TEAM16,joebot,0,START
+12:53:12.062: Timer started.
+12:53:12.339: First command velocity received.
+12:53:14.073: Message received: TEAM16,joebot,1,TWO
+12:53:14.074: Team total: 6 pts
+12:53:14.074: Awarded: 6 pts
+12:53:25.100: Message received: TEAM16,joebot,2,PARROTS
+12:53:25.101: Team total: 12 pts
+12:53:25.103: Awarded: 6 pts
