@@ -1,0 +1,36 @@
+15:10:21.552: Clue SIZE: THREE
+15:10:21.552: Clue VICTIM: KANGAROO
+15:10:21.552: Clue CRIME: LIE TO
+15:10:21.555: Clue TIME: TWILIGHT
+15:10:21.555: Clue PLACE: MALL
+15:10:21.556: Clue MOTIVE: HATE
+15:10:21.556: Clue WEAPON: BALOON
+15:10:21.556: Clue BANDIT: GODZILA
+15:10:21.859: First command velocity received.
+15:10:24.528: Message received: TEAM16,joebot,0,START
+15:10:24.528: Timer started.
+15:10:28.626: Message received: TEAM16,joebot,1,THREE
+15:10:28.626: Team total: 6 pts
+15:10:28.627: Awarded: 6 pts
+15:10:40.980: Message received: TEAM16,joebot,2,UNGAROO
+15:10:40.980: Awarded: 0 pts
+15:10:48.263: Message received: TEAM16,joebot,3,LIETO
+15:10:48.264: Team total: 12 pts
+15:10:48.265: Awarded: 6 pts
+15:11:03.301: Message received: TEAM16,joebot,4,TWILIGHT
+15:11:03.301: Team total: 18 pts
+15:11:03.303: Awarded: 6 pts
+15:11:36.588: Message received: TEAM16,joebot,5,MALL
+15:11:36.589: Team total: 24 pts
+15:11:36.590: Awarded: 6 pts
+15:11:58.398: Message received: TEAM16,joebot,6,HATE
+15:11:58.399: Team total: 30 pts
+15:11:58.399: Awarded: 6 pts
+15:12:12.186: Message received: TEAM16,joebot,7,BALOON
+15:12:12.187: Team total: 38 pts
+15:12:12.188: Awarded: 8 pts
+15:13:21.203: Message received: TEAM16,joebot,8,GODZILA
+15:13:21.204: Team total: 46 pts
+15:13:21.205: Awarded: 8 pts
+15:13:23.878: Bonus completed: +5 points
+15:13:23.879: Team total: 51 pts

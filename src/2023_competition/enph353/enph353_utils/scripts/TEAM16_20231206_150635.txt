@@ -1,0 +1,35 @@
+15:06:30.904: Clue SIZE: 100
+15:06:30.904: Clue VICTIM: PHYSICISTS
+15:06:30.904: Clue CRIME: BITE
+15:06:30.905: Clue TIME: YESTERDAY
+15:06:30.905: Clue PLACE: THE HOOD
+15:06:30.905: Clue MOTIVE: GREED
+15:06:30.905: Clue WEAPON: POLONIUM
+15:06:30.905: Clue BANDIT: CAESAR
+15:06:35.276: Message received: TEAM16,joebot,0,START
+15:06:35.276: Timer started.
+15:06:35.601: First command velocity received.
+15:06:37.422: Message received: TEAM16,joebot,1,1O0
+15:06:37.422: Awarded: 0 pts
+15:06:52.457: Message received: TEAM16,joebot,2,PHYSICISTS
+15:06:52.458: Team total: 6 pts
+15:06:52.458: Awarded: 6 pts
+15:06:57.738: Message received: TEAM16,joebot,3,BITE
+15:06:57.739: Team total: 12 pts
+15:06:57.740: Awarded: 6 pts
+15:07:11.158: Message received: TEAM16,joebot,4,YESTERDAY
+15:07:11.159: Team total: 18 pts
+15:07:11.162: Awarded: 6 pts
+15:07:44.422: Message received: TEAM16,joebot,5,THEHD
+15:07:44.422: Awarded: 0 pts
+15:08:06.322: Message received: TEAM16,joebot,6,GREED
+15:08:06.323: Team total: 24 pts
+15:08:06.323: Awarded: 6 pts
+15:08:20.479: Message received: TEAM16,joebot,7,POLONIUM
+15:08:20.480: Team total: 32 pts
+15:08:20.482: Awarded: 8 pts
+15:09:24.345: Message received: TEAM16,joebot,8,CAESAR
+15:09:24.345: Team total: 40 pts
+15:09:24.346: Awarded: 8 pts
+15:09:36.512: Bonus completed: +5 points
+15:09:36.513: Team total: 45 pts

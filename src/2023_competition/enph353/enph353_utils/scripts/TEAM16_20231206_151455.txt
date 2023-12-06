@@ -1,0 +1,36 @@
+15:14:53.240: Clue SIZE: TWO
+15:14:53.241: Clue VICTIM: BUNNIES
+15:14:53.241: Clue CRIME: DECELERATE
+15:14:53.243: Clue TIME: TWILIGHT
+15:14:53.243: Clue PLACE: CLASS
+15:14:53.243: Clue MOTIVE: REVENGE
+15:14:53.243: Clue WEAPON: BALOON
+15:14:53.244: Clue BANDIT: PIKACHU
+15:14:55.972: Message received: TEAM16,joebot,0,START
+15:14:55.975: Timer started.
+15:14:56.256: First command velocity received.
+15:14:58.119: Message received: TEAM16,joebot,1,TWO
+15:14:58.120: Team total: 6 pts
+15:14:58.122: Awarded: 6 pts
+15:15:10.147: Message received: TEAM16,joebot,2,BUNNIES
+15:15:10.147: Team total: 12 pts
+15:15:10.148: Awarded: 6 pts
+15:15:16.562: Message received: TEAM16,joebot,3,DECELERATE
+15:15:16.562: Team total: 18 pts
+15:15:16.564: Awarded: 6 pts
+15:15:28.399: Message received: TEAM16,joebot,4,TWILIGHT
+15:15:28.400: Team total: 24 pts
+15:15:28.402: Awarded: 6 pts
+15:16:03.118: Message received: TEAM16,joebot,5,CLASS
+15:16:03.119: Team total: 30 pts
+15:16:03.119: Awarded: 6 pts
+15:16:24.588: Message received: TEAM16,joebot,6,REVENGE
+15:16:24.589: Team total: 36 pts
+15:16:24.589: Awarded: 6 pts
+15:16:38.645: Message received: TEAM16,joebot,7,BALOON
+15:16:38.646: Team total: 44 pts
+15:16:38.646: Awarded: 8 pts
+15:17:46.272: Message received: TEAM16,joebot,8,PIVCHU
+15:17:46.273: Awarded: 0 pts
+15:17:47.881: Bonus completed: +5 points
+15:17:47.881: Team total: 49 pts

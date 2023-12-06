@@ -1,0 +1,24 @@
+15:19:52.932: Clue SIZE: SINGLE
+15:19:52.933: Clue VICTIM: RABBITS
+15:19:52.933: Clue CRIME: TELEPORT
+15:19:52.934: Clue TIME: TWILIGHT
+15:19:52.935: Clue PLACE: UNDERGROUND
+15:19:52.935: Clue MOTIVE: BOREDOM
+15:19:52.935: Clue WEAPON: ICYCLE
+15:19:52.935: Clue BANDIT: TEMUJIN
+15:19:53.826: First command velocity received.
+15:19:59.573: Message received: TEAM16,joebot,0,START
+15:19:59.573: Timer started.
+15:20:01.893: Message received: TEAM16,joebot,1,SINGLE
+15:20:01.894: Team total: 6 pts
+15:20:01.895: Awarded: 6 pts
+15:21:04.583: Message received: TEAM16,joebot,6,BOREDOM
+15:21:04.583: Team total: 12 pts
+15:21:04.586: Awarded: 6 pts
+15:22:38.713: Message received: TEAM16,joebot,7,ICYCLE
+15:22:38.714: Team total: 20 pts
+15:22:38.718: Awarded: 8 pts
+15:23:44.342: Message received: TEAM16,joebot,8,TEMUJIN
+15:23:44.344: Team total: 28 pts
+15:23:44.346: Awarded: 8 pts
+15:24:22.544: Out of time: 240.842sec sim time (real time: 263sec).

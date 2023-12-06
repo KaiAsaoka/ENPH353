@@ -1,0 +1,33 @@
+15:30:07.152: Clue SIZE: ZEPTILLION
+15:30:07.153: Clue VICTIM: JEDIS
+15:30:07.153: Clue CRIME: PUSH
+15:30:07.155: Clue TIME: 2023
+15:30:07.156: Clue PLACE: THE HOOD
+15:30:07.156: Clue MOTIVE: PRIDE
+15:30:07.156: Clue WEAPON: POSITRON
+15:30:07.156: Clue BANDIT: SATOSHI
+15:30:17.687: Message received: TEAM16,joebot,0,START
+15:30:17.687: Timer started.
+15:30:17.980: First command velocity received.
+15:30:20.231: Message received: TEAM16,joebot,1,ZEPTILLION
+15:30:20.232: Team total: 6 pts
+15:30:20.234: Awarded: 6 pts
+15:30:32.346: Message received: TEAM16,joebot,2,JEDIS
+15:30:32.347: Team total: 12 pts
+15:30:32.347: Awarded: 6 pts
+15:30:38.871: Message received: TEAM16,joebot,3,PUSH
+15:30:38.871: Team total: 18 pts
+15:30:38.873: Awarded: 6 pts
+15:30:54.482: Message received: TEAM16,joebot,4,2O23
+15:30:54.485: Awarded: 0 pts
+15:31:28.433: Message received: TEAM16,joebot,5,THEHOOD
+15:31:28.434: Team total: 24 pts
+15:31:28.435: Awarded: 6 pts
+15:31:49.502: Message received: TEAM16,joebot,6,PRIDE
+15:31:49.502: Team total: 30 pts
+15:31:49.505: Awarded: 6 pts
+15:32:04.212: Message received: TEAM16,joebot,7,POSITRON
+15:32:04.213: Team total: 38 pts
+15:32:04.214: Awarded: 8 pts
+15:33:57.336: Message received: TEAM16,joebot,8,SAT0SHI
+15:33:57.337: Awarded: 0 pts

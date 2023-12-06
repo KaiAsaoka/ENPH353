@@ -1,0 +1,29 @@
+15:36:44.550: Clue SIZE: COUNTLESS
+15:36:44.550: Clue VICTIM: PANDAS
+15:36:44.552: Clue CRIME: LIE TO
+15:36:44.559: Clue TIME: DAWN
+15:36:44.576: Clue PLACE: HOTEL
+15:36:44.577: Clue MOTIVE: FEAR
+15:36:44.577: Clue WEAPON: FIRE
+15:36:44.577: Clue BANDIT: LUCIFER
+15:36:48.142: Message received: TEAM16,joebot,0,START
+15:36:48.143: Timer started.
+15:36:48.446: First command velocity received.
+15:36:50.590: Message received: TEAM16,joebot,1,COUNTLESS
+15:36:50.591: Team total: 6 pts
+15:36:50.602: Awarded: 6 pts
+15:37:01.973: Message received: TEAM16,joebot,2,PANDAS
+15:37:01.973: Team total: 12 pts
+15:37:01.974: Awarded: 6 pts
+15:37:08.023: Message received: TEAM16,joebot,3,LIETO
+15:37:08.024: Team total: 18 pts
+15:37:08.026: Awarded: 6 pts
+15:37:20.600: Message received: TEAM16,joebot,4,DAWN
+15:37:20.602: Team total: 24 pts
+15:37:20.605: Awarded: 6 pts
+15:37:54.281: Message received: TEAM16,joebot,5,HOTEL
+15:37:54.282: Team total: 30 pts
+15:37:54.284: Awarded: 6 pts
+15:38:16.144: Message received: TEAM16,joebot,6,FEAR
+15:38:16.145: Team total: 36 pts
+15:38:16.147: Awarded: 6 pts

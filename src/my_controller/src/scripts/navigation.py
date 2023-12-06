@@ -148,7 +148,7 @@ class navigation():
         num = data.data
         if(num == 1):
             self.reinit(1)
-            angle_rad = math.radians(80)
+            angle_rad = math.radians(85)
             position = [0.5,0,0.25,0,0,math.sin(angle_rad / 2),math.cos(angle_rad / 2)]
             self.spawn_position(position)
             print("respawning")
@@ -346,7 +346,7 @@ class navigation():
         
         elif self.climb  == False:
             self.turn(data)
-            self.predictions = True
+  
 
         else:
             #print("started tunnel climb")
@@ -724,7 +724,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
-            cxavg = cxnet / moments + 20
+            cxavg = cxnet / moments + 12.5
         
             turn0 = 0
             turn1 = 0.75
@@ -1203,6 +1203,7 @@ class navigation():
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
         if(self.scanforblue(frame)):
             self.climb = True
+            self.predictions = True
             print("climbing")
         else:
             move = Twist()

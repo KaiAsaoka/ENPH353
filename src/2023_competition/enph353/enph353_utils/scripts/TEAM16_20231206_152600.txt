@@ -1,0 +1,25 @@
+15:25:53.411: Clue SIZE: FIVE
+15:25:53.411: Clue VICTIM: ANTS
+15:25:53.411: Clue CRIME: STEAL
+15:25:53.414: Clue TIME: SUMMER
+15:25:53.415: Clue PLACE: CLASS
+15:25:53.415: Clue MOTIVE: LOVE
+15:25:53.415: Clue WEAPON: WRENCH
+15:25:53.416: Clue BANDIT: SAURON
+15:26:00.269: Message received: TEAM16,joebot,0,START
+15:26:00.270: Timer started.
+15:26:00.557: First command velocity received.
+15:26:02.392: Message received: TEAM16,joebot,1,FIVE
+15:26:02.393: Team total: 6 pts
+15:26:02.396: Awarded: 6 pts
+15:26:38.051: Message received: TEAM16,joebot,5,CLASS
+15:26:38.052: Team total: 12 pts
+15:26:38.053: Awarded: 6 pts
+15:26:59.612: Message received: TEAM16,joebot,6,LOVE
+15:26:59.613: Team total: 18 pts
+15:26:59.614: Awarded: 6 pts
+15:27:13.903: Message received: TEAM16,joebot,7,WRENCH
+15:27:13.905: Team total: 26 pts
+15:27:13.907: Awarded: 8 pts
+15:28:17.231: Message received: TEAM16,joebot,8,KAURON
+15:28:17.231: Awarded: 0 pts

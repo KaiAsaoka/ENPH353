@@ -1,0 +1,35 @@
+15:47:00.936: Clue SIZE: LEGIONS
+15:47:00.937: Clue VICTIM: KANGAROO
+15:47:00.937: Clue CRIME: LIE TO
+15:47:00.937: Clue TIME: TOMORROW
+15:47:00.937: Clue PLACE: BASEMENT
+15:47:00.937: Clue MOTIVE: PASSION
+15:47:00.938: Clue WEAPON: KRYPTONITE
+15:47:00.938: Clue BANDIT: EINSTEIN
+15:47:02.580: First command velocity received.
+15:47:06.066: Message received: TEAM16,joebot,0,START
+15:47:06.067: Timer started.
+15:47:08.283: Message received: TEAM16,joebot,1,LEGIONS
+15:47:08.284: Team total: 6 pts
+15:47:08.286: Awarded: 6 pts
+15:47:20.878: Message received: TEAM16,joebot,2,VNGAROO
+15:47:20.878: Awarded: 0 pts
+15:47:27.068: Message received: TEAM16,joebot,3,LIETO
+15:47:27.091: Team total: 12 pts
+15:47:27.093: Awarded: 6 pts
+15:47:42.900: Message received: TEAM16,joebot,4,TOMORROW
+15:47:42.902: Team total: 18 pts
+15:47:42.903: Awarded: 6 pts
+15:48:16.344: Message received: TEAM16,joebot,5,BASEMENT
+15:48:16.345: Team total: 24 pts
+15:48:16.345: Awarded: 6 pts
+15:48:38.214: Message received: TEAM16,joebot,6,PASSION
+15:48:38.214: Team total: 30 pts
+15:48:38.216: Awarded: 6 pts
+15:48:52.106: Message received: TEAM16,joebot,7,KRYPTONITE
+15:48:52.106: Team total: 38 pts
+15:48:52.107: Awarded: 8 pts
+15:49:54.419: Message received: TEAM16,joebot,8,EI71STEIN
+15:49:54.419: Awarded: 0 pts
+15:50:10.210: Bonus completed: +5 points
+15:50:10.211: Team total: 43 pts
