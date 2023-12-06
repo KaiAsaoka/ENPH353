@@ -1,0 +1,37 @@
+15:51:46.403: Clue SIZE: 10 GOOGLES
+15:51:46.403: Clue VICTIM: ANTS
+15:51:46.403: Clue CRIME: POKE
+15:51:46.405: Clue TIME: YESTERDAY
+15:51:46.406: Clue PLACE: MARS
+15:51:46.406: Clue MOTIVE: HATE
+15:51:46.406: Clue WEAPON: ROCKET
+15:51:46.406: Clue BANDIT: GOKU
+15:51:49.903: Message received: TEAM16,joebot,0,START
+15:51:49.904: Timer started.
+15:51:50.171: First command velocity received.
+15:51:52.480: Message received: TEAM16,joebot,1,10GOOGLES
+15:51:52.480: Team total: 6 pts
+15:51:52.483: Awarded: 6 pts
+15:52:03.870: Message received: TEAM16,joebot,2,ANTS
+15:52:03.870: Team total: 12 pts
+15:52:03.872: Awarded: 6 pts
+15:52:09.295: Message received: TEAM16,joebot,3,POKE
+15:52:09.297: Team total: 18 pts
+15:52:09.298: Awarded: 6 pts
+15:52:22.088: Message received: TEAM16,joebot,4,YESTERDAY
+15:52:22.088: Team total: 24 pts
+15:52:22.091: Awarded: 6 pts
+15:52:55.761: Message received: TEAM16,joebot,5,MARS
+15:52:55.762: Team total: 30 pts
+15:52:55.764: Awarded: 6 pts
+15:53:17.397: Message received: TEAM16,joebot,6,HATE
+15:53:17.398: Team total: 36 pts
+15:53:17.398: Awarded: 6 pts
+15:53:31.584: Message received: TEAM16,joebot,7,ROCKET
+15:53:31.584: Team total: 44 pts
+15:53:31.587: Awarded: 8 pts
+15:54:33.953: Message received: TEAM16,joebot,8,GOKU
+15:54:33.954: Team total: 52 pts
+15:54:33.957: Awarded: 8 pts
+15:54:36.408: Bonus completed: +5 points
+15:54:36.409: Team total: 57 pts

@@ -330,11 +330,11 @@ class navigation():
         
 
         if self.grassy == False: #Road detection
-            self.signthresh = 30000
+            self.signthresh = 32000
             self.roadFollow(data)
 
         elif self.tunnel == False: # grassy area
-            self.signthresh = 30000
+            self.signthresh = 32000
             self.grassFollow(data)
             
         elif self.car == False:
