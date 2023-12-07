@@ -1,0 +1,32 @@
+16:26:43.618: Clue SIZE: COUNTLESS
+16:26:43.619: Clue VICTIM: PANDAS
+16:26:43.619: Clue CRIME: LIE TO
+16:26:43.621: Clue TIME: MIDNIGHT
+16:26:43.621: Clue PLACE: BEACH
+16:26:43.622: Clue MOTIVE: FAME
+16:26:43.622: Clue WEAPON: ICYCLE
+16:26:43.622: Clue BANDIT: GOKU
+16:26:54.004: Message received: TEAM16,joebot,0,START
+16:26:54.005: Timer started.
+16:26:54.295: First command velocity received.
+16:26:56.540: Message received: TEAM16,joebot,1,COUNTLESS
+16:26:56.541: Team total: 6 pts
+16:26:56.541: Awarded: 6 pts
+16:27:11.134: Message received: TEAM16,joebot,2,PANDAS
+16:27:11.135: Team total: 12 pts
+16:27:11.136: Awarded: 6 pts
+16:27:17.531: Message received: TEAM16,joebot,3,LIETO
+16:27:17.531: Team total: 18 pts
+16:27:17.532: Awarded: 6 pts
+16:27:39.476: Message received: TEAM16,joebot,4,MIDNIGHT
+16:27:39.478: Team total: 24 pts
+16:27:39.481: Awarded: 6 pts
+16:28:15.550: Message received: TEAM16,joebot,5,BEACH
+16:28:15.550: Team total: 30 pts
+16:28:15.552: Awarded: 6 pts
+16:28:36.634: Message received: TEAM16,joebot,6,FAME
+16:28:36.635: Team total: 36 pts
+16:28:36.636: Awarded: 6 pts
+16:28:50.542: Message received: TEAM16,joebot,7,ICYCLE
+16:28:50.543: Team total: 44 pts
+16:28:50.544: Awarded: 8 pts

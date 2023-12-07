@@ -1,0 +1,29 @@
+16:09:33.212: Clue SIZE: THREE
+16:09:33.212: Clue VICTIM: ALIENS
+16:09:33.212: Clue CRIME: BITE
+16:09:33.215: Clue TIME: TWILIGHT
+16:09:33.215: Clue PLACE: FOREST
+16:09:33.215: Clue MOTIVE: BOREDOM
+16:09:33.215: Clue WEAPON: POLONIUM
+16:09:33.215: Clue BANDIT: CAESAR
+16:09:38.511: Message received: TEAM16,joebot,0,START
+16:09:38.511: Timer started.
+16:09:38.782: First command velocity received.
+16:09:40.698: Message received: TEAM16,joebot,1,THREE
+16:09:40.699: Team total: 6 pts
+16:09:40.701: Awarded: 6 pts
+16:09:52.333: Message received: TEAM16,joebot,2,ALIENS
+16:09:52.334: Team total: 12 pts
+16:09:52.335: Awarded: 6 pts
+16:09:58.488: Message received: TEAM16,joebot,3,BITE
+16:09:58.489: Team total: 18 pts
+16:09:58.490: Awarded: 6 pts
+16:10:11.669: Message received: TEAM16,joebot,4,TWILIGHT
+16:10:11.671: Team total: 24 pts
+16:10:11.673: Awarded: 6 pts
+16:10:48.020: Message received: TEAM16,joebot,5,FOREST
+16:10:48.020: Team total: 30 pts
+16:10:48.022: Awarded: 6 pts
+16:11:08.812: Message received: TEAM16,joebot,6,BOREDOM
+16:11:08.813: Team total: 36 pts
+16:11:08.814: Awarded: 6 pts

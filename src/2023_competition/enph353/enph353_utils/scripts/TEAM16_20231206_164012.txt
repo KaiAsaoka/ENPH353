@@ -1,0 +1,34 @@
+16:40:06.704: Clue SIZE: ZEPTILLION
+16:40:06.704: Clue VICTIM: PARROTS
+16:40:06.704: Clue CRIME: STEAL
+16:40:06.705: Clue TIME: WINTER
+16:40:06.705: Clue PLACE: HOTEL
+16:40:06.706: Clue MOTIVE: FAME
+16:40:06.706: Clue WEAPON: FIRE
+16:40:06.706: Clue BANDIT: LUCIFER
+16:40:12.225: Message received: TEAM16,joebot,0,START
+16:40:12.226: Timer started.
+16:40:12.497: First command velocity received.
+16:40:14.724: Message received: TEAM16,joebot,1,ZEPTILLION
+16:40:14.725: Team total: 6 pts
+16:40:14.726: Awarded: 6 pts
+16:40:28.890: Message received: TEAM16,joebot,2,PARROTS
+16:40:28.891: Team total: 12 pts
+16:40:28.895: Awarded: 6 pts
+16:40:34.458: Message received: TEAM16,joebot,3,STEAL
+16:40:34.458: Team total: 18 pts
+16:40:34.461: Awarded: 6 pts
+16:40:47.553: Message received: TEAM16,joebot,4,WINTER
+16:40:47.555: Team total: 24 pts
+16:40:47.555: Awarded: 6 pts
+16:41:20.893: Message received: TEAM16,joebot,5,HOTEL
+16:41:20.894: Team total: 30 pts
+16:41:20.895: Awarded: 6 pts
+16:41:42.938: Message received: TEAM16,joebot,6,FAME
+16:41:42.939: Team total: 36 pts
+16:41:42.939: Awarded: 6 pts
+16:41:55.924: Message received: TEAM16,joebot,7,FIRE
+16:41:55.925: Team total: 44 pts
+16:41:55.933: Awarded: 8 pts
+16:43:03.699: Message received: TEAM16,joebot,8,LCFER
+16:43:03.700: Awarded: 0 pts

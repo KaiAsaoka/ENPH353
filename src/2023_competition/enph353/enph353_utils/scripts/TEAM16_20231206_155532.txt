@@ -1,0 +1,29 @@
+15:55:28.107: Clue SIZE: THREE
+15:55:28.107: Clue VICTIM: CITIZENS
+15:55:28.107: Clue CRIME: PUNCH
+15:55:28.109: Clue TIME: SUMMER
+15:55:28.110: Clue PLACE: MADAGASCAR
+15:55:28.111: Clue MOTIVE: BOREDOM
+15:55:28.112: Clue WEAPON: HOLY GRENADE
+15:55:28.112: Clue BANDIT: PIKACHU
+15:55:32.393: Message received: TEAM16,joebot,0,START
+15:55:32.394: Timer started.
+15:55:32.701: First command velocity received.
+15:55:34.665: Message received: TEAM16,joebot,1,THREE
+15:55:34.666: Team total: 6 pts
+15:55:34.667: Awarded: 6 pts
+15:55:53.647: Message received: TEAM16,joebot,3,PUNCH
+15:55:53.648: Team total: 12 pts
+15:55:53.650: Awarded: 6 pts
+15:56:05.463: Message received: TEAM16,joebot,4,SUMMER
+15:56:05.463: Team total: 18 pts
+15:56:05.464: Awarded: 6 pts
+15:56:40.549: Message received: TEAM16,joebot,5,MADAGASCAR
+15:56:40.552: Team total: 24 pts
+15:56:40.554: Awarded: 6 pts
+15:57:01.660: Message received: TEAM16,joebot,6,BOREDOM
+15:57:01.660: Team total: 30 pts
+15:57:01.661: Awarded: 6 pts
+15:57:16.298: Message received: TEAM16,joebot,7,HOLYGRENADE
+15:57:16.298: Team total: 38 pts
+15:57:16.300: Awarded: 8 pts

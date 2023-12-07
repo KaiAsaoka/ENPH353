@@ -1,0 +1,33 @@
+16:17:51.205: Clue SIZE: THREE
+16:17:51.205: Clue VICTIM: BUNNIES
+16:17:51.205: Clue CRIME: DECELERATE
+16:17:51.211: Clue TIME: TOMORROW
+16:17:51.211: Clue PLACE: MINE
+16:17:51.212: Clue MOTIVE: THRILL
+16:17:51.212: Clue WEAPON: ICYCLE
+16:17:51.212: Clue BANDIT: THANOS
+16:17:52.702: First command velocity received.
+16:18:04.487: Message received: TEAM16,joebot,0,START
+16:18:04.488: Timer started.
+16:18:06.643: Message received: TEAM16,joebot,1,THREE
+16:18:06.644: Team total: 6 pts
+16:18:06.644: Awarded: 6 pts
+16:18:17.600: Message received: TEAM16,joebot,2,BUNNIES
+16:18:17.600: Team total: 12 pts
+16:18:17.603: Awarded: 6 pts
+16:18:23.041: Message received: TEAM16,joebot,3,DECELERAYE
+16:18:23.042: Awarded: 0 pts
+16:18:35.374: Message received: TEAM16,joebot,4,T0MORROW
+16:18:35.377: Awarded: 0 pts
+16:19:09.811: Message received: TEAM16,joebot,5,MINE
+16:19:09.811: Team total: 18 pts
+16:19:09.812: Awarded: 6 pts
+16:19:31.323: Message received: TEAM16,joebot,6,THRILL
+16:19:31.324: Team total: 24 pts
+16:19:31.324: Awarded: 6 pts
+16:19:45.399: Message received: TEAM16,joebot,7,ICYCLE
+16:19:45.400: Team total: 32 pts
+16:19:45.401: Awarded: 8 pts
+16:20:45.423: Message received: TEAM16,joebot,8,THANOS
+16:20:45.423: Team total: 40 pts
+16:20:45.425: Awarded: 8 pts

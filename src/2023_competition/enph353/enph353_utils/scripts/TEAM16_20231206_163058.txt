@@ -1,0 +1,29 @@
+16:30:49.205: Clue SIZE: QUINTUPLETS
+16:30:49.205: Clue VICTIM: BACTERIA
+16:30:49.205: Clue CRIME: PUSH
+16:30:49.208: Clue TIME: EONS AGO
+16:30:49.208: Clue PLACE: BEACH
+16:30:49.209: Clue MOTIVE: PRIDE
+16:30:49.209: Clue WEAPON: HIGH VOLTAGE
+16:30:49.210: Clue BANDIT: CAO CAO
+16:30:58.986: Message received: TEAM16,joebot,0,START
+16:30:58.986: Timer started.
+16:30:59.261: First command velocity received.
+16:31:01.565: Message received: TEAM16,joebot,1,QUINTUPLETS
+16:31:01.566: Team total: 6 pts
+16:31:01.568: Awarded: 6 pts
+16:31:14.827: Message received: TEAM16,joebot,2,BACTERIA
+16:31:14.830: Team total: 12 pts
+16:31:14.837: Awarded: 6 pts
+16:31:20.173: Message received: TEAM16,joebot,3,PUSH
+16:31:20.173: Team total: 18 pts
+16:31:20.174: Awarded: 6 pts
+16:31:33.333: Message received: TEAM16,joebot,4,EONSAGO
+16:31:33.334: Team total: 24 pts
+16:31:33.335: Awarded: 6 pts
+16:32:07.016: Message received: TEAM16,joebot,5,BEACH
+16:32:07.017: Team total: 30 pts
+16:32:07.018: Awarded: 6 pts
+16:32:28.359: Message received: TEAM16,joebot,6,PRIDE
+16:32:28.360: Team total: 36 pts
+16:32:28.360: Awarded: 6 pts

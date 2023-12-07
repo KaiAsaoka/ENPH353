@@ -1,0 +1,35 @@
+16:21:26.799: Clue SIZE: A PAIR
+16:21:26.799: Clue VICTIM: KOALAS
+16:21:26.799: Clue CRIME: PUNCH
+16:21:26.800: Clue TIME: D DAY
+16:21:26.800: Clue PLACE: MARS
+16:21:26.801: Clue MOTIVE: ACCIDENT
+16:21:26.801: Clue WEAPON: ELECTRON
+16:21:26.801: Clue BANDIT: SHREK
+16:21:36.510: Message received: TEAM16,joebot,0,START
+16:21:36.511: Timer started.
+16:21:36.859: First command velocity received.
+16:21:38.714: Message received: TEAM16,joebot,1,APAIR
+16:21:38.714: Team total: 6 pts
+16:21:38.716: Awarded: 6 pts
+16:21:53.917: Message received: TEAM16,joebot,2,KOALAS
+16:21:53.917: Team total: 12 pts
+16:21:53.918: Awarded: 6 pts
+16:22:00.461: Message received: TEAM16,joebot,3,PUNCH
+16:22:00.462: Team total: 18 pts
+16:22:00.464: Awarded: 6 pts
+16:22:11.913: Message received: TEAM16,joebot,4,DDAY
+16:22:11.916: Team total: 24 pts
+16:22:11.919: Awarded: 6 pts
+16:22:46.369: Message received: TEAM16,joebot,5,MARS
+16:22:46.370: Team total: 30 pts
+16:22:46.371: Awarded: 6 pts
+16:23:08.282: Message received: TEAM16,joebot,6,ACCIDENT
+16:23:08.282: Team total: 36 pts
+16:23:08.283: Awarded: 6 pts
+16:23:22.496: Message received: TEAM16,joebot,7,ELECTRON
+16:23:22.497: Team total: 44 pts
+16:23:22.498: Awarded: 8 pts
+16:25:38.535: Message received: TEAM16,joebot,8,SMPEK
+16:25:38.536: Awarded: 0 pts
+16:25:40.544: Out of time: 240.246sec sim time (real time: 244sec).

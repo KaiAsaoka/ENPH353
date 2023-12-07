@@ -334,7 +334,7 @@ class navigation():
             self.roadFollow(data)
 
         elif self.tunnel == False: # grassy area
-            self.signthresh = 32000
+            self.signthresh = 31000
             self.grassFollow(data)
             
         elif self.car == False:
@@ -351,7 +351,7 @@ class navigation():
         else:
             #print("started tunnel climb")
             self.grassFollow2(data)
-            self.signthresh = 35000
+            self.signthresh = 36000
             
             
             
@@ -724,7 +724,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
-            cxavg = cxnet / moments + 12.5
+            cxavg = cxnet / moments + 14.85
         
             turn0 = 0
             turn1 = 0.75
@@ -1211,7 +1211,7 @@ class navigation():
             move.linear.y = 0
             move.linear.z = 0
 
-            move.angular.z = 0.75
+            move.angular.z = 1.25
             self.move_pub.publish(move)
 
 
@@ -1428,8 +1428,8 @@ class navigation():
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
             # cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             # cv2.waitKey(1)
-            min_area = 35000
-            print("scanning for blue")
+            min_area = 40000
+            # print("scanning for blue")
             if (len(redcont) != 0):
                 print(cv2.contourArea(max(redcont, key=cv2.contourArea)))
             if len(redcont) != 0 and cv2.contourArea(max(redcont, key=cv2.contourArea)) > min_area:

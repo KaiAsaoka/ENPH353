@@ -1,0 +1,28 @@
+16:35:06.296: Clue SIZE: THREE
+16:35:06.296: Clue VICTIM: PANDAS
+16:35:06.296: Clue CRIME: TRANSMOGRIFY
+16:35:06.296: Clue TIME: 2023
+16:35:06.297: Clue PLACE: EXIT 8
+16:35:06.297: Clue MOTIVE: BOREDOM
+16:35:06.297: Clue WEAPON: ROCKET
+16:35:06.297: Clue BANDIT: BATMAN
+16:35:10.630: Message received: TEAM16,joebot,0,START
+16:35:10.631: Timer started.
+16:35:10.881: First command velocity received.
+16:35:12.744: Message received: TEAM16,joebot,1,THREE
+16:35:12.745: Team total: 6 pts
+16:35:12.747: Awarded: 6 pts
+16:35:27.403: Message received: TEAM16,joebot,2,PANDAS
+16:35:27.404: Team total: 12 pts
+16:35:27.406: Awarded: 6 pts
+16:35:33.660: Message received: TEAM16,joebot,3,TRANSMOGRIFY
+16:35:33.661: Team total: 18 pts
+16:35:33.663: Awarded: 6 pts
+16:35:47.073: Message received: TEAM16,joebot,4,2O23
+16:35:47.074: Awarded: 0 pts
+16:36:20.736: Message received: TEAM16,joebot,5,EXIT8
+16:36:20.737: Team total: 24 pts
+16:36:20.739: Awarded: 6 pts
+16:36:54.432: Message received: TEAM16,joebot,7,ROCKET
+16:36:54.433: Team total: 32 pts
+16:36:54.434: Awarded: 8 pts

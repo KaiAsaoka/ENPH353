@@ -1,0 +1,33 @@
+16:00:28.149: Clue SIZE: QUINTUPLETS
+16:00:28.150: Clue VICTIM: BED BUGS
+16:00:28.151: Clue CRIME: POKE
+16:00:28.223: Clue TIME: WINTER
+16:00:28.298: Clue PLACE: MALL
+16:00:28.298: Clue MOTIVE: PASSION
+16:00:28.299: Clue WEAPON: ICYCLE
+16:00:28.299: Clue BANDIT: BARBIE
+16:00:28.962: First command velocity received.
+16:00:34.771: Message received: TEAM16,joebot,0,START
+16:00:34.771: Timer started.
+16:00:37.420: Message received: TEAM16,joebot,1,QUINTUPLETS
+16:00:37.421: Team total: 6 pts
+16:00:37.523: Awarded: 6 pts
+16:00:48.928: Message received: TEAM16,joebot,2,BEDBUGS
+16:00:48.929: Team total: 12 pts
+16:00:48.929: Awarded: 6 pts
+16:00:54.354: Message received: TEAM16,joebot,3,POKE
+16:00:54.394: Team total: 18 pts
+16:00:54.420: Awarded: 6 pts
+16:01:08.792: Message received: TEAM16,joebot,4,WINTER
+16:01:08.793: Team total: 24 pts
+16:01:08.794: Awarded: 6 pts
+16:01:41.830: Message received: TEAM16,joebot,5,MALL
+16:01:41.830: Team total: 30 pts
+16:01:41.832: Awarded: 6 pts
+16:02:03.673: Message received: TEAM16,joebot,6,PASSION
+16:02:03.673: Team total: 36 pts
+16:02:03.676: Awarded: 6 pts
+16:03:23.085: Message received: TEAM16,joebot,8,AAPBIE
+16:03:23.086: Awarded: 0 pts
+16:03:26.304: Bonus completed: +5 points
+16:03:26.305: Team total: 41 pts
