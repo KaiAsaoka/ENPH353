@@ -312,7 +312,7 @@ class navigation():
     
                         self.capture_time = self.times
     
-                elif self.times-self.capture_time < 3 and self.capture == True: # lower sign treshold value for reset
+                elif self.times-self.capture_time < 2 and self.capture == True: # lower sign treshold value for reset
                     self.capture = True
     
                 else: # reset capture state
@@ -724,7 +724,7 @@ class navigation():
         cv2.rectangle(frame, (10, 2), (100,20), (255,255,255), -1)
         
         if moments != 0:
-            cxavg = cxnet / moments + 14.85
+            cxavg = cxnet / moments + 14.80
         
             turn0 = 0
             turn1 = 0.75
@@ -777,6 +777,10 @@ class navigation():
                 move.angular.z = -turn5
                 cv2.putText(frame, str(cxavg) + " RIGHT", (15, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                 
+        if self.scanforblue(frame, 9000):
+                move.angular.z = 0 
+        
+        
         center_coordinates = (int(cxavg), int(h))  # Change the coordinates as needed
         #print (center_coordinates)
         radius = 30
@@ -1201,7 +1205,7 @@ class navigation():
     
     def turn(self, data):
         frame = self.bridge.imgmsg_to_cv2(data, desired_encoding='passthrough')
-        if(self.scanforblue(frame)):
+        if(self.scanforblue(frame, 40000)):
             self.climb = True
             self.predictions = True
             print("climbing")
@@ -1401,7 +1405,7 @@ class navigation():
             else:
                 return False
             
-    def scanforblue(self, frameorig):
+    def scanforblue(self, frameorig, thresh):
         
             frame = frameorig.copy()
         
@@ -1428,7 +1432,7 @@ class navigation():
             pid_img = cv2.drawContours(frame, redcont, -1, (0, 255, 0), 1)
             # cv2.imshow("scanforblue", cv2.cvtColor(pid_img, cv2.COLOR_RGB2BGR))
             # cv2.waitKey(1)
-            min_area = 40000
+            min_area = thresh
             # print("scanning for blue")
             if (len(redcont) != 0):
                 print(cv2.contourArea(max(redcont, key=cv2.contourArea)))

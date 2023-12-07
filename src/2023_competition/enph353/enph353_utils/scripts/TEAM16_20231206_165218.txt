@@ -1,0 +1,32 @@
+16:52:09.052: Clue SIZE: FEW
+16:52:09.052: Clue VICTIM: KOALAS
+16:52:09.052: Clue CRIME: TRESPASS
+16:52:09.055: Clue TIME: TOMORROW
+16:52:09.055: Clue PLACE: EVEREST
+16:52:09.056: Clue MOTIVE: REVENGE
+16:52:09.056: Clue WEAPON: HOLY GRENADE
+16:52:09.056: Clue BANDIT: THANOS
+16:52:18.508: Message received: TEAM16,joebot,0,START
+16:52:18.509: Timer started.
+16:52:18.802: First command velocity received.
+16:52:20.567: Message received: TEAM16,joebot,1,FEW
+16:52:20.568: Team total: 6 pts
+16:52:20.569: Awarded: 6 pts
+16:52:33.722: Message received: TEAM16,joebot,2,KOALAS
+16:52:33.723: Team total: 12 pts
+16:52:33.723: Awarded: 6 pts
+16:52:39.351: Message received: TEAM16,joebot,3,TRESPASS
+16:52:39.352: Team total: 18 pts
+16:52:39.354: Awarded: 6 pts
+16:52:52.370: Message received: TEAM16,joebot,4,TOMORROW
+16:52:52.373: Team total: 24 pts
+16:52:52.376: Awarded: 6 pts
+16:53:26.222: Message received: TEAM16,joebot,5,EVEREST
+16:53:26.223: Team total: 30 pts
+16:53:26.225: Awarded: 6 pts
+16:53:47.375: Message received: TEAM16,joebot,6,REVENGE
+16:53:47.376: Team total: 36 pts
+16:53:47.377: Awarded: 6 pts
+16:54:00.878: Message received: TEAM16,joebot,7,HOLYGRENADE
+16:54:00.878: Team total: 44 pts
+16:54:00.879: Awarded: 8 pts

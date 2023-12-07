@@ -1,0 +1,20 @@
+17:04:04.671: Clue SIZE: FIVE
+17:04:04.671: Clue VICTIM: JEDIS
+17:04:04.671: Clue CRIME: DEFRAUD
+17:04:04.671: Clue TIME: TOMORROW
+17:04:04.672: Clue PLACE: AMAZON
+17:04:04.672: Clue MOTIVE: HATE
+17:04:04.672: Clue WEAPON: ANTIMATTER
+17:04:04.672: Clue BANDIT: LUIGI
+17:04:12.242: Message received: TEAM16,joebot,0,START
+17:04:12.243: Timer started.
+17:04:12.500: First command velocity received.
+17:04:14.517: Message received: TEAM16,joebot,1,FIVE
+17:04:14.518: Team total: 6 pts
+17:04:14.518: Awarded: 6 pts
+17:04:28.808: Message received: TEAM16,joebot,2,JEDIS
+17:04:28.809: Team total: 12 pts
+17:04:28.809: Awarded: 6 pts
+17:04:35.123: Message received: TEAM16,joebot,3,DEFRAUD
+17:04:35.124: Team total: 18 pts
+17:04:35.124: Awarded: 6 pts

@@ -1,0 +1,29 @@
+17:00:34.620: Clue SIZE: ZEPTILLION
+17:00:34.620: Clue VICTIM: ROBOTS
+17:00:34.620: Clue CRIME: THINKING
+17:00:34.622: Clue TIME: D DAY
+17:00:34.622: Clue PLACE: MOON
+17:00:34.623: Clue MOTIVE: HASTE
+17:00:34.623: Clue WEAPON: POTATO GUN
+17:00:34.623: Clue BANDIT: BARBIE
+17:00:35.384: First command velocity received.
+17:00:46.256: Message received: TEAM16,joebot,0,START
+17:00:46.256: Timer started.
+17:00:48.877: Message received: TEAM16,joebot,1,ZEPTILLION
+17:00:48.878: Team total: 6 pts
+17:00:48.879: Awarded: 6 pts
+17:00:59.688: Message received: TEAM16,joebot,2,ROBOTS
+17:00:59.688: Team total: 12 pts
+17:00:59.689: Awarded: 6 pts
+17:01:05.839: Message received: TEAM16,joebot,3,THINKING
+17:01:05.840: Team total: 18 pts
+17:01:05.840: Awarded: 6 pts
+17:01:18.489: Message received: TEAM16,joebot,4,DDAY
+17:01:18.491: Team total: 24 pts
+17:01:18.492: Awarded: 6 pts
+17:01:50.998: Message received: TEAM16,joebot,5,MOON
+17:01:50.999: Team total: 30 pts
+17:01:50.999: Awarded: 6 pts
+17:02:12.826: Message received: TEAM16,joebot,6,HASTE
+17:02:12.826: Team total: 36 pts
+17:02:12.827: Awarded: 6 pts

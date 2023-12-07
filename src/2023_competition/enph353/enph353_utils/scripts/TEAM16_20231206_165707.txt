@@ -1,0 +1,32 @@
+16:57:01.698: Clue SIZE: A PAIR
+16:57:01.698: Clue VICTIM: DINOSAURS
+16:57:01.699: Clue CRIME: PUSH
+16:57:01.699: Clue TIME: TWILIGHT
+16:57:01.699: Clue PLACE: MADAGASCAR
+16:57:01.700: Clue MOTIVE: REVOLT
+16:57:01.700: Clue WEAPON: TAMAGOCHI
+16:57:01.700: Clue BANDIT: TEMUJIN
+16:57:03.019: First command velocity received.
+16:57:07.137: Message received: TEAM16,joebot,0,START
+16:57:07.138: Timer started.
+16:57:09.360: Message received: TEAM16,joebot,1,APAIR
+16:57:09.361: Team total: 6 pts
+16:57:09.361: Awarded: 6 pts
+16:57:21.231: Message received: TEAM16,joebot,2,DINOSAURS
+16:57:21.231: Team total: 12 pts
+16:57:21.233: Awarded: 6 pts
+16:57:26.972: Message received: TEAM16,joebot,3,PUSH
+16:57:26.973: Team total: 18 pts
+16:57:26.975: Awarded: 6 pts
+16:57:41.761: Message received: TEAM16,joebot,4,TWILIGHT
+16:57:41.762: Team total: 24 pts
+16:57:41.762: Awarded: 6 pts
+16:58:15.179: Message received: TEAM16,joebot,5,MADAGASCAR
+16:58:15.180: Team total: 30 pts
+16:58:15.182: Awarded: 6 pts
+16:58:36.032: Message received: TEAM16,joebot,6,REVOLT
+16:58:36.033: Team total: 36 pts
+16:58:36.034: Awarded: 6 pts
+16:58:49.458: Message received: TEAM16,joebot,7,TAMAGOCHI
+16:58:49.459: Team total: 44 pts
+16:58:49.460: Awarded: 8 pts

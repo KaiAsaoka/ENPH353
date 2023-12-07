@@ -1,0 +1,31 @@
+17:06:10.959: Clue SIZE: RAYO10
+17:06:10.959: Clue VICTIM: FRODOS
+17:06:10.959: Clue CRIME: POKE
+17:06:10.961: Clue TIME: NOON
+17:06:10.961: Clue PLACE: BASEMENT
+17:06:10.961: Clue MOTIVE: GLAMOUR
+17:06:10.962: Clue WEAPON: WRENCH
+17:06:10.962: Clue BANDIT: LENIN
+17:06:13.690: Message received: TEAM16,joebot,0,START
+17:06:13.691: Timer started.
+17:06:13.964: First command velocity received.
+17:06:15.981: Message received: TEAM16,joebot,1,RAYO10
+17:06:15.982: Team total: 6 pts
+17:06:15.983: Awarded: 6 pts
+17:06:27.877: Message received: TEAM16,joebot,2,FRODOS
+17:06:27.878: Team total: 12 pts
+17:06:27.879: Awarded: 6 pts
+17:06:33.271: Message received: TEAM16,joebot,3,POKE
+17:06:33.271: Team total: 18 pts
+17:06:33.273: Awarded: 6 pts
+17:06:45.521: Message received: TEAM16,joebot,4,NOO7L
+17:06:45.523: Awarded: 0 pts
+17:07:22.243: Message received: TEAM16,joebot,5,BASEMENT
+17:07:22.244: Team total: 24 pts
+17:07:22.246: Awarded: 6 pts
+17:07:43.655: Message received: TEAM16,joebot,6,GLAMOUR
+17:07:43.655: Team total: 30 pts
+17:07:43.656: Awarded: 6 pts
+17:09:00.632: Message received: TEAM16,joebot,8,LENIN
+17:09:00.632: Team total: 38 pts
+17:09:00.634: Awarded: 8 pts

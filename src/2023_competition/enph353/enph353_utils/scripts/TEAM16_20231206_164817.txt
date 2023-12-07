@@ -1,0 +1,34 @@
+16:48:01.963: Clue SIZE: DOZEN
+16:48:01.964: Clue VICTIM: DINOSAURS
+16:48:01.964: Clue CRIME: SCARE
+16:48:01.964: Clue TIME: TWILIGHT
+16:48:01.964: Clue PLACE: SEWERS
+16:48:01.965: Clue MOTIVE: GLUTTONY
+16:48:01.965: Clue WEAPON: ROCKET
+16:48:01.965: Clue BANDIT: BARBIE
+16:48:06.946: First command velocity received.
+16:48:17.867: Message received: TEAM16,joebot,0,START
+16:48:17.867: Timer started.
+16:48:19.991: Message received: TEAM16,joebot,1,DOZEN
+16:48:19.991: Team total: 6 pts
+16:48:19.992: Awarded: 6 pts
+16:48:35.163: Message received: TEAM16,joebot,2,DINOSAURS
+16:48:35.164: Team total: 12 pts
+16:48:35.166: Awarded: 6 pts
+16:48:41.222: Message received: TEAM16,joebot,3,SCARE
+16:48:41.222: Team total: 18 pts
+16:48:41.225: Awarded: 6 pts
+16:48:54.467: Message received: TEAM16,joebot,4,TWILIGHT
+16:48:54.468: Team total: 24 pts
+16:48:54.468: Awarded: 6 pts
+16:49:30.494: Message received: TEAM16,joebot,5,SEWERS
+16:49:30.495: Team total: 30 pts
+16:49:30.497: Awarded: 6 pts
+16:49:52.068: Message received: TEAM16,joebot,6,GLUTTONY
+16:49:52.068: Team total: 36 pts
+16:49:52.069: Awarded: 6 pts
+16:50:04.677: Message received: TEAM16,joebot,7,ROCKET
+16:50:04.678: Team total: 44 pts
+16:50:04.678: Awarded: 8 pts
+16:51:07.621: Message received: TEAM16,joebot,8,BGBIE
+16:51:07.622: Awarded: 0 pts
